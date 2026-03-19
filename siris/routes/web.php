@@ -12,7 +12,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/informe/ente-publico', function () {
-    return view('informes.entepublico');
+    return view('ente.informes.entepublico');
 })->middleware(['auth', 'verified'])->name('informe.ente-publico');
 
 Route::middleware('auth')->group(function () {
