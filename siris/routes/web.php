@@ -20,8 +20,8 @@ Route::get('/informe/periodo', function () {
 })->middleware(['auth', 'verified'])->name('informe.periodo');
 
 Route::get('/sancionados', function () {
-    return view('sancionados');
-})->middleware(['auth', 'verified'])->name('sancionados');
+    return view('sancionados.sancionados');
+})->middleware(['auth', 'verified'])->name('sancionados.sancionados');
 
 
 Route::middleware('auth')->group(function () {
