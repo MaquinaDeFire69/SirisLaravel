@@ -1,16 +1,20 @@
-<x-app-layout>
-    <x-slot name="sidebar">sidebar_e</x-slot>
+@extends('layouts.master')
 
+@section('sidebar')
+    @include('layouts.sidebar_e')
+@endsection
+
+@section('content')
     <div class="page-heading">
-        <h3>Informe Quincenal</h3>
+        <h3 class="text-dark">Informe Quincenal</h3>
     </div>
 
-    <div class="page-content">
+    <div class="page-content text-dark">
         <div id="mensaje-exito" class="d-none text-center py-5">
             <div class="card shadow-lg p-5">
                 <div class="card-body">
                     <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
-                    <h2 class="mt-4 fw-bold" style="color: #4b2e63;">EL reporte se envió</h2>
+                    <h2 class="mt-4 fw-bold" style="color: #4b2e63;">El reporte se envió</h2>
                     <p class="text-muted fs-5" id="tipo-envio">"Temporal"</p>
                     <div class="bg-light d-inline-block p-4 rounded-3 my-3" style="background-color: #f8f9fa;">
                         <p class="mb-0 small text-muted">Periodo</p>
@@ -25,7 +29,7 @@
         <div id="contenedor-principal">
             <div id="bloque-vigente" class="card shadow-sm mb-4">
                 <div class="card-header bg-transparent border-0 pb-0 text-center">
-                    <h6 class="text-muted">Informe actual vigente</h6>
+                    <h6 class="text-dark">Informe actual vigente</h6>
                 </div>
                 <div id="contenido-vigente" class="card-body p-4 d-flex align-items-center justify-content-between">
                     <div class="bg-primary text-white p-3 rounded shadow-sm">
@@ -42,7 +46,7 @@
 
             <div id="bloque-atrasado" class="card shadow-sm mb-4">
                 <div class="card-header bg-transparent border-0 pb-0 text-center">
-                    <h6 class="text-muted">Informe(s) pendiente(s)</h6>
+                    <h6 class="text-dark">Informe(s) pendiente(s)</h6>
                 </div>
                 <div id="contenido-atrasado" class="card-body p-4 d-flex align-items-center justify-content-between border-start border-danger border-4 rounded">
                     <div class="bg-danger text-white p-3 rounded shadow-sm">
@@ -83,7 +87,7 @@
                                         <th>Tipo Sanción</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="text-dark">
                                     <tr>
                                         <td class="text-center">PME-001/2026</td>
                                         <td>Juan Perez Lopez</td>
@@ -106,7 +110,9 @@
             </div>
         </div>
     </div>
+@endsection
 
+@section('js')
     <script>
         let informeActual = '';
 
@@ -115,7 +121,6 @@
             document.getElementById('periodo-tabla').innerText = "Periodo: " + periodo;
             document.getElementById('periodo-exito').innerText = periodo;
             
-            // Ocultamos las tarjetas superiores para centrarse en las tablas
             document.getElementById('bloque-vigente').classList.add('d-none');
             document.getElementById('bloque-atrasado').classList.add('d-none');
             document.getElementById('seccion-tablas').classList.remove('d-none');
@@ -124,31 +129,28 @@
         }
 
         function enviarInforme() {
-            // Ocultamos todo y mostramos éxito
             document.getElementById('seccion-tablas').classList.add('d-none');
             document.getElementById('mensaje-exito').classList.remove('d-none');
         }
 
         function procesarAceptar() {
-            // Ocultamos mensaje de éxito y mostramos el contenedor principal
             document.getElementById('mensaje-exito').classList.add('d-none');
             document.getElementById('bloque-vigente').classList.remove('d-none');
             document.getElementById('bloque-atrasado').classList.remove('d-none');
 
             if (informeActual === 'atrasado') {
-                // Paso Captura 24: Limpiar sección atrasada y habilitar vigente
                 document.getElementById('contenido-atrasado').classList.add('d-none');
                 document.getElementById('a-vacio').classList.remove('d-none');
                 
-                // Activar botón azul del vigente
                 let btnV = document.getElementById('btn-v');
-                btnV.classList.remove('btn-secondary', 'disabled');
-                btnV.classList.add('btn-info', 'text-white', 'shadow');
+                if(btnV) {
+                    btnV.classList.remove('btn-secondary', 'disabled');
+                    btnV.classList.add('btn-info', 'text-white', 'shadow');
+                }
             } else {
-                // Paso Captura 27: Limpiar también el vigente
                 document.getElementById('contenido-vigente').classList.add('d-none');
                 document.getElementById('v-vacio').classList.remove('d-none');
             }
         }
     </script>
-</x-app-layout>
+@endsection
