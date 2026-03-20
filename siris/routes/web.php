@@ -19,6 +19,11 @@ Route::get('/informe/periodo', function () {
     return view('informes.periodo');
 })->middleware(['auth', 'verified'])->name('informe.periodo');
 
+Route::get('/sancionados', function () {
+    return view('sancionados');
+})->middleware(['auth', 'verified'])->name('sancionados');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
