@@ -1,0 +1,1 @@
+<?php /**PATH C:\Users\josec\Desktop\siris\siris\resources\views/informeQuincenal/entepublico.blade.php ENDPATH**/ ?>
