@@ -85,7 +85,7 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item  ">
-                        <a href="{{ route('sancionados') }}" class="submenu-link">Reportes</a>   
+                        <a href="{{ route('sancionados.sancionados') }}" class="submenu-link">Reportes</a>   
                     </li>
                 </ul>                
             </li>
