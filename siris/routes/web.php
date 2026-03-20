@@ -21,4 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/panel_informativo/panel_informativo', function () {
+    return view('panel_informativo.panel_informativo');
+})->middleware(['auth', 'verified'])->name('panel.informativo');
+
 require __DIR__.'/auth.php';
