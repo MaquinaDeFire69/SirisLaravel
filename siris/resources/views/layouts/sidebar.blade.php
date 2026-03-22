@@ -2,7 +2,7 @@
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-                <a href="#">SIRIS</a>
+                <a href="{{ route('dashboard') }}">SIRIS</a>
             </div>
             <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -39,12 +39,12 @@
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
-            <li class="sidebar-item active">
+            <!-- <li class="sidebar-item active">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-menu-button-fill"></i>
                     <span>Opciones sistema</span>
                 </a>    
-            </li>
+            </li> -->
             <li
                 class="sidebar-item">
                 <a href="#" class='sidebar-link'>
@@ -54,7 +54,7 @@
             </li>            
             <li
                 class="sidebar-item">
-                <a href="index.html" class='sidebar-link'>
+                <a href="#" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Panel Informativo</span>
                 </a>
@@ -69,10 +69,10 @@
                 
                 <ul class="submenu ">                    
                     <li class="submenu-item  ">
-                        <a href="component-accordion.html" class="submenu-link">Periodo informado</a>                        
+                        <a href="{{ route('informe.periodo') }}" class="submenu-link">Periodo informado</a>                        
                     </li>                    
                     <li class="submenu-item  ">
-                        <a href="component-alert.html" class="submenu-link">Entes públicos</a>                        
+                        <a href="{{ route('informe.ente-publico') }}" class="submenu-link">Entes públicos</a>                        
                     </li>                    
                 </ul>
             </li>
@@ -85,7 +85,7 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item  ">
-                        <a href="layout-default.html" class="submenu-link">Reportes</a>   
+                        <a href="{{ route('sancionados.sancionados') }}" class="submenu-link">Reportes</a>   
                     </li>
                 </ul>                
             </li>

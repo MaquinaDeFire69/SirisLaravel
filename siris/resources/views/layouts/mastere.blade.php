@@ -33,7 +33,7 @@
 
     <div id="app">
         <div id="sidebar">
-            @include('layouts.sidebar')
+            @include('layouts.sidebare')
         </div>
 
         <div id="main">

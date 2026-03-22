@@ -2,7 +2,7 @@
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-                <a href="#">SIRIS</a>
+                <a href="{{ route('enlace_dashboard') }}">SIRIS</a>
             </div>
             <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -39,22 +39,22 @@
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
-            <li class="sidebar-item active">
+           <!--- <li class="sidebar-item active">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-menu-button-fill"></i>
                     <span>Opciones sistema</span>
                 </a>    
-            </li>
+            </li>-->
             <li
                 class="sidebar-item">
-                <a href="{{ route('profile.edit') }}" class='sidebar-link'>
+                <a href="#" class='sidebar-link'>
                     <i class="bi bi-person-circle"></i>
                     <span>Mi cuenta</span>
                 </a>                
             </li>             
             <li
                 class="sidebar-item">
-                <a href="index.html" class='sidebar-link'>
+                <a href="{{ route('enlace_panel_informativo') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Panel informativo</span>
                 </a>
