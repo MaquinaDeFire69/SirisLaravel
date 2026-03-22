@@ -7,6 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// RUTAS DE ADMINISTRADOR
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -30,8 +31,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/panel_informativo/panel_informativo', function () {
-    return view('panel_informativo.panel_informativo');
-})->middleware(['auth', 'verified'])->name('panel.informativo');
+//RUTAS DE ENLACE
+
+Route::get('/enlace/dashboard', function () {
+    return view('enlace.dashboard');
+})->middleware(['auth', 'verified'])->name('enlace_dashboard');
+
+Route::get('/enlace/panel_informativo', function () {
+    return view('enlace.panel_informativo.panel_informativo');
+})->middleware(['auth', 'verified'])->name('enlace_panel_informativo');
 
 require __DIR__.'/auth.php';
