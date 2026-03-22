@@ -26,9 +26,10 @@
 
 <body>
     <!--<script src="{{ asset('/src/assets/static/js/initTheme.js') }}"></script>-->
+    {{--
     @vite([
             'resources/src/assets/static/js/initTheme.js',
-    ])
+    ])--}}
 
     <div id="app">
         <div id="sidebar">

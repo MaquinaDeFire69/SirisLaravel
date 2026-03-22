@@ -69,10 +69,10 @@
                 
                 <ul class="submenu ">                    
                     <li class="submenu-item  ">
-                        <a href="component-accordion.html" class="submenu-link">Periodo informado</a>                        
+                        <a href="{{ route('informe.periodo') }}" class="submenu-link">Periodo informado</a>                        
                     </li>                    
                     <li class="submenu-item  ">
-                        <a href="/SirisLaravel/siris/public/informe/ente-publico" class="submenu-link">Entes públicos</a>                        
+                        <a href="{{ route('informe.ente-publico') }}" class="submenu-link">Entes públicos</a>                        
                     </li>                    
                 </ul>
             </li>
@@ -85,7 +85,7 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item  ">
-                        <a href="layout-default.html" class="submenu-link">Reportes</a>   
+                        <a href="{{ route('sancionados.sancionados') }}" class="submenu-link">Reportes</a>   
                     </li>
                 </ul>                
             </li>

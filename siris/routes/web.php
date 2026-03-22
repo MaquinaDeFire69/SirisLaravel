@@ -8,12 +8,21 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/informe/ente-publico', function () {
-    return view('ente.informes.entepublico');
+    return view('admin.informe.entepublico');
 })->middleware(['auth', 'verified'])->name('informe.ente-publico');
+
+Route::get('/informe/periodo', function () {
+    return view('admin.informes.periodo');
+})->middleware(['auth', 'verified'])->name('informe.periodo');
+
+Route::get('/sancionados', function () {
+    return view('admin.sancionados.sancionados');
+})->middleware(['auth', 'verified'])->name('sancionados.sancionados');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
