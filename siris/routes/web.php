@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\informes\Controlador_periodo;
+use App\Http\Controllers\admin\sancionados\Controlador_sancionados;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,16 +15,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/informe/ente-publico', function () {
-    return view('admin.informe.entepublico');
+    return view('admin.informeQuincenal.entepublico');
 })->middleware(['auth', 'verified'])->name('informe.ente-publico');
 
-Route::get('/informe/periodo', function () {
-    return view('admin.informes.periodo');
-})->middleware(['auth', 'verified'])->name('informe.periodo');
+Route::get('/informe/periodo', [Controlador_periodo::class, 'index'])->middleware(['auth', 'verified'])->name('informe.periodo');
 
-Route::get('/sancionados', function () {
-    return view('admin.sancionados.sancionados');
-})->middleware(['auth', 'verified'])->name('sancionados.sancionados');
+Route::get('/sancionados/reportes', [Controlador_sancionados::class, 'index'])->middleware(['auth', 'verified'])->name('sancionados.sancionados');
+
 
 
 Route::middleware('auth')->group(function () {
