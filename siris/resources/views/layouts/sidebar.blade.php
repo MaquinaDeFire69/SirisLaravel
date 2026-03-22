@@ -115,7 +115,8 @@
                         
                     </li>                    
                 </ul>
-            </li>          
+            </li>
+            {{--          
             <li
                 class="sidebar-item">
                 <form method="POST" action="{{ route('logout') }}">
@@ -127,7 +128,8 @@
                     <span>{{ __('Cerrar sesión') }}</span>
                 </a>
                 </form>                             
-            </li>                    
+            </li>
+            --}}                    
         </ul>
     </div>
 </div>
