@@ -31,7 +31,8 @@
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="dropdownMenuButton" style="border: 1px solid #5a4b81;">
                                     <li>
                                         <a class="dropdown-item dropdown-menu-custom d-flex align-items-center" href="#">
-                                            <i class="bi bi-key-fill me-2"></i> Cambiar Contraseña
+                                            <i class="bi bi-key-fill me-2 lh-1 d-flex align-items-center"></i> 
+                                            <span class="lh-1">Cambiar Contraseña</span>
                                         </a>
                                     </li>
                                     <li>
@@ -39,7 +40,8 @@
                                             @csrf
                                             <a class="dropdown-item dropdown-menu-custom d-flex align-items-center logout" href="{{ route('logout') }}" 
                                             onclick="event.preventDefault(); this.closest('form').submit();">
-                                                <i class="bi bi-box-arrow-right me-2"></i> {{ __('Cerrar Sesión') }}
+                                                <i class="bi bi-box-arrow-right me-2 lh-1 d-flex align-items-center"></i> 
+                                                <span class="lh-1">{{ __('Cerrar Sesión') }}</span>
                                             </a>
                                         </form>
                                     </li>
