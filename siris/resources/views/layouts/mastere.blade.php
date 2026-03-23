@@ -36,18 +36,18 @@
             @include('layouts.sidebare')
         </div>
 
-        <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3">SIRIS</i>
-                </a>
-            </header>
+        <div id="main" class='layout-navbar navbar-fixed'>
+            @include('layouts.topnavbare')
 
-            {{-- Contenido principal --}}
-            @yield('content')
-           
-            @include('partials.footer')
-        </div>
+            {{-- ÁREA DE CONTENIDO --}}
+            <div id="main-content">
+                <div class="page-content">
+                    @yield('content')
+                </div>
+
+                @include('partials.footer')
+            </div>
+        </div> 
     </div>
 
    <!-- <script src="{{ asset('assets/static/js/components/dark.js') }}"></script>-->
