@@ -5,6 +5,9 @@ use App\Http\Controllers\CambiarContrasenaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\informes\Controlador_periodo;
 use App\Http\Controllers\admin\sancionados\Controlador_sancionados;
+use App\Http\Controllers\Admin\Panel_informativo\PanelInformativoController;
+use App\Http\Controllers\enlace\InformeQuincenal\informeQuincenal;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +37,9 @@ Route::get('/informe/periodo', [Controlador_periodo::class, 'index'])->middlewar
 
 Route::get('/sancionados/reportes', [Controlador_sancionados::class, 'index'])->middleware(['auth', 'verified'])->name('sancionados.sancionados');
 
+// Ruta para el Panel Informativo (Estadísticas)
+Route::get('/admin/panelInformativo', [PanelInformativoController::class, 'index'])->name('admin.panelInformativo.index');;
+
 
 //RUTAS DE ENLACE
 
@@ -44,5 +50,8 @@ Route::get('/enlace/dashboard', function () {
 Route::get('/enlace/panel_informativo', function () {
     return view('enlace.panel_informativo.panel_informativo');
 })->middleware(['auth', 'verified'])->name('enlace_panel_informativo');
+
+// Ruta para el Informe Quincenal (Formulario)
+Route::get('/enlace/informeQuincenal', [informeQuincenal::class, 'index'])->name('enlace.informe.index');
 
 require __DIR__.'/auth.php';

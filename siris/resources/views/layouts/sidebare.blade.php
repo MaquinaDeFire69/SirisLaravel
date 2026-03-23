@@ -62,7 +62,7 @@
             
             <li
                 class="sidebar-item">
-                <a href="#" class='sidebar-link'>
+                <a href="{{ route('enlace.informe.index') }}" class='sidebar-link'>
                     <i class="bi bi-file-earmark-medical-fill"></i>
                     <span>Informe quincenal</span>
                 </a>
