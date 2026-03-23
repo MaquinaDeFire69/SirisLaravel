@@ -38,7 +38,7 @@ Route::get('/informe/periodo', [Controlador_periodo::class, 'index'])->middlewar
 Route::get('/sancionados/reportes', [Controlador_sancionados::class, 'index'])->middleware(['auth', 'verified'])->name('sancionados.sancionados');
 
 // Ruta para el Panel Informativo (Estadísticas)
-Route::get('/admin/panelInformativo', [PanelInformativoController::class, 'index'])->name('admin.panelInformativo.index');;
+Route::get('/panel-Informativo', [PanelInformativoController::class, 'index'])->name('admin.panelInformativo.index');;
 
 
 //RUTAS DE ENLACE
@@ -47,7 +47,7 @@ Route::get('/enlace/dashboard', function () {
     return view('enlace.dashboard');
 })->middleware(['auth', 'verified'])->name('enlace_dashboard');
 
-Route::get('/enlace/panel_informativo', function () {
+Route::get('/enlace/panel-informativo', function () {
     return view('enlace.panel_informativo.panel_informativo');
 })->middleware(['auth', 'verified'])->name('enlace_panel_informativo');
 
