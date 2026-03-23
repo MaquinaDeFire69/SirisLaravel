@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.mastere')
 
 @section('title', 'Panel Informativo')
 

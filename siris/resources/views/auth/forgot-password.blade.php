@@ -1,25 +1,73 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña - {{ config('app.name', 'SIRIS') }}</title>
+    
+    <link rel="shortcut icon" href="{{ asset('/Siris.svg') }}" type="image/x-icon">
+    <style>
+        #auth-right {
+            background-color: rgb(231, 228, 239) !important; 
+        }
+    </style>
+    
+    @vite([
+        'resources/src/assets/scss/app.scss',
+        'resources/dist/assets/compiled/css/table-datatable-jquery.css',
+    ])
+    <link rel="stylesheet" href="{{ asset('assets/compiled/css/auth.css') }}">
+</head>
+
+<body>
+    <script src="{{ asset('assets/static/js/initTheme.js') }}"></script>
+    
+    <div id="auth">
+        <div class="row h-100 m-0">
+            <div class="col-lg-5 col-12">
+                <div id="auth-left">
+                    <div class="auth-logo">
+                        <a href="{{ url('/') }}"><img src="{{ asset('/Siris.svg') }}" alt="Logo"></a>
+                    </div>
+                    <h1 class="auth-title">Recuperar.</h1>
+                    <p class="auth-subtitle mb-5">Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
+
+                    <x-auth-session-status class="mb-4 text-success font-bold" :status="session('status')" />
+
+                    <form method="POST" action="{{ route('password.email') }}">
+                        @csrf
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="email" id="email" name="email" class="form-control form-control-xl @error('email') is-invalid @enderror" placeholder="Correo Electrónico" value="{{ old('email') }}" required autofocus>
+                            <div class="form-control-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">
+                            {{ __('Enviar enlace de recuperación') }}
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-5 text-lg fs-4">
+                        <p class="text-gray-600">¿Recordaste tu cuenta? <a href="{{ route('login') }}" class="font-bold">Inicia sesión</a>.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-7 d-none d-lg-block" id="auth-right">
+            </div>
+        </div>
     </div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    {{-- Vite JS --}}
+    @vite([
+        'resources/dist/assets/compiled/js/app.js',
+    ])
+</body>
+</html>
