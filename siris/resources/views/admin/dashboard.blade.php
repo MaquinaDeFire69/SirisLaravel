@@ -198,7 +198,7 @@
             </div>
 
         </div>
-<!--Otra seccion-->
+        <!--Otra seccion-->
         <div class="col-12 col-lg-3">
             <div class="card">
                 <div class="card-body py-4 px-4">
