@@ -99,7 +99,7 @@
                 
                 <ul class="submenu ">                    
                     <li class="submenu-item  ">
-                        <a href="layout-default.html" class="submenu-link">Periodo informe</a>
+                        <a href="{{ route('conf.periodo_informe') }}" class="submenu-link">Periodo informe</a>
                         
                     </li>
                     <li class="submenu-item  ">
