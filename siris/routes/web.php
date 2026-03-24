@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\informes\Controlador_periodo;
 use App\Http\Controllers\admin\sancionados\Controlador_sancionados;
+use App\Http\Controllers\admin\conf\Controlador_periodo_informe;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,10 +26,14 @@ Route::get('/informe/ente-publico', function () {
     return view('admin.informeQuincenal.entepublico');
 })->middleware(['auth', 'verified'])->name('informe.ente-publico');
 
-Route::get('/informe/periodo', [Controlador_periodo::class, 'index'])->middleware(['auth', 'verified'])->name('informe.periodo');
+Route::get('/informe/periodo', [Controlador_periodo::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('informe.periodo');
 
-Route::get('/sancionados/reportes', [Controlador_sancionados::class, 'index'])->middleware(['auth', 'verified'])->name('sancionados.sancionados');
+Route::get('/sancionados/reportes', [Controlador_sancionados::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('sancionados.sancionados');
 
+Route::get('/configuracion/periodo_informe', [Controlador_periodo_informe::class, 'index'])
+->middleware(['auth', 'verified'])->name('conf.periodo_informe');
 
 //RUTAS DE ENLACE
 
