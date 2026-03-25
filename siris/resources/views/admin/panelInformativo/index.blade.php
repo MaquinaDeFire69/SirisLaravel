@@ -3,7 +3,23 @@
 @section('title', 'Panel Informativo')
 
 @section('content')
-    <div class="page-content">
+    <div class="page-title">
+        <!-- Definir titulo y ruta-->
+        <div class="row">
+            <div class="col-12 col-md-8 order-md-1 order-last">
+                <h3>Panel informativo</h3>
+            </div>
+            <div class="col-12 col-md-4 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Periodo informativo/</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <br>
+        <div class="page-content">
         <div class="row mb-4">
             <div class="col-12">
                 <div class="card shadow-sm text-center">
