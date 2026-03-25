@@ -21,6 +21,8 @@ return array(
     'App\\Http\\Controllers\\admin\\conf\\Controlador_periodo_informe' => $baseDir . '/app/Http/Controllers/admin/conf/Controlador_periodo_informe.php',
     'App\\Http\\Controllers\\admin\\informes\\Controlador_periodo' => $baseDir . '/app/Http/Controllers/admin/informes/Controlador_periodo.php',
     'App\\Http\\Controllers\\admin\\sancionados\\Controlador_sancionados' => $baseDir . '/app/Http/Controllers/admin/sancionados/Controlador_sancionados.php',
+    'App\\Http\\Controllers\\admin\\sancionados\\expediente_sancionados' => $baseDir . '/app/Http/Controllers/admin/sancionados/expediente_sancionados.php',
+    'App\\Http\\Controllers\\enlace\\consultarInformes\\consulta_informes' => $baseDir . '/app/Http/Controllers/enlace/consultarInformes/consulta_informes.php',
     'App\\Http\\Requests\\Auth\\LoginRequest' => $baseDir . '/app/Http/Requests/Auth/LoginRequest.php',
     'App\\Http\\Requests\\ProfileUpdateRequest' => $baseDir . '/app/Http/Requests/ProfileUpdateRequest.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

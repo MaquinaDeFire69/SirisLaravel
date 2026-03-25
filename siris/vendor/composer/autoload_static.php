@@ -551,6 +551,8 @@ class ComposerStaticInitbdc6d92507d397adf1c269ed49ec424d
         'App\\Http\\Controllers\\admin\\conf\\Controlador_periodo_informe' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/conf/Controlador_periodo_informe.php',
         'App\\Http\\Controllers\\admin\\informes\\Controlador_periodo' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/informes/Controlador_periodo.php',
         'App\\Http\\Controllers\\admin\\sancionados\\Controlador_sancionados' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/sancionados/Controlador_sancionados.php',
+        'App\\Http\\Controllers\\admin\\sancionados\\expediente_sancionados' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/sancionados/expediente_sancionados.php',
+        'App\\Http\\Controllers\\enlace\\consultarInformes\\consulta_informes' => __DIR__ . '/../..' . '/app/Http/Controllers/enlace/consultarInformes/consulta_informes.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\ProfileUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfileUpdateRequest.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
