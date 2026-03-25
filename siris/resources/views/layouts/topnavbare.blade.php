@@ -1,8 +1,13 @@
 
             <style>
                 .logout:hover{
-                    background-color: #dc3545 !important; /* Fondo rojo */
-                    color: #ffffff !important; /* Texto blanco */
+                    background-color: #dc3545 !important; 
+                    color: #ffffff !important;
+                }
+
+                .cambiarContra:hover{
+                    background-color: #C2C0C0 !important; 
+                    color: #152733 !important;
                 }
             </style>
             <header>
@@ -30,7 +35,7 @@
                                 
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="dropdownMenuButton" style="border: 1px solid #5a4b81;">
                                     <li>
-                                        <a class="dropdown-item dropdown-menu-custom d-flex align-items-center" href="#">
+                                        <a class="dropdown-item dropdown-menu-custom d-flex align-items-center cambiarContra" href="{{ route ('enlace.cambiarcontra') }}">
                                             <i class="bi bi-key-fill me-2 lh-1 d-flex align-items-center"></i> 
                                             <span class="lh-1">Cambiar Contraseña</span>
                                         </a>
