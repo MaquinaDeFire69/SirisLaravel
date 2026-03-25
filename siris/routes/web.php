@@ -35,14 +35,14 @@ Route::get('/informe/ente-publico', function () {
 
 Route::get('/informe/periodo', [Controlador_periodo::class, 'index'])->middleware(['auth', 'verified'])->name('informe.periodo');
 Route::get('/sancionados/reportes', [Controlador_sancionados::class, 'index'])->middleware(['auth', 'verified'])->name('sancionados.sancionados');
-Route::get('/panel-Informativo', [PanelInformativoController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.panelInformativo.index');
-Route::get('/configuracion/periodo_informe', [Controlador_periodo_informe::class, 'index'])->middleware(['auth', 'verified'])->name('conf.periodo_informe');
+Route::get('/panel-informativo', [PanelInformativoController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.panelInformativo.index');
+Route::get('/configuracion/periodo-informe', [Controlador_periodo_informe::class, 'index'])->middleware(['auth', 'verified'])->name('conf.periodo_informe');
 
 //RUTAS DE ENLACE
 Route::get('/enlace/dashboard', function () {
     return view('enlace.dashboard');
 })->middleware(['auth', 'verified'])->name('enlace_dashboard');
-Route::get('/enlace/panel-Informativo', [panel_InformativoEController::class, 'index'])->name('enlace_panel_informativo');
-Route::get('/enlace/informeQuincenal', [informeQuincenal::class, 'index'])->name('enlace.informe.index');
+Route::get('/enlace/panel-informativo', [panel_InformativoEController::class, 'index'])->name('enlace_panel_informativo');
+Route::get('/enlace/informe-quincenal', [informeQuincenal::class, 'index'])->name('enlace.informe.index');
 
 require __DIR__.'/auth.php';
