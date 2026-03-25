@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin\conf;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Controlador_plazo_informe extends Controller
+class Controlador_periodo_informe extends Controller
 {
     public function index()
     {
@@ -22,6 +22,6 @@ class Controlador_plazo_informe extends Controller
             ]
         ];
 
-        return view('admin.conf.plazo_informe', compact('plazos'));
+        return view('admin.conf.periodo_informe', compact('plazos'));
     }
 }
