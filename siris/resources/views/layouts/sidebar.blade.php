@@ -47,7 +47,7 @@
             </li> -->
             <li
                 class="sidebar-item">
-                <a href="#" class='sidebar-link'>
+                <a href="{{ route ('admin.cambiarcontra') }}" class='sidebar-link'>
                     <i class="bi bi-person-circle"></i>
                     <span>Mi cuenta</span>
                 </a>                
@@ -115,8 +115,7 @@
                         
                     </li>                    
                 </ul>
-            </li>
-            {{--          
+            </li>        
             <li
                 class="sidebar-item">
                 <form method="POST" action="{{ route('logout') }}">
@@ -128,8 +127,7 @@
                     <span>{{ __('Cerrar sesión') }}</span>
                 </a>
                 </form>                             
-            </li>
-            --}}                    
+            </li>                 
         </ul>
     </div>
 </div>
