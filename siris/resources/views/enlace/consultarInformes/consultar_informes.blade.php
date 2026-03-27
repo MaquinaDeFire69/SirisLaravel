@@ -16,15 +16,16 @@
         </div>
     </div>
 
-    {{-- FILTROS DE BÚSQUEDA --}}
-    <div class="row mb-4 justify-content-center align-items-end">
+   {{-- FILTROS DE BÚSQUEDA --}}
+    <form method="GET" action="{{ url()->current() }}" class="row mb-4 justify-content-center align-items-end">
         
         <div class="col-auto">
             <div class="d-flex align-items-center">
                 <label class="form-label text-uppercase text-muted fw-bold small me-3 mb-0">EJERCICIO</label>
-                <select class="form-select bg-light text-center" style="width: 150px;">
-                    <option>2026</option>
-                    <option>2025</option>
+                <select name="ejercicio" class="form-select bg-light text-center" style="width: 150px;">
+                    <option value="">Todos</option>
+                    <option value="2026" {{ request('ejercicio') == '2026' ? 'selected' : '' }}>2026</option>
+                    <option value="2025" {{ request('ejercicio') == '2025' ? 'selected' : '' }}>2025</option>
                 </select>
             </div>
         </div>
@@ -32,20 +33,21 @@
         <div class="col-auto">
             <div class="d-flex align-items-center">
                 <label class="form-label text-uppercase text-muted fw-bold small me-3 mb-0">PERIODO INFORMADO</label>
-                <select class="form-select bg-light text-center" style="width: 150px;">
-                    <option>ENERO</option>
-                    <option>FEBRERO</option>
+                <select name="periodo" class="form-select bg-light text-center" style="width: 150px;">
+                    <option value="">Todos</option>
+                    <option value="ENERO" {{ request('periodo') == 'ENERO' ? 'selected' : '' }}>ENERO</option>
+                    <option value="FEBRERO" {{ request('periodo') == 'FEBRERO' ? 'selected' : '' }}>FEBRERO</option>
                 </select>
             </div>
         </div>
 
         <div class="col-auto">
-            <button class="btn btn-danger text-white px-4" style="background-color: #a52a2a; border-color: #a52a2a;">
+            <button type="submit" class="btn btn-danger text-white px-4" style="background-color: #a52a2a; border-color: #a52a2a;">
                 Buscar
             </button>
         </div>
 
-    </div>
+    </form>
 
     {{-- CONTENEDOR DE LA TABLA --}}
     <div class="card shadow-sm border-0">
