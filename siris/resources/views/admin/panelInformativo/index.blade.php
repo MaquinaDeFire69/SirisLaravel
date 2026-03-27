@@ -34,7 +34,12 @@
 
         <div class="row">
             <div class="col-12 col-md-4 mb-4">
-                <div class="card shadow-sm h-100 border-start border-danger border-4 btn-card">
+                <div class="card shadow-sm h-100 border-start border-danger border-4 btn-card"
+                style="cursor: pointer"
+                     data-bs-toggle="modal"
+                     data-bs-target="#EntesPublicos"
+                     data-cantidad="24"
+                     data-color="bg-success">
                     <div class="card-body text-center d-flex flex-column justify-content-between">
                         <p class="card-text text-dark mb-2 small">Entes públicos<br>Proveedores de información</p>
                         <h1 class="display-3 fw-bold text-danger mb-0">24</h1>
@@ -46,8 +51,7 @@
                 <div class="card shadow-sm h-100 border-start border-info border-4 btn-card"
                      style="cursor: pointer"
                      data-bs-toggle="modal"
-                     data-bs-target="#modalEntes"
-                     data-titulo="Entes que reportaron en tiempo"
+                     data-bs-target="#EnTiempo"
                      data-cantidad="24"
                      data-color="bg-info">
                     <div class="card-body text-center d-flex flex-column justify-content-between">
@@ -58,7 +62,13 @@
             </div>
 
             <div class="col-12 col-md-4 mb-4">
-                <div class="card shadow-sm h-100 border-start border-primary border-4 btn-card">
+                <div class="card shadow-sm h-100 border-start border-primary border-4 btn-card"
+                 style="cursor: pointer"
+                     data-bs-toggle="modal"
+                     data-bs-target="#Omisos"
+                     data-cantidad="24"
+                     data-color="bg-danger"
+                >
                     <div class="card-body text-center d-flex flex-column justify-content-between">
                         <p class="card-text text-dark mb-2 small">Entes públicos omisos</p>
                         <h1 class="display-3 fw-bold text-primary mb-0">0</h1>
@@ -79,18 +89,45 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalEntes" tabindex="-1" aria-labelledby="modalEntesLabel" aria-hidden="true">
+    <div class="modal fade" id="EntesPublicos" tabindex="-1" aria-labelledby="modalEntesLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header shadow-sm transition-color" id="modalHeader">
-                    <h5 class="modal-title text-white" id="modalEntesLabel">Estatus de su informe quincenal</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary w-100 text-center">Entes que reportaron en tiempo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <div class="text-center mb-4">
-                        <h5 class="fw-bold text-dark" id="modalDinamicoTitulo">Cargando...</h5>
-                        <span class="badge fs-5" id="modalDinamicoCantidad">0</span>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Ente público</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaCuerpo">
+                                <tr>
+                                    <td>1</td><td>SABGOB</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="EnTiempo" tabindex="-1" aria-labelledby="modalEntesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary w-100 text-center">Entes que reportaron en tiempo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
                     <div class="table-responsive">
                         <table class="table table-hover table-striped">
                             <thead class="table-light">
@@ -106,9 +143,39 @@
                                     <td>1</td><td>SABGOB</td><td>2026-01-16</td>
                                     <td><span class="badge bg-success">Normal</span></td>
                                 </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Omisos" tabindex="-1" aria-labelledby="modalEntesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary w-100 text-center">Entes públicos omisos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead class="table-light">
                                 <tr>
-                                    <td>24</td><td>SEDE</td><td>2026-01-22</td>
-                                    <td><span class="badge bg-warning text-dark">Extemporáneo</span></td>
+                                    <th>No.</th>
+                                    <th>Ente público</th>
+                                    <th>Fecha envío reporte</th>
+                                    <th>Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaCuerpo">
+                                <tr>
+                                    <td>1</td><td>SABGOB</td><td>2026-01-16</td>
+                                    <td><span class="badge bg-danger">Extratemporaneo</span></td>
                                 </tr>
                             </tbody>
                         </table>

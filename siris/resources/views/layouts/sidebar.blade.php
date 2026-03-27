@@ -39,12 +39,12 @@
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
-            <!-- <li class="sidebar-item active">
+            <li class="sidebar-item active">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-menu-button-fill"></i>
                     <span>Opciones sistema</span>
                 </a>    
-            </li> -->
+            </li> 
             <li
                 class="sidebar-item">
                 <a href="#" class='sidebar-link'>
@@ -54,7 +54,7 @@
             </li>            
             <li
                 class="sidebar-item">
-                <a href="{{ route('admin.panelInformativo.index') }}" class='sidebar-link'>
+                <a href="{{ route('panelInformativo.index') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Panel Informativo</span>
                 </a>
@@ -103,11 +103,11 @@
                         
                     </li>
                     <li class="submenu-item  ">
-                        <a href="layout-default.html" class="submenu-link">Plazo informe</a>
+                        <a href="{{ route('conf.plazo_informe') }}" class="submenu-link">Plazo informe</a>
                         
                     </li>
                     <li class="submenu-item  ">
-                        <a href="layout-vertical-1-column.html" class="submenu-link">Entes públicos</a>
+                        <a href="{{ route('conf.entes_publicos') }}" class="submenu-link">Entes públicos</a>
                         
                     </li>                    
                     <li class="submenu-item  ">
