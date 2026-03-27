@@ -5,7 +5,7 @@ namespace App\Http\Controllers\enlace\Panel_informativo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Panel_InformativoEController extends Controller
+class PanelInformativoEnlaceController extends Controller
 {
     /**
      * Despliega la vista del formulario de informe quincenal.

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin\informes;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Controlador_periodo extends Controller
+class PeriodoInformadoController extends Controller
 {
     public function index()
     {

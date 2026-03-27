@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin\conf;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Controlador_plazo_informe extends Controller
+class PlazoInformeController extends Controller
 {
     public function index()
     {
