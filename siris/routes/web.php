@@ -72,10 +72,10 @@ Route::prefix('enlace')->middleware(['auth', 'verified'])->group(function () {
     })->name('enlace.dashboard');
 
     Route::get('/panel-informativo', [PanelInformativoEnlaceController::class, 'index'])
-        ->name('enlace.panel_informativo');
+        ->name('enlace.panel_informativo.panel_informativo');
 
     Route::get('/informe-quincenal', [InformeQuincenalController::class, 'index'])
-        ->name('enlace.informe.index');
+        ->name('enlace.informeQuincenal.informe.index');
 
 });
 

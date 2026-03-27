@@ -24,7 +24,7 @@
             <div class="col-12 col-md-4 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('enlace_panel_informativo') }}">Panel informativo/</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('enlace.panel_informativo.panel_informativo') }}">Panel informativo/</a></li>
                     </ol>
                 </nav>
             </div>
