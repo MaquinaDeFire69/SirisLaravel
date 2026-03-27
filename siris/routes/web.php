@@ -10,6 +10,7 @@ use App\Http\Controllers\enlace\Panel_informativo\Panel_InformativoEController;
 use App\Http\Controllers\enlace\InformeQuincenal\informeQuincenal;
 use App\Http\Controllers\admin\conf\Controlador_plazo_informe;
 use App\Http\Controllers\admin\conf\Controlador_periodo_conf;
+use App\Http\Controllers\admin\conf\Controlador_registro_usuarios_conf;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,10 +38,15 @@ Route::get('/informe/ente-publico', function () {
 Route::get('/informe/periodo', [Controlador_periodo::class, 'index'])->middleware(['auth', 'verified'])->name('informe.periodo');
 Route::get('/sancionados/reportes', [Controlador_sancionados::class, 'index'])->middleware(['auth', 'verified'])->name('sancionados.sancionados');
 Route::get('/configuracion/plazo-informe', [Controlador_plazo_informe::class, 'index'])
+
 ->middleware(['auth', 'verified'])->name('conf.plazo_informe');
 
 Route::get('/configuracion/periodo', [Controlador_periodo_conf::class, 'index'])
 ->middleware(['auth', 'verified'])->name('conf.periodo');
+
+Route::get('/configuracion/registro-usuarios', [Controlador_registro_usuarios_conf::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('conf.registro_usuarios');
+
 
 //RUTAS DE ENLACE
 Route::get('/enlace/dashboard', function () {

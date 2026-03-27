@@ -110,10 +110,9 @@
                         <a href="layout-vertical-1-column.html" class="submenu-link">Entes públicos</a>
                         
                     </li>                    
-                    <li class="submenu-item  ">
-                        <a href="layout-vertical-navbar.html" class="submenu-link">Usuario enlace</a>
-                        
-                    </li>                    
+                    <li class="submenu-item">
+                        <a href="{{ route('conf.registro_usuarios') }}" class="submenu-link">Usuario</a>
+                    </li>                  
                 </ul>
             </li>
             {{--          
