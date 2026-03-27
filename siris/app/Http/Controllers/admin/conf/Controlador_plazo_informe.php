@@ -5,11 +5,7 @@ namespace App\Http\Controllers\admin\conf;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-<<<<<<<< HEAD:siris/app/Http/Controllers/admin/conf/PeriodoInformeController.php
-class PeriodoInformeController extends Controller
-========
-class Controlador_periodo_informe extends Controller
->>>>>>>> 1edbbbebb1394359220bd39dd3ff4a912f7cd28e:siris/app/Http/Controllers/admin/conf/Controlador_periodo_informe copy.php
+class Controlador_plazo_informe extends Controller
 {
     public function index()
     {
@@ -26,6 +22,6 @@ class Controlador_periodo_informe extends Controller
             ]
         ];
 
-        return view('admin.conf.periodo_informe', compact('plazos'));
+        return view('admin.conf.plazo_informe', compact('plazos'));
     }
 }

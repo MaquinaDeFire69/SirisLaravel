@@ -7,6 +7,8 @@ use App\Http\Controllers\admin\conf\EntesPublicosController;
 use App\Http\Controllers\admin\conf\PeriodoInformeController;
 use App\Http\Controllers\admin\conf\PlazoInformeController;
 use App\Http\Controllers\Admin\Panel_informativo\PanelInformativoController;
+use App\Http\Controllers\admin\conf\Controlador_periodo_conf;
+use App\Http\Controllers\admin\conf\Controlador_plazo_informe;
 use App\Http\Controllers\admin\sancionados\ReportesController;
 use App\Http\Controllers\enlace\informeQuincenal\InformeQuincenalController;
 use App\Http\Controllers\enlace\Panel_informativo\PanelInformativoEnlaceController;
@@ -28,9 +30,13 @@ Route::get('/enlace/cambiar-contrasena',[CambiarContrasenaController::class, 'in
 // RUTAS DE ADMINISTRADOR
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('/dashboard', function () {
-        return redirect()->route('panelInformativo.index');
-    })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/informe/periodo', [Controlador_periodo_conf::class, 'index'])->middleware(['auth', 'verified'])->name('informe.periodo');
+Route::get('/sancionados/reportes', [ReportesController::class, 'index'])->middleware(['auth', 'verified'])->name('sancionados.sancionados');
+Route::get('/configuracion/plazo-informe', [Controlador_plazo_informe::class, 'index'])
+->middleware(['auth', 'verified'])->name('conf.plazo_informe');
+
+Route::get('/configuracion/periodo', [Controlador_periodo_conf::class, 'index'])
+->middleware(['auth', 'verified'])->name('conf.periodo');
 
     Route::get('/informe/ente-publico', function () {
         return view('admin.informeQuincenal.entepublico');
