@@ -163,7 +163,7 @@
                 </div>
                 <div class="modal-body p-4">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped">
+                        <table class="table table-hover table-striped" >
                             <thead class="table-light">
                                 <tr>
                                     <th>No.</th>

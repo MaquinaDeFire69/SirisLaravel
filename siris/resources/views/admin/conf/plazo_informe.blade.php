@@ -33,30 +33,33 @@
 
                 <!-- BOTON -->
                 <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalNuevo">
-    <i class="bi bi-plus-square"></i> Nuevo plazo
-</button>
+                    <i class="bi bi-plus-square"></i> Nuevo plazo
+                </button>
 
-                <!-- BUSCADOR -->
+                 
+            </div>
+
+            <!-- BUSCADOR -->
+            <div class="d-flex justify-content-between mb-2">
                 <div>
-                    <label>Buscar:</label>
+                    Mostrar 
+                    <select class="form-select d-inline-block" style="width: 80px;">
+                        <option>5</option>
+                        <option>10</option>
+                        <option>25</option>
+                    </select>
+                    Registros
+                </div>
+
+                <div>
+                    Buscar:
                     <input type="text" class="form-control d-inline-block" style="width: 200px;">
                 </div>
             </div>
 
-            <!-- MOSTRAR REGISTROS -->
-            <div class="mb-2">
-                Mostrar 
-                <select class="form-select d-inline-block" style="width: 80px;">
-                    <option>10</option>
-                    <option>25</option>
-                    <option>50</option>
-                </select>
-                Registros
-            </div>
-
             <!-- TABLA -->
             <div class="table-responsive">
-                <table class="table table-bordered table-striped text-center">
+                <table class="table table-bordered text-center">
                     <thead class="table-secondary">
                         <tr>
                             <th>No.</th>

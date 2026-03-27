@@ -103,7 +103,7 @@
                         
                     </li>
                     <li class="submenu-item  ">
-                        <a href="{{ route('conf.periodo') }}" class="submenu-link">Periodo informe</a>
+                        <a href="{{ route('conf.periodo_informe') }}" class="submenu-link">Periodo informe</a>
                     </li>
                     <li class="submenu-item  ">
                         <a href="{{ route('conf.entes_publicos') }}" class="submenu-link">Entes públicos</a>

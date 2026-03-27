@@ -5,27 +5,43 @@ namespace App\Http\Controllers\admin\conf;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-<<<<<<<< HEAD:siris/app/Http/Controllers/admin/conf/PeriodoInformeController.php
 class PeriodoInformeController extends Controller
-========
-class Controlador_periodo_informe extends Controller
->>>>>>>> 1edbbbebb1394359220bd39dd3ff4a912f7cd28e:siris/app/Http/Controllers/admin/conf/Controlador_periodo_informe copy.php
 {
     public function index()
     {
-        $plazos = [
+        $periodos = [
             [
-                'anio' => 2025,
-                'dias' => 3,
+                'periodo' => 'ENERO 01 AL 15 DE 2026',
+                'inicio' => '2026-01-16',
+                'fin' => '2026-01-18',
+                'estatus' => 'ACTIVO'
+            ],
+            [
+                'periodo' => 'ENERO 16 AL 31 DE 2026',
+                'inicio' => '2026-02-01',
+                'fin' => '2026-02-03',
+                'estatus' => 'ACTIVO'
+            ],
+            [
+                'periodo' => 'FEBRERO 01 AL 15 DE 2026',
+                'inicio' => '2026-02-16',
+                'fin' => '2026-02-18',
+                'estatus' => 'ACTIVO'
+            ],
+            [
+                'periodo' => 'FEBRERO 16 AL 28 DE 2026',
+                'inicio' => '2026-03-01',
+                'fin' => '2026-03-03',
                 'estatus' => 'INACTIVO'
             ],
             [
-                'anio' => 2026,
-                'dias' => 3,
-                'estatus' => 'ACTIVO'
-            ]
+                'periodo' => 'MARZO 01 AL 15 DE 2026',
+                'inicio' => '2026-03-16',
+                'fin' => '2026-03-18',
+                'estatus' => 'INACTIVO'
+            ],
         ];
 
-        return view('admin.conf.periodo_informe', compact('plazos'));
+        return view('admin.conf.periodo_conf', compact('periodos'));
     }
 }
