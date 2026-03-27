@@ -60,7 +60,7 @@
             <!-- TABLA -->
             <div class="table-responsive">
                 <table class="table table-bordered text-center">
-                    <thead class="table-secondary">
+                    <thead>
                         <tr>
                             <th>No.</th>
                             <th>AÑO DE APLICACIÓN</th>

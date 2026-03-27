@@ -9,7 +9,7 @@ use App\Http\Controllers\admin\conf\PeriodoInformeController;
 use App\Http\Controllers\admin\conf\PlazoInformeController;
 use App\Http\Controllers\Admin\Panel_informativo\PanelInformativoController;
 use App\Http\Controllers\admin\sancionados\ReportesController;
-
+use App\Http\Controllers\admin\informes\PeriodoInformadoController;
 use App\Http\Controllers\enlace\informeQuincenal\InformeQuincenalController;
 use App\Http\Controllers\enlace\Panel_informativo\PanelInformativoEnlaceController;
 
@@ -43,7 +43,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('admin.informeQuincenal.entepublico');
     })->name('informe.ente-publico');
 
-    Route::get('/informe/periodo', [PeriodoInformeController::class, 'index'])
+    Route::get('/informe/periodo', [PeriodoInformadoController::class, 'index'])
         ->name('informe.periodo');
 
     Route::get('/sancionados/reportes', [ReportesController::class, 'index'])

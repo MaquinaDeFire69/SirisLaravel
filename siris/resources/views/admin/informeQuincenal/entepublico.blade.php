@@ -187,7 +187,23 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive datatable-minimal">
-                    <table class="table" id="table2">
+                    <div class="d-flex justify-content-between mb-2">
+                        <div>
+                            Mostrar 
+                            <select class="form-select d-inline-block" style="width: 80px;">
+                                <option>5</option>
+                                <option>10</option>
+                                <option>25</option>
+                            </select>
+                            Registros
+                        </div>
+
+                        <div>
+                            Buscar:
+                            <input type="text" class="form-control d-inline-block" style="width: 200px;">
+                        </div>
+                    </div>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>No.</th>
