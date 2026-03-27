@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\admin\conf\EntesPublicosController;
 use App\Http\Controllers\admin\conf\PeriodoInformeController;
-use App\Http\Controllers\admin\informes\PeriodoInformadoController;
 use App\Http\Controllers\admin\conf\PlazoInformeController;
 use App\Http\Controllers\Admin\Panel_informativo\PanelInformativoController;
 use App\Http\Controllers\admin\sancionados\ReportesController;

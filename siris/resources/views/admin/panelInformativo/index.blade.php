@@ -98,8 +98,8 @@
                 </div>
                 <div class="modal-body p-4">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped">
-                            <thead class="table-light">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
                                     <th>No.</th>
                                     <th>Ente público</th>
@@ -129,8 +129,8 @@
                 </div>
                 <div class="modal-body p-4">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped">
-                            <thead class="table-light">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
                                     <th>No.</th>
                                     <th>Ente público</th>
@@ -163,8 +163,8 @@
                 </div>
                 <div class="modal-body p-4">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped" >
-                            <thead class="table-light">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
                                     <th>No.</th>
                                     <th>Ente público</th>

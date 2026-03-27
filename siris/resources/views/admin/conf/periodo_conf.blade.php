@@ -47,7 +47,7 @@
 
             <!-- TABLA -->
             <div class="table-responsive">
-                <table class="table table-bordered text-center">
+                <table class="table text-center">
                     <thead>
                         <tr>
                             <th>No.</th>
