@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin\sancionados;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Controlador_sancionados extends Controller
+class ReportesController extends Controller
 {
     public function index()
     {

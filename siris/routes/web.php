@@ -3,13 +3,15 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CambiarContrasenaController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\informes\Controlador_periodo;
-use App\Http\Controllers\admin\sancionados\Controlador_sancionados;
+
+use App\Http\Controllers\admin\conf\EntesPublicosController;
+use App\Http\Controllers\admin\conf\PeriodoInformeController;
+use App\Http\Controllers\admin\conf\PlazoInformeController;
 use App\Http\Controllers\Admin\Panel_informativo\PanelInformativoController;
-use App\Http\Controllers\enlace\Panel_informativo\Panel_InformativoEController;
-use App\Http\Controllers\enlace\InformeQuincenal\informeQuincenal;
-use App\Http\Controllers\admin\conf\Controlador_plazo_informe;
-use App\Http\Controllers\admin\conf\Controlador_periodo_conf;
+use App\Http\Controllers\admin\sancionados\ReportesController;
+
+use App\Http\Controllers\enlace\informeQuincenal\InformeQuincenalController;
+use App\Http\Controllers\enlace\Panel_informativo\PanelInformativoEnlaceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,32 +23,60 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//Cambiar contraseña
-Route::get('/cambiar-contrasena',[CambiarContrasenaController::class, 'index'])->middleware(['auth','verified'])->name('admin.cambiarcontra');
-Route::get('/enlace/cambiar-contrasena',[CambiarContrasenaController::class, 'index_e'])->middleware(['auth','verified'])->name('enlace.cambiarcontra');
+// Cambiar contraseña
+Route::get('/cambiar-contrasena', [CambiarContrasenaController::class, 'index'])
+    ->middleware(['auth','verified'])
+    ->name('admin.cambiarcontra');
+
+Route::get('/enlace/cambiar-contrasena', [CambiarContrasenaController::class, 'index_e'])
+    ->middleware(['auth','verified'])
+    ->name('enlace.cambiarcontra');
 
 
 // RUTAS DE ADMINISTRADOR
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/informe/ente-publico', function () {
-    return view('admin.informeQuincenal.entepublico');
-})->middleware(['auth', 'verified'])->name('informe.ente-publico');
+Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/informe/periodo', [Controlador_periodo::class, 'index'])->middleware(['auth', 'verified'])->name('informe.periodo');
-Route::get('/sancionados/reportes', [Controlador_sancionados::class, 'index'])->middleware(['auth', 'verified'])->name('sancionados.sancionados');
-Route::get('/configuracion/plazo-informe', [Controlador_plazo_informe::class, 'index'])
-->middleware(['auth', 'verified'])->name('conf.plazo_informe');
+    Route::get('/dashboard', [PanelInformativoController::class, 'index'])
+        ->name('dashboard');
 
-Route::get('/configuracion/periodo', [Controlador_periodo_conf::class, 'index'])
-->middleware(['auth', 'verified'])->name('conf.periodo');
+    Route::get('/informe/ente-publico', function () {
+        return view('admin.informeQuincenal.entepublico');
+    })->name('informe.ente-publico');
 
-//RUTAS DE ENLACE
-Route::get('/enlace/dashboard', function () {
-    return view('enlace.dashboard');
-})->middleware(['auth', 'verified'])->name('enlace_dashboard');
-Route::get('/enlace/panel-informativo', [panel_InformativoEController::class, 'index'])->name('enlace_panel_informativo');
-Route::get('/enlace/informe-quincenal', [informeQuincenal::class, 'index'])->name('enlace.informe.index');
+    Route::get('/informe/periodo', [PeriodoInformeController::class, 'index'])
+        ->name('informe.periodo');
+
+    Route::get('/sancionados/reportes', [ReportesController::class, 'index'])
+        ->name('sancionados.sancionados');
+
+    Route::get('/panel-informativo', [PanelInformativoController::class, 'index'])
+        ->name('panelInformativo.index');
+
+    Route::get('/configuracion/periodo-informe', [PeriodoInformeController::class, 'index'])
+        ->name('conf.periodo_informe');
+
+    Route::get('/configuracion/plazo-informe', [PlazoInformeController::class, 'index'])
+        ->name('conf.plazo_informe');
+
+    Route::get('/configuracion/entes-publicos', [EntesPublicosController::class, 'index'])
+        ->name('conf.entes_publicos');
+
+});
+
+
+// RUTAS DE ENLACE
+Route::prefix('enlace')->middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('enlace.dashboard');
+    })->name('enlace.dashboard');
+
+    Route::get('/panel-informativo', [PanelInformativoEnlaceController::class, 'index'])
+        ->name('enlace.panel_informativo');
+
+    Route::get('/informe-quincenal', [InformeQuincenalController::class, 'index'])
+        ->name('enlace.informe.index');
+
+});
 
 require __DIR__.'/auth.php';

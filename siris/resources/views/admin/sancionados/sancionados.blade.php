@@ -108,16 +108,13 @@
                         Registros
                     </div>
 
-                    <div>
-                        Buscar
-                        <input type="text" class="form-control d-inline w-auto">
-                    </div>
+                   
 
                 </div>
 
                 {{-- TABLA --}}
-                <div class="table-responsive">
-                    <table class="table table-bordered text-center align-middle">
+                <div class="table-responsive datatable-minimal">
+                    <table class="table" id="table2">
                         <thead class="table-secondary">
                             <tr>
                                 <th>No.</th>
