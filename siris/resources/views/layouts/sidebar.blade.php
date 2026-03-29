@@ -44,7 +44,7 @@
                     <i class="bi bi-menu-button-fill"></i>
                     <span>Opciones sistema</span>
                 </a>    
-            </li> 
+            </li>
             <li
                 class="sidebar-item">
                 <a href="{{ route ('admin.cambiarcontra') }}" class='sidebar-link'>
