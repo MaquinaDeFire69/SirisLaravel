@@ -13,6 +13,6 @@ class informeQuincenalController extends Controller
     public function index()
     {
         // Asumiendo que tu vista está en resources/views/admin/informeQuincenal/index.blade.php
-        return view('enlace.informeQuincenal.informeQuincenal');
+        return view('enlace.informeQuincenal.index');
     }
 }

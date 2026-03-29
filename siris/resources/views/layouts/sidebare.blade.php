@@ -62,7 +62,7 @@
             
             <li
                 class="sidebar-item">
-                <a href="{{ route('enlace.informeQuincenal.informe.index') }}" class='sidebar-link'>                    <i class="bi bi-file-earmark-medical-fill"></i>
+                <a href="{{ route('enlace.informeQuincenal.index') }}" class='sidebar-link'>                    <i class="bi bi-file-earmark-medical-fill"></i>
                     <span>Informe quincenal</span>
                 </a>
             </li>
@@ -81,7 +81,7 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item  ">
-                        <a href="layout-default.html" class="submenu-link">Reportes</a>   
+                        <a href="{{ route('enlace.sancionadosEnlaceReporte.index') }}" class="submenu-link">Reportes</a>   
                     </li>
                 </ul>                
             </li>            

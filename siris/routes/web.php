@@ -10,8 +10,11 @@ use App\Http\Controllers\admin\conf\PlazoInformeController;
 use App\Http\Controllers\Admin\Panel_informativo\PanelInformativoController;
 use App\Http\Controllers\admin\sancionados\ReportesController;
 use App\Http\Controllers\admin\informes\PeriodoInformadoController;
+
+
 use App\Http\Controllers\enlace\informeQuincenal\InformeQuincenalController;
 use App\Http\Controllers\enlace\Panel_informativo\PanelInformativoEnlaceController;
+use App\Http\Controllers\enlace\sancionadosEnlaceReporte\sancionadosEnlaceReporteController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -75,8 +78,11 @@ Route::prefix('enlace')->middleware(['auth', 'verified'])->group(function () {
         ->name('enlace.panel_informativo.panel_informativo');
 
     Route::get('/informe-quincenal', [InformeQuincenalController::class, 'index'])
-        ->name('enlace.informeQuincenal.informe.index');
+            ->name('enlace.informeQuincenal.index');
 
+    // CORRECCIÓN: Usar el nombre correcto de la clase del controlador
+    Route::get('/reporteSancionados', [sancionadosEnlaceReporteController::class, 'index'])
+        ->name('enlace.sancionadosEnlaceReporte.index');
 });
 
 require __DIR__.'/auth.php';
