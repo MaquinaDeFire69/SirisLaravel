@@ -60,6 +60,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/configuracion/entes-publicos', [EntesPublicosController::class, 'index'])
         ->name('conf.entes_publicos');
+    
+    Route::get('/configuracion/registro-usuarios', [Controlador_registro_usuarios_conf::class, 'index'])
+        ->name('conf.registro_usuarios');
 
 });
 
