@@ -1,8 +1,14 @@
+```php
 <?php
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CambiarContrasenaController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\admin\informes\Controlador_periodo;
+use App\Http\Controllers\admin\sancionados\Controlador_sancionados;
+use App\Http\Controllers\enlace\consultarInformes\consulta_informes;
+use App\Http\Controllers\admin\sancionados\expediente_sancionados;
 
 use App\Http\Controllers\admin\conf\EntesPublicosController;
 use App\Http\Controllers\admin\conf\PeriodoInformeController;
@@ -49,6 +55,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/sancionados/reportes', [ReportesController::class, 'index'])
         ->name('sancionados.sancionados');
 
+    // agregado de Isa
+    Route::get('/sancionados/expediente/{id}', [expediente_sancionados::class, 'mostrar'])
+        ->name('sancionados.info_expediente');
+
     Route::get('/panel-informativo', [PanelInformativoController::class, 'index'])
         ->name('panelInformativo.index');
 
@@ -60,9 +70,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/configuracion/entes-publicos', [EntesPublicosController::class, 'index'])
         ->name('conf.entes_publicos');
-    
-    Route::get('/configuracion/registro-usuarios', [Controlador_registro_usuarios_conf::class, 'index'])
-        ->name('conf.registro_usuarios');
 
 });
 
@@ -79,6 +86,10 @@ Route::prefix('enlace')->middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/informe-quincenal', [InformeQuincenalController::class, 'index'])
         ->name('enlace.informeQuincenal.informe.index');
+
+    // agregado de Isa
+    Route::get('/informes/consultar', [consulta_informes::class, 'index'])
+        ->name('informes.consultar');
 
 });
 
