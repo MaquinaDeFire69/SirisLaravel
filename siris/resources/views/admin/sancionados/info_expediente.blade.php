@@ -116,15 +116,17 @@
                 <div class="col-12">
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <thead class="bg-primary text-white">
+                            <thead class="bg-primary">
                                 <tr>
-                                    <th>Sanción</th>
+                                    <th class="fw-bold text-dark">Sanción</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($datosExpediente['sanciones'] as $index => $sancion)
                                 <tr>
-                                    <td class="bg-secondary {{ $index % 2 == 0 ? 'bg-opacity-10' : 'bg-opacity-25' }}">{{ $sancion }}</td>
+                                    <td class="bg-secondary {{ $index % 2 == 0 ? 'bg-opacity-10' : 'bg-opacity-25' }}">
+                                        <strong class="text-dark">{{ $sancion }}</strong>
+                                    </td>                                
                                 </tr>
                                 @endforeach
                             </tbody>
