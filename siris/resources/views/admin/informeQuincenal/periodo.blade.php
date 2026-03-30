@@ -127,7 +127,8 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-primary rounded-pill">Descargar acuse</a>
+                                                <a href="#" class="btn btn-primary rounded-pill">
+                                                    <i class="bi bi-download"></i> Descargar acuse</a>
                                             </td>
                                         </tr>
                                     @endforeach
