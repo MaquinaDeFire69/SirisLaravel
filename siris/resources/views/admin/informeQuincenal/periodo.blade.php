@@ -9,7 +9,6 @@
 @section('content')
     <div class="page-heading">
         <div class="page-title">
-            <!-- Definir titulo y ruta-->
             <div class="row">
                 <div class="col-12 col-md-8 order-md-1 order-last">
                     <h3>Entes públicos proveedores de información</h3>
@@ -25,28 +24,27 @@
                 </div>
             </div>
         </div>
-        <div class="page-content">
-            <!-- Fin titulo y ruta-->
 
-            <!-- Basic choices start -->
+        <div class="page-content">
             <section class="basic-choices">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-12">
                         <div class="card">
-                            <!-- <div class="card-header">
-                                <h4 class="card-title">Choices</h4>
-                            </div> -->
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h6>* Seleccione un periodo del informe</h6>
                                             <div class="form-group">
-                                                <select class="form-select text-dark fw-bold">
-                                                    @foreach($periodos as $periodo)
-                                                        <option>{{ $periodo }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <form method="GET" action="{{ route('informe.periodo') }}">
+                                                    <select name="periodo" class="form-select text-dark fw-bold" onchange="this.form.submit()">
+                                                        @foreach($periodos as $periodo)
+                                                            <option value="{{ $periodo }}" {{ $periodo == $periodoSeleccionado ? 'selected' : '' }}>
+                                                                {{ $periodo }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -56,8 +54,6 @@
                     </div>
                 </div>
             </section>
-            <!-- Basic choices end -->
-
             {{-- ===== STATS CARDS ===== --}}
             <div class="row justify-content-center">
                 @foreach($stats as $stat)
@@ -81,8 +77,6 @@
                 @endforeach
             </div>
 
-            <!-- Minimal jQuery Datatable end -->
-            <!-- Basic Tables start -->
             <section class="section">
                 <div class="card">
                     <div class="card-header">
@@ -108,6 +102,7 @@
                                     <input type="text" class="form-control d-inline-block" style="width: 200px;">
                                 </div>
                             </div>
+
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -138,6 +133,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
                             <div class="text-center mt-3">
                                 <a href="#" class="btn btn-outline-secondary">
                                     <i class="bi bi-file-earmark-pdf"></i>
@@ -148,7 +144,6 @@
                     </div>
                 </div>
             </section>
-            <!-- Basic Tables end -->
-        </div>
+            </div>
     </div>
 @endsection
