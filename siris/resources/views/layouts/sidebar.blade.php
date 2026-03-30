@@ -1,4 +1,4 @@
-```html
+
 <div class="sidebar-wrapper active">
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
@@ -110,4 +110,3 @@
         </ul>
     </div>
 </div>
-```

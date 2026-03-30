@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\sancionados\ReportesController;
 use App\Http\Controllers\admin\informes\PeriodoInformadoController;
 use App\Http\Controllers\enlace\informeQuincenal\InformeQuincenalController;
 use App\Http\Controllers\enlace\Panel_informativo\PanelInformativoEnlaceController;
+use App\Http\Controllers\admin\conf\RegistroUsuariosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -70,7 +71,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/configuracion/entes-publicos', [EntesPublicosController::class, 'index'])
         ->name('conf.entes_publicos');
-
+    
+    // Configuración de registro de usuarios
+    Route::get('/configuracion/registro-usuarios', [RegistroUsuariosController::class, 'index'])
+        ->name('conf.registro_usuarios');
 });
 
 
