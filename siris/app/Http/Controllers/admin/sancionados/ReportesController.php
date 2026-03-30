@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ReportesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // PERIODOS
         $periodos = [
@@ -15,7 +15,7 @@ class ReportesController extends Controller
             'Enero 16 - 31 2026',
         ];
 
-        // ENTES (para el select)
+        // ENTES
         $entes = [
             'SABGOB',
             'SESAEQROO',
@@ -23,8 +23,15 @@ class ReportesController extends Controller
             'SEDETUR'
         ];
 
-        // SANCIONADOS (tabla)
-        $sancionados = [
+        
+        $tipos = [
+            'PERSONA FÍSICA',
+            'PERSONA MORAL',
+            'SERVIDOR PÚBLICO'
+        ];
+
+        // SANCIONADOS
+        $sancionados = collect([
             [
                 'expediente' => 'SP-01/2026',
                 'nombre' => 'ARMANDO PADILLA SANCHEZ',
@@ -65,8 +72,29 @@ class ReportesController extends Controller
                 'sancion' => 'INHABILITACIÓN',
                 'tipo' => 'SERVIDOR PÚBLICO'
             ]
-        ];
+        ]);
 
-        return view('admin.sancionados.sancionados', compact('periodos', 'entes', 'sancionados'));
+        // FILTRO POR TIPO (SANCIONADO)
+        if ($request->filled('sancionado')) {
+            $sancionados = $sancionados->where('tipo', $request->sancionado);
+        }
+
+        // FILTRO POR ENTE
+        if ($request->filled('ente')) {
+            $sancionados = $sancionados->where('ente', $request->ente);
+        }
+
+        // FILTRO PERIODO
+        if ($request->filled('periodo')) {
+            $sancionados = $sancionados->where('periodo', $request->ente);
+            
+        }
+
+        return view('admin.sancionados.sancionados', [
+            'periodos' => $periodos,
+            'entes' => $entes,
+            'tipos' => $tipos, 
+            'sancionados' => $sancionados->values()
+        ]);
     }
 }
