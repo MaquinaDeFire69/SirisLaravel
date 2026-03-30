@@ -68,7 +68,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // RUTAS DE ENLACE
 Route::prefix('enlace')->middleware(['auth', 'verified'])->group(function () {
 
-    Route::get('/dashboard', function () {
+    Route::get('/enlace/dashboard', function () {
         return view('enlace.dashboard');
     })->name('enlace.dashboard');
 

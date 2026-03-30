@@ -47,7 +47,7 @@
             </li> 
             <li
                 class="sidebar-item">
-                <a href="{{ route ('admin.cambiarcontra') }}:q" class='sidebar-link'>
+                <a href="{{ route ('admin.cambiarcontra') }}" class='sidebar-link'>
                     <i class="bi bi-person-circle"></i>
                     <span>Mi cuenta</span>
                 </a>                
