@@ -163,7 +163,11 @@
                         @foreach($sancionados as $index => $s)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td class="text-primary">{{ $s['expediente'] }}</td>
+                                <td>
+                                    <a href="{{ route('sancionados.info_expediente', $s['id']) }}" class="text-primary fw-bold">
+                                        {{ $s['expediente'] }}
+                                    </a>
+                                </td>
                                 <td>{{ $s['nombre'] }}</td>
                                 <td>{{ $s['ente'] }}</td>
                                 <td>{{ $s['falta'] }}</td>
