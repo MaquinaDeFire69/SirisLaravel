@@ -38,66 +38,58 @@
         </div>
     </div>
     <div class="sidebar-menu">
-        <ul class="menu">
-           <!--- <li class="sidebar-item active">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-menu-button-fill"></i>
-                    <span>Opciones sistema</span>
-                </a>    
-            </li>-->
-            <li
-                class="sidebar-item {{ request()->routeIs('enlace.cambiarcontra') ? 'active' : '' }}">
-                <a href="{{ route('enlace.cambiarcontra') }}" class='sidebar-link'>
-                    <i class="bi bi-person-circle"></i>
-                    <span>Mi cuenta</span>
-                </a>                
-            </li>             
-            <li
-                class="sidebar-item {{ request()->routeIs('enlace.panel_informativo') ? 'active' : '' }}">
-                <a href="{{ route('enlace.panel_informativo') }}" class='sidebar-link'>
-                    <i class="bi bi-grid-fill"></i>
-                    <span>Panel informativo</span>
-                </a>
-            </li>
-            
-            <li
-                class="sidebar-item {{ request()->routeIs('enlace.informeQuincenal.informe.index') ? 'active' : '' }}">
-                <a href="{{ route('enlace.informeQuincenal.index') }}" class='sidebar-link'>                    
-                    <i class="bi bi-file-earmark-medical-fill"></i>
-                    <span>Informe quincenal</span>
-                </a>
-            </li>
-            <li
-                class="sidebar-item {{ request()->routeIs('enlace.consultar_informes') ? 'active' : '' }}">
-                <a href="{{ route('informes.consultar') }}" class='sidebar-link'>
-                    <i class="bi bi-clipboard-check-fill"></i>
-                    <span>Consultar informes</span>
-                </a>                
-            </li>             
-            <li
-                class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-folder2-open"></i>
-                    <span>Sancionados</span>
-                </a>
-                <ul class="submenu ">
-                    <li class="submenu-item  ">
-                        <a href="{{ route('enlace.sancionadosEnlaceReporte') }}" class="submenu-link">Reportes</a>   
-                    </li>
-                </ul>                
-            </li>            
-            <li
-                class="sidebar-item">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
+    <ul class="menu">
+        
+        <li class="sidebar-item {{ request()->routeIs('enlace.cambiarcontra') ? 'active' : '' }}">
+            <a href="{{ route('enlace.cambiarcontra') }}" class='sidebar-link'>
+                <i class="bi bi-person-circle"></i>
+                <span>Mi cuenta</span>
+            </a>                
+        </li>            
+        
+        <li class="sidebar-item {{ request()->routeIs('enlace.panel_informativo') ? 'active' : '' }}">
+            <a href="{{ route('enlace.panel_informativo') }}" class='sidebar-link'>
+                <i class="bi bi-grid-fill"></i>
+                <span>Panel informativo</span>
+            </a>
+        </li>
+        
+        <li class="sidebar-item {{ request()->routeIs('enlace.informeQuincenal.index') ? 'active' : '' }}">
+            <a href="{{ route('enlace.informeQuincenal.index') }}" class='sidebar-link'>                    
+                <i class="bi bi-file-earmark-medical-fill"></i>
+                <span>Informe quincenal</span>
+            </a>
+        </li>
+        
+        <li class="sidebar-item {{ request()->routeIs('informes.consultar') ? 'active' : '' }}">
+            <a href="{{ route('informes.consultar') }}" class='sidebar-link'>
+                <i class="bi bi-clipboard-check-fill"></i>
+                <span>Consultar informes</span>
+            </a>                
+        </li>            
+        
+        <li class="sidebar-item has-sub {{ request()->routeIs('enlace.sancionadosEnlaceReporte') ? 'active' : '' }}">
+            <a href="#" class='sidebar-link'>
+                <i class="bi bi-folder2-open"></i>
+                <span>Sancionados</span>
+            </a>
+            <ul class="submenu {{ request()->routeIs('enlace.sancionadosEnlaceReporte') ? 'active' : '' }}">
+                <li class="submenu-item {{ request()->routeIs('enlace.sancionadosEnlaceReporte') ? 'active' : '' }}">
+                    <a href="{{ route('enlace.sancionadosEnlaceReporte') }}" class="submenu-link">Reportes</a>   
+                </li>
+            </ul>                
+        </li>            
+        
+        <li class="sidebar-item">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
                 <a href="{{ route('logout') }}" class='sidebar-link' 
-                        onclick="event.preventDefault();
-                                this.closest('form').submit();">
+                        onclick="event.preventDefault(); this.closest('form').submit();">
                     <i class="bi bi-power"></i>
                     <span>{{ __('Cerrar sesión') }}</span>
                 </a>
-                </form>                             
-            </li>                     
-        </ul>
-    </div>
+            </form>                            
+        </li>                    
+    </ul>
+</div>
 </div>

@@ -72,7 +72,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 
-// RUTAS DE ENLACE
+// RUTAS DE ENLACE 
+// Ingresan a través de enlace/panel-informativo, y desde ahí pueden acceder a las demás vistas
 Route::prefix('enlace')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/cambiar-contrasena', [CambiarContrasenaController::class, 'index_e'])
         ->name('enlace.cambiarcontra');
