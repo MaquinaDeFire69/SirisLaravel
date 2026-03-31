@@ -1,5 +1,5 @@
 
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
 @section('title', 'Dashboard')
 
@@ -19,7 +19,7 @@
             <div class="col-12 col-md-4 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Informe quincenal</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Informe quincenal</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Entes públicos</li>
                     </ol>
                 </nav>
@@ -187,7 +187,23 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive datatable-minimal">
-                    <table class="table" id="table2">
+                    <div class="d-flex justify-content-between mb-2">
+                        <div>
+                            Mostrar 
+                            <select class="form-select d-inline-block" style="width: 80px;">
+                                <option>5</option>
+                                <option>10</option>
+                                <option>25</option>
+                            </select>
+                            Registros
+                        </div>
+
+                        <div>
+                            Buscar:
+                            <input type="text" class="form-control d-inline-block" style="width: 200px;">
+                        </div>
+                    </div>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>No.</th>

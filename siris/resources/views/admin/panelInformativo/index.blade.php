@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
 @section('title', 'Panel Informativo')
 
@@ -12,7 +12,7 @@
             <div class="col-12 col-md-4 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Periodo informativo/</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Periodo informativo/</a></li>
                     </ol>
                 </nav>
             </div>
@@ -98,8 +98,8 @@
                 </div>
                 <div class="modal-body p-4">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped">
-                            <thead class="table-light">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
                                     <th>No.</th>
                                     <th>Ente público</th>
@@ -129,8 +129,8 @@
                 </div>
                 <div class="modal-body p-4">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped">
-                            <thead class="table-light">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
                                     <th>No.</th>
                                     <th>Ente público</th>
@@ -163,8 +163,8 @@
                 </div>
                 <div class="modal-body p-4">
                     <div class="table-responsive">
-                        <table class="table table-hover table-striped" >
-                            <thead class="table-light">
+                        <table class="table table-hover">
+                            <thead>
                                 <tr>
                                     <th>No.</th>
                                     <th>Ente público</th>

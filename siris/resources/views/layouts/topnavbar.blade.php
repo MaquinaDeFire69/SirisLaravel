@@ -4,7 +4,7 @@
             
             <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
                 <div class="user-info ms-auto">
-                    <h6 class="mb-0 user-role-text me-1 lh-1 text-end">Administrador del sistema</h6>
+                    <h6 class="mb-0 user-role-text me-1 lh-1 text-end">Rol usuario del sistema</h6>
                 </div>
             </div>
 
