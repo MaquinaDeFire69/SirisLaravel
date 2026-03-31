@@ -6,8 +6,8 @@
 <div class="page-heading">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
-            <h3>Configuración de Usuarios</h3>
-            <p class="text-subtitle text-muted">Administración y gestión de los usuarios con acceso al sistema SIRIS.</p>
+            <h3>Listado de usuarios</h3>
+            <p class="text-subtitle text-muted">Registro de personal administrativo y de enlace.</p>
         </div>
         <div class="col-12 col-md-4 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
