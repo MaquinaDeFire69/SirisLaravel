@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin\conf;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Controlador_registro_usuarios_conf extends Controller
+class UsuarioController extends Controller
 {
     public function index()
     {

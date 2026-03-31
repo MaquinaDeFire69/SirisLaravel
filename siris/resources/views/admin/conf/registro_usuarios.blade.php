@@ -6,7 +6,7 @@
 <div class="page-heading">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
-            <h3>Configuración / <span style="color: #f39c12;">Usuarios</span></h3>
+            <h3>Listado de usuarios</h3>
             <p class="text-subtitle text-muted">Registro de personal administrativo y de enlace.</p>
         </div>
         <div class="col-12 col-md-4 order-md-2 order-first">

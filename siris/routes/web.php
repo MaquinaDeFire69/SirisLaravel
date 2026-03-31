@@ -1,15 +1,12 @@
-```php
 <?php
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CambiarContrasenaController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\admin\informes\Controlador_periodo;
-use App\Http\Controllers\admin\sancionados\Controlador_sancionados;
 use App\Http\Controllers\enlace\consultarInformes\consulta_informes;
 use App\Http\Controllers\admin\sancionados\expediente_sancionados;
-
+use App\Http\Controllers\admin\conf\UsuarioController;
 use App\Http\Controllers\admin\conf\EntesPublicosController;
 use App\Http\Controllers\admin\conf\PeriodoInformeController;
 use App\Http\Controllers\admin\conf\PlazoInformeController;
@@ -70,6 +67,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/configuracion/entes-publicos', [EntesPublicosController::class, 'index'])
         ->name('conf.entes_publicos');
+
+    Route::get('/configuracion/registro-usuarios', [UsuarioController::class, 'index'])
+        ->name('conf.registro_usuarios');
 
 });
 

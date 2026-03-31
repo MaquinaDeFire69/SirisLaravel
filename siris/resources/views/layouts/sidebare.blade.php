@@ -68,7 +68,7 @@
             </li>
             <li
                 class="sidebar-item">
-                <a href="#" class='sidebar-link'>
+                <a href="{{ route('informes.consultar') }}" class='sidebar-link'>
                     <i class="bi bi-clipboard-check-fill"></i>
                     <span>Consultar informes</span>
                 </a>                

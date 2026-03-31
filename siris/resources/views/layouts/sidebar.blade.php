@@ -1,4 +1,3 @@
-```html
 <div class="sidebar-wrapper active">
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
@@ -89,7 +88,7 @@
                     </li>                    
 
                     <li class="submenu-item">
-                        <a href="{{ route('conf.registro_usuarios') }}" class="submenu-link">
+                            <a href="{{ route('conf.registro_usuarios') }}" class="submenu-link">
                             Usuario
                         </a>
                     </li>                  
@@ -110,4 +109,4 @@
         </ul>
     </div>
 </div>
-```
+

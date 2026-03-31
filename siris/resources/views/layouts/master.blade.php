@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -62,4 +61,4 @@
     @yield('js')
 </body>
 </html>
-```
+
