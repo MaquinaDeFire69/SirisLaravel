@@ -2,7 +2,7 @@
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-                <a href="{{ route('enlace.dashboard') }}">SIRIS</a>
+                <a href="{{ route('enlace.panel_informativo') }}">SIRIS</a>
             </div>
             <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -46,29 +46,30 @@
                 </a>    
             </li>-->
             <li
-                class="sidebar-item">
-                <a href="#" class='sidebar-link'>
+                class="sidebar-item {{ request()->routeIs('enlace.cambiarcontra') ? 'active' : '' }}">
+                <a href="{{ route('enlace.cambiarcontra') }}" class='sidebar-link'>
                     <i class="bi bi-person-circle"></i>
                     <span>Mi cuenta</span>
                 </a>                
             </li>             
             <li
-                class="sidebar-item">
-                <a href="{{ route('enlace.panel_informativo.panel_informativo') }}" class='sidebar-link'>
+                class="sidebar-item {{ request()->routeIs('enlace.panel_informativo') ? 'active' : '' }}">
+                <a href="{{ route('enlace.panel_informativo') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Panel informativo</span>
                 </a>
             </li>
             
             <li
-                class="sidebar-item">
-                <a href="{{ route('enlace.informeQuincenal.informe.index') }}" class='sidebar-link'>                    <i class="bi bi-file-earmark-medical-fill"></i>
+                class="sidebar-item {{ request()->routeIs('enlace.informeQuincenal.informe.index') ? 'active' : '' }}">
+                <a href="{{ route('enlace.informeQuincenal.index') }}" class='sidebar-link'>                    
+                    <i class="bi bi-file-earmark-medical-fill"></i>
                     <span>Informe quincenal</span>
                 </a>
             </li>
             <li
-                class="sidebar-item">
-                <a href="#" class='sidebar-link'>
+                class="sidebar-item {{ request()->routeIs('enlace.consultar_informes') ? 'active' : '' }}">
+                <a href="{{ route('informes.consultar') }}" class='sidebar-link'>
                     <i class="bi bi-clipboard-check-fill"></i>
                     <span>Consultar informes</span>
                 </a>                
@@ -81,7 +82,7 @@
                 </a>
                 <ul class="submenu ">
                     <li class="submenu-item  ">
-                        <a href="layout-default.html" class="submenu-link">Reportes</a>   
+                        <a href="{{ route('enlace.sancionadosEnlaceReporte') }}" class="submenu-link">Reportes</a>   
                     </li>
                 </ul>                
             </li>            

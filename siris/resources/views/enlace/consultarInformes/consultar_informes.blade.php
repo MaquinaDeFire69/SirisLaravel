@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.enlace.master')
 
 @section('title', 'Consultar Informes')
 

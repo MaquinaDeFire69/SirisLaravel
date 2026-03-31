@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\enlace\consultarInformes;
+namespace App\Http\Controllers\Enlace\ConsultarInformes;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class consulta_informes extends Controller
+class ConsultarInformesController extends Controller
 {
     // Agregamos Request para capturar lo que el usuario envía
     public function index(Request $request)

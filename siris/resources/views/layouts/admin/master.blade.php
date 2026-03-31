@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,7 +28,7 @@
     <div id="app">
         {{-- SIDEBAR MANTENIDO --}}
         <div id="sidebar">
-            @include('layouts.sidebar')
+            @include('layouts.admin.sidebar')
         </div>
 
         {{-- CONTENEDOR PRINCIPAL --}}
@@ -62,4 +61,3 @@
     @yield('js')
 </body>
 </html>
-```

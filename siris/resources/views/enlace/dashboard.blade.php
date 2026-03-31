@@ -1,5 +1,4 @@
-
-@extends('layouts.mastere')
+@extends('layouts.enlace.master')
 
 @section('title', 'Dashboard')
 

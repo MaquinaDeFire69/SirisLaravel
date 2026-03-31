@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\admin\sancionados;
+namespace App\Http\Controllers\Admin\Sancionados;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Controllers\admin\sancionados\ReportesController;
+use App\Http\Controllers\Admin\Sancionados\ReportesController;
 
-class expediente_sancionados extends Controller
+class ExpedienteSancionadosController extends Controller
 {
     public function mostrar($id)
 {

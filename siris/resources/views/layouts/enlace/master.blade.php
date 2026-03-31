@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? '' }} {{ $web_title ?? config('app.name') }}-Enlace</title>
-<<<<<<< HEAD
     <link rel="shortcut icon" href="{{ asset('Siris.svg') }}" type="image/x-icon">
-=======
->>>>>>> origin/Isa
 
     {{-- Sección para estilos antes --}}
     @yield('stylesfirst')
@@ -37,11 +34,11 @@
 
     <div id="app">
         <div id="sidebar">
-            @include('layouts.sidebare')
+            @include('layouts.enlace.sidebar')
         </div>
 
         <div id="main" class='layout-navbar navbar-fixed'>
-            @include('layouts.topnavbare')
+            @include('layouts.topnavbar')
 
             {{-- ÁREA DE CONTENIDO --}}
             <div id="main-content">

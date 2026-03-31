@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
 @section('title', 'Información del Expediente')
 
@@ -17,7 +17,7 @@
         <div class="col-12 col-md-4 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('sancionados.sancionados') }}">Sancionados</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Sancionados</a></li>
                     <li class="breadcrumb-item text-warning fw-bold active" aria-current="page">Expediente</li>
                 </ol>
             </nav>
@@ -116,9 +116,9 @@
                 <div class="col-12">
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <thead class="bg-primary">
+                            <thead class="bg-primary text-white">
                                 <tr>
-                                    <th class="fw-bold text-dark">Sanción</th>
+                                    <th>Sanción</th>
                                 </tr>
                             </thead>
                             <tbody>

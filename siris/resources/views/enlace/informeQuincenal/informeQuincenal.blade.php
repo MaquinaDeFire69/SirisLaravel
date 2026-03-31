@@ -1,4 +1,4 @@
-@extends('layouts.mastere')
+@extends('layouts.enlace.master')
 
 @section('content')
     <div class="page-heading">

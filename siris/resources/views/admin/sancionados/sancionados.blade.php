@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
 @section('title', 'Sancionados')
 
@@ -18,7 +18,7 @@
         <div class="col-12 col-md-4 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Sancionados</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Sancionados</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Reportes</li>
                 </ol>
             </nav>

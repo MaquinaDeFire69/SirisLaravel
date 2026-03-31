@@ -1,273 +1,177 @@
 
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
-@section('title', 'Dashboard')
+@section('title', 'Panel Informativo')
 
 @section('styles')
     @vite(['resources/src/assets/scss/iconly.scss'])
+    <style>
+        .btn-card { transition: transform 0.2s; cursor: pointer; }
+        .btn-card:hover { transform: translateY(-5px); }
+        /* Ajuste para que el gráfico no sea demasiado grande en la card */
+        #avanceChart { min-height: 150px !important; }
+    </style>
 @endsection
 
 @section('content')
 <div class="page-heading">
-    <h3>Profile Statistics</h3>
-</div> 
-
-<div class="page-content"> 
-    <section class="row">
-        <div class="col-12 col-lg-9">
-
-            {{-- ===== STATS CARDS ===== --}}
-            <div class="row">
-                @php
-                    $stats = [
-                        ['color' => 'purple', 'icon' => 'iconly-boldShow', 'label' => 'Profile Views', 'value' => '112.000'],
-                        ['color' => 'blue', 'icon' => 'iconly-boldProfile', 'label' => 'Followers', 'value' => '183.000'],
-                        ['color' => 'green', 'icon' => 'iconly-boldAdd-User', 'label' => 'Following', 'value' => '80.000'],
-                        ['color' => 'red', 'icon' => 'iconly-boldBookmark', 'label' => 'Saved Post', 'value' => '112'],
-                    ];
-                @endphp
-
-                @foreach($stats as $stat)
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
-                                    <div class="stats-icon {{ $stat['color'] }} mb-2">
-                                        <i class="{{ $stat['icon'] }}"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                    <h6 class="text-muted font-semibold">{{ $stat['label'] }}</h6>
-                                    <h6 class="font-extrabold mb-0">{{ $stat['value'] }}</h6>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+    <div class="page-title mb-3">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h3>Resumen de Cumplimiento</h3>
+                <p class="text-subtitle text-muted">Periodo del informe vigente: <strong>01 al 15 de enero 2026</strong></p>
             </div>
+        </div>
+    </div>
 
-            {{-- ===== PROFILE VISIT CHART ===== --}}
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Profile Visit</h4>
-                        </div>
-                        <div class="card-body">
-                            <div id="chart-profile-visit"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section">
+        {{-- Row de Cards Informativas usando el modelo del primer archivo --}}
+        <div class="row">
+            @php
+                $dashboardStats = [
+                    [
+                        'color' => 'red', 
+                        'icon' => 'iconly-boldProfile', 
+                        'label' => 'Proveedores de información', 
+                        'value' => '24',
+                        'modal' => false
+                    ],
+                    [
+                        'color' => 'info', 
+                        'icon' => 'iconly-boldTick-Square', 
+                        'label' => 'Reportaron en tiempo', 
+                        'value' => '24',
+                        'modal' => true,
+                        'target' => 'modalEntes',
+                        'titulo' => 'Entes que reportaron en tiempo'
+                    ],
+                    [
+                        'color' => 'primary', 
+                        'icon' => 'iconly-boldDanger', 
+                        'label' => 'Entes públicos omisos', 
+                        'value' => '0',
+                        'modal' => false
+                    ],
+                ];
+            @endphp
 
-            <div class="row">
-                <div class="col-12 col-xl-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Profile Visit</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-7">
-                                    <div class="d-flex align-items-center">
-                                        <svg class="bi text-primary" width="32" height="32" fill="blue"
-                                            style="width:10px">
-                                            <use
-                                                xlink:href="{{ asset('dist/assets/static/images/bootstrap-icons.svg#circle-fill') }} " />
-                                        </svg>
-                                        <h5 class="mb-0 ms-3">Europe</h5>
-                                    </div>
-                                </div>
-                                <div class="col-5">
-                                    <h5 class="mb-0 text-end">862</h5>
-                                </div>
-                                <div class="col-12">
-                                    <div id="chart-europe"></div>
+            @foreach($dashboardStats as $stat)
+            <div class="col-6 col-lg-4 col-md-6">
+                <div class="card btn-card" 
+                    @if($stat['modal']) 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#{{ $stat['target'] }}"
+                        data-titulo="{{ $stat['titulo'] }}"
+                        data-cantidad="{{ $stat['value'] }}"
+                        data-color="bg-{{ $stat['color'] }}"
+                    @endif>
+                    <div class="card-body px-4 py-4-5">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                                <div class="stats-icon {{ $stat['color'] }} mb-2">
+                                    <i class="{{ $stat['icon'] }}"></i>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-7">
-                                    <div class="d-flex align-items-center">
-                                        <svg class="bi text-success" width="32" height="32" fill="blue"
-                                            style="width:10px">
-                                            <use
-                                                xlink:href="{{ asset('dist/assets/static/images/bootstrap-icons.svg#circle-fill') }}" />
-                                        </svg>
-                                        <h5 class="mb-0 ms-3">America</h5>
-                                    </div>
-                                </div>
-                                <div class="col-5">
-                                    <h5 class="mb-0 text-end">375</h5>
-                                </div>
-                                <div class="col-12">
-                                    <div id="chart-america"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-7">
-                                    <div class="d-flex align-items-center">
-                                        <svg class="bi text-danger" width="32" height="32" fill="blue"
-                                            style="width:10px">
-                                            <use
-                                                xlink:href="{{ asset('dist/assets/static/images/bootstrap-icons.svg#circle-fill') }}" />
-                                        </svg>
-                                        <h5 class="mb-0 ms-3">Indonesia</h5>
-                                    </div>
-                                </div>
-                                <div class="col-5">
-                                    <h5 class="mb-0 text-end">1025</h5>
-                                </div>
-                                <div class="col-12">
-                                    <div id="chart-indonesia"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-8">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Latest Comments</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-lg">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Comment</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar avatar-md">
-                                                        <img src="{{ asset('/imgs/faces/7.jpg') }}">
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0">Congratulations on your graduation!</p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar avatar-md">
-                                                        <img src="{{ asset('/imgs/faces/8.jpg') }}">
-                                                    </div>
-                                                    <p class="font-bold ms-3 mb-0">Si Ganteng</p>
-                                                </div>
-                                            </td>
-                                            <td class="col-auto">
-                                                <p class=" mb-0">Wow amazing design! Can you make another tutorial for
-                                                    this design?</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                <h6 class="text-muted font-semibold">{{ $stat['label'] }}</h6>
+                                <h6 class="font-extrabold mb-0">{{ $stat['value'] }}</h6>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            
+            @endforeach
         </div>
 
-        {{-- ===== RIGHT SIDEBAR ===== --}}
-        <div class="col-12 col-lg-3">
-
-            {{-- USER CARD --}}
-            <div class="card">
-                <div class="card-body py-4 px-4">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar avatar-xl">
-                            <img src="{{ asset('/imgs/faces/1.jpg') }}" alt="Face 1">
-                        </div>
-                        <div class="ms-3 name">
-                            <h5 class="font-bold">John Duck</h5>
-                            <h6 class="text-muted mb-0">@johnducky</h6>
-                        </div>
+        {{-- Row para el gráfico de avance --}}
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h6 class="text-muted font-semibold mb-3">Avance de cumplimiento</h6>
+                        <div id="avanceChart"></div>
                     </div>
-                </div>
-            </div>
-
-        </div>
-        <!--Otra seccion-->
-        <div class="col-12 col-lg-3">
-            <div class="card">
-                <div class="card-body py-4 px-4">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar avatar-xl">
-                            <img src="{{ asset('/imgs/faces/2.jpg') }}" alt="Face 1">
-                        </div>
-                        <div class="ms-3 name">
-                            <h5 class="font-bold">John Duck</h5>
-                            <h6 class="text-muted mb-0">@johnducky</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <h4>Recent Messages</h4>
-                </div>
-                <div class="card-content pb-4">
-                    <div class="recent-message d-flex px-4 py-3">
-                        <div class="avatar avatar-lg">
-                            <img src="{{ asset('/imgs/faces/3.jpg') }}">
-                        </div>
-                        <div class="name ms-4">
-                            <h5 class="mb-1">Hank Schrader</h5>
-                            <h6 class="text-muted mb-0">@johnducky</h6>
-                        </div>
-                    </div>
-                    <div class="recent-message d-flex px-4 py-3">
-                        <div class="avatar avatar-lg">
-                            <img src="{{ asset('/imgs/faces/4.jpg') }}">
-                        </div>
-                        <div class="name ms-4">
-                            <h5 class="mb-1">Dean Winchester</h5>
-                            <h6 class="text-muted mb-0">@imdean</h6>
-                        </div>
-                    </div>
-                    <div class="recent-message d-flex px-4 py-3">
-                        <div class="avatar avatar-lg">
-                            <img src="{{ asset('/imgs/faces/5.jpg') }}">
-                        </div>
-                        <div class="name ms-4">
-                            <h5 class="mb-1">John Dodol</h5>
-                            <h6 class="text-muted mb-0">@dodoljohn</h6>
-                        </div>
-                    </div>
-                    <div class="px-4">
-                        <button class='btn btn-block btn-xl btn-outline-primary font-bold mt-3'>Start Conversation</button>
-                    </div>
-                </div>
-            </div> 
-            <div class="card">
-                <div class="card-header">
-                    <h4>Visitors Profile</h4>
-                </div>
-                <div class="card-body">
-                    <div id="chart-visitors-profile"></div>
                 </div>
             </div>
         </div>
     </section>
 </div>
 
+{{-- Modal Dinámico --}}
+<div class="modal fade" id="modalEntes" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header shadow-sm text-white" id="modalHeader">
+                <h5 class="modal-title text-white">Estatus de Informes</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="text-center mb-4">
+                    <h5 class="fw-bold text-dark" id="modalDinamicoTitulo">Cargando...</h5>
+                    <span class="badge fs-5" id="modalDinamicoCantidad">0</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead class="table-light">
+                            <tr>
+                                <th>No.</th>
+                                <th>Ente público</th>
+                                <th>Fecha envío</th>
+                                <th>Estatus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td><td>SABGOB</td><td>2026-01-16</td>
+                                <td><span class="badge bg-success">Normal</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-@endsection
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 1. ApexCharts
+        var options = {
+            series: [100],
+            chart: { type: 'radialBar', height: 300, sparklines: { enabled: true } },
+            plotOptions: {
+                radialBar: {
+                    startAngle: -90,
+                    endAngle: 90,
+                    track: { background: "#e7e7e7", strokeWidth: '97%' },
+                    dataLabels: {
+                        name: { show: false },
+                        value: { offsetY: -20, fontSize: '22px', fontWeight: 'bold' }
+                    }
+                }
+            },
+            fill: { colors: ["#ffc107"] },
+            labels: ['Cumplimiento'],
+        };
+        new ApexCharts(document.querySelector("#avanceChart"), options).render();
 
-@section('js')
-    @vite(['resources/dist/assets/static/js/pages/dashboard.js',
-           'resources/dist/assets/static/js/pages/jquery.js',
-           'resources/dist/assets/extensions/apexcharts/apexcharts.min.js',        
-    ])
+        // 2. Lógica del Modal
+        const modalEntes = document.getElementById('modalEntes');
+        modalEntes.addEventListener('show.bs.modal', function (event) {
+            const card = event.relatedTarget;
+            const titulo = card.getAttribute('data-titulo');
+            const cantidad = card.getAttribute('data-cantidad');
+            const colorClase = card.getAttribute('data-color');
+
+            document.getElementById('modalDinamicoTitulo').textContent = titulo;
+            document.getElementById('modalDinamicoCantidad').textContent = cantidad;
+            document.getElementById('modalHeader').className = 'modal-header shadow-sm ' + colorClase;
+            document.getElementById('modalDinamicoCantidad').className = 'badge fs-5 ' + colorClase;
+        });
+    });
+</script>
 @endsection

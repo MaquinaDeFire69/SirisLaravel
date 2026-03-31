@@ -1,5 +1,5 @@
 
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
 @section('title', 'Dashboard')
 
@@ -19,7 +19,7 @@
             <div class="col-12 col-md-4 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Informe quincenal</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Informe quincenal</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Entes públicos</li>
                     </ol>
                 </nav>
