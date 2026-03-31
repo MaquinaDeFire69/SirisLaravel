@@ -80,7 +80,6 @@ Route::prefix('enlace')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/informe-quincenal', [InformeQuincenalController::class, 'index'])
             ->name('enlace.informeQuincenal.index');
 
-    // CORRECCIÓN: Usar el nombre correcto de la clase del controlador
     Route::get('/reporteSancionados', [sancionadosEnlaceReporteController::class, 'index'])
         ->name('enlace.sancionadosEnlaceReporte.index');
 });
