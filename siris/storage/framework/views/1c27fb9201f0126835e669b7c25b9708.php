@@ -44,7 +44,11 @@
                     <i class="bi bi-menu-button-fill"></i>
                     <span>Opciones sistema</span>
                 </a>    
+<<<<<<< HEAD:siris/storage/framework/views/1c27fb9201f0126835e669b7c25b9708.php
             </li> -->
+=======
+            </li>
+>>>>>>> origin/JoseV2:siris/resources/views/layouts/sidebar.blade.php
             <li
                 class="sidebar-item">
                 <a href="#" class='sidebar-link'>

@@ -116,9 +116,9 @@
                 <div class="col-12">
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <thead class="bg-primary">
+                            <thead class="bg-primary text-white">
                                 <tr>
-                                    <th class="fw-bold text-dark">Sanción</th>
+                                    <th>Sanción</th>
                                 </tr>
                             </thead>
                             <tbody>

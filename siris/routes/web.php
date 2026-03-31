@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Conf\RegistroUsuariosController;
 use App\Http\Controllers\Enlace\PanelInformativo\PanelInformativoEnlaceController;
 use App\Http\Controllers\Enlace\InformeQuincenal\InformeQuincenalController;
 use App\Http\Controllers\Enlace\ConsultarInformes\ConsultarInformesController;
+use App\Http\Controllers\Enlace\Sancionados\SancionadosReporteController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -86,11 +87,15 @@ Route::prefix('enlace')->middleware(['auth', 'verified'])->group(function () {
 
     // informeQuincenal
     Route::get('/informe-quincenal', [InformeQuincenalController::class, 'index'])
-        ->name('enlace.informeQuincenal.informe.index');
+            ->name('enlace.informeQuincenal.index');
 
     // consultarInformes
     Route::get('/informes/consultar', [ConsultarInformesController::class, 'index'])
         ->name('informes.consultar');
+    
+    // Sancionados
+    Route::get('/sancionados', [SancionadosReporteController::class, 'index'])
+        ->name('enlace.sancionadosEnlaceReporte');
 });
 
 require __DIR__.'/auth.php';
