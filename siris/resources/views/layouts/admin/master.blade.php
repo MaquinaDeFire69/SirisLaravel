@@ -35,12 +35,14 @@
             @include('layouts.topnavbar')
 
             {{-- ÁREA DE CONTENIDO --}}
-            <div id="main-content">
-                <div class="page-content">
+            <div id="main-content" class="d-flex flex-column min-vh-100">
+                <div class="page-content flex-grow-1">
                     @yield('content')
                 </div>
 
-                @include('partials.footer')
+                <div class="mt-auto">
+                    @include('partials.footer')
+                </div>
             </div>
         </div>            
     </div>

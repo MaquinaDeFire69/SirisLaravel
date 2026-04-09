@@ -79,10 +79,16 @@
             @foreach($categorias as $cat)
             <div class="card border-0 shadow-sm mb-5" style="border-radius: 12px; border: 1px solid #e2e8f0 !important;">
                 <div class="card-header bg-white border-0 py-3 d-flex align-items-center">
+                    
+                    {{-- CONTENEDOR DEL ICONO --}}
                     <div class="icon-shape rounded-3 me-3 d-flex align-items-center justify-content-center" 
                          style="background-color: {{ $cat['color'] }}15; color: {{ $cat['color'] }}; width: 45px; height: 45px;">
-                        <i class="bi bi-{{ $cat['icon'] }} fs-4"></i>
+                        
+                        {{-- AJUSTE ÓPTICO: Bajamos el icono 1.5px para compensar la caja de la fuente --}}
+                        <i class="bi bi-{{ $cat['icon'] }} fs-4" style="transform: translateY(1.5px);"></i>
+                        
                     </div>
+
                     <h5 class="mb-0 fw-bold" style="color: #2d3748;">{{ $cat['titulo'] }}</h5>
                 </div>
                 <div class="card-body p-0">
@@ -113,8 +119,9 @@
             @endforeach
 
             <div class="text-center pb-5 mt-4">
-                <div class="bg-light p-2 d-inline-block rounded-pill mb-3">
-                    <span class="text-muted small px-3">Revisa la información antes de realizar el envío definitivo</span>
+                <div class="bg-info p-2 d-inline-block rounded-pill mb-3">
+
+                    <span class="text-white small px-3">Revisa la información antes de realizar el envío definitivo</span>
                 </div>
                 <br>
                 <button class="btn btn-dark btn-lg px-5 rounded-pill shadow-lg py-3 fw-bold" onclick="enviarInforme()" style="background-color: #1a202c; min-width: 300px;">
