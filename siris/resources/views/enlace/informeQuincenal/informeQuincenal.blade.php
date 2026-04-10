@@ -3,13 +3,24 @@
 @section('title', 'Informe Quincenal')
 
 @section('content')
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-8 order-md-1 order-last">
+                <h3 class="text-gray-800">Informe quincenal</h3>
+            </div>
+            <div class="col-12 col-md-4 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('enlace.panel_informativo') }}">Informe quincenal/</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="page-content">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('enlace.panel_informativo') }}">Inicio</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Informe Quincenal</li>
-        </ol>
-    </nav>
 
     <div id="contenedor-principal">
         <div class="row" id="bloques-estados">
@@ -82,8 +93,7 @@
             @foreach($categorias as $cat)
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-white border-0 py-3 d-flex align-items-center">
-                    <div class="icon-shape rounded-circle me-3 d-flex align-items-center justify-content-center" 
-                         style="background-color: {{ $cat['color'] }}15; color: {{ $cat['color'] }}; width: 40px; height: 40px;">
+                    <div class="icon-shape rounded-circle me-3 d-flex align-items-center justify-content-center" style="background-color: {{ $cat['color'] }}15; color: {{ $cat['color'] }}; width: 40px; height: 40px;">
                         <i class="bi bi-{{ $cat['icon'] }} fs-5"></i>
                     </div>
                     <h5 class="mb-0 fw-bold text-dark">{{ $cat['titulo'] }}</h5>
@@ -130,14 +140,10 @@
 </div>
 
 <style>
-    /* Estilos dentro del section para no romper el footer */
     .bg-light-primary { background-color: #f0f5ff; color: #435ebe; }
     .bg-light-danger { background-color: #fff5f5; color: #dc3545; }
     .text-dark { color: #1e293b !important; }
     
-    .breadcrumb { background: transparent; padding: 0; margin-bottom: 1.5rem; font-size: 0.85rem; }
-    .breadcrumb-item a { color: #64748b; text-decoration: none; }
-    .breadcrumb-item.active { color: #435ebe; font-weight: 600; }
 
     .card { border-radius: 12px; transition: all 0.2s ease-in-out; border: 1px solid #f1f5f9; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important; }
