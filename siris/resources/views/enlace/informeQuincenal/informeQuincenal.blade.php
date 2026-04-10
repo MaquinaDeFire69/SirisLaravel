@@ -1,15 +1,16 @@
 @extends('layouts.enlace.master')
+
 @section('title', 'Informe Quincenal')
 
 @section('content')
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('enlace.panel_informativo.panel_informativo') }}">Inicio</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Informe Quincenal</li>
-    </ol>
-</nav>
-
 <div class="page-content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('enlace.panel_informativo') }}">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Informe Quincenal</li>
+        </ol>
+    </nav>
+
     <div id="contenedor-principal">
         <div class="row" id="bloques-estados">
             <div id="bloque-atrasado" class="col-md-6 mb-4">
@@ -59,8 +60,8 @@
             </div>
         </div>
 
-        <div id="seccion-tablas" class="d-none animate_animated animate_fadeInUp">
-            <div class="d-flex justify-content-between align-items-end mb-4 border-bottom pb-3">
+        <div id="seccion-tablas" class="d-none animate__animated animate__fadeIn">
+            <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
                 <div>
                     <h2 class="fw-bold text-dark mb-0">Detalle de Faltas</h2>
                     <p class="text-muted mb-0 small" id="periodo-tabla"></p>
@@ -81,17 +82,11 @@
             @foreach($categorias as $cat)
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-white border-0 py-3 d-flex align-items-center">
-                    
-                    {{-- CONTENEDOR DEL ICONO --}}
-                    <div class="icon-shape rounded-3 me-3 d-flex align-items-center justify-content-center" 
-                         style="background-color: {{ $cat['color'] }}15; color: {{ $cat['color'] }}; width: 45px; height: 45px;">
-                        
-                        {{-- AJUSTE ÓPTICO: Bajamos el icono 1.5px para compensar la caja de la fuente --}}
-                        <i class="bi bi-{{ $cat['icon'] }} fs-4" style="transform: translateY(1.5px);"></i>
-                        
+                    <div class="icon-shape rounded-circle me-3 d-flex align-items-center justify-content-center" 
+                         style="background-color: {{ $cat['color'] }}15; color: {{ $cat['color'] }}; width: 40px; height: 40px;">
+                        <i class="bi bi-{{ $cat['icon'] }} fs-5"></i>
                     </div>
-
-                    <h5 class="mb-0 fw-bold" style="color: #2d3748;">{{ $cat['titulo'] }}</h5>
+                    <h5 class="mb-0 fw-bold text-dark">{{ $cat['titulo'] }}</h5>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
@@ -121,9 +116,9 @@
             @endforeach
 
             <div class="text-center pb-5 mt-4">
-                <div class="bg-info p-2 d-inline-block rounded-pill mb-3">
-
-                    <span class="text-white small px-3">Revisa la información antes de realizar el envío definitivo</span>
+                <div class="bg-dark text-white p-3 d-inline-block rounded-pill mb-4 px-4 shadow-sm">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <span class="small fw-medium">Revisa la información antes de realizar el envío definitivo</span>
                 </div>
                 <br>
                 <button class="btn btn-dark btn-lg px-5 rounded-pill shadow py-3 fw-bold btn-animate" onclick="enviarInforme()">
@@ -133,6 +128,33 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* Estilos dentro del section para no romper el footer */
+    .bg-light-primary { background-color: #f0f5ff; color: #435ebe; }
+    .bg-light-danger { background-color: #fff5f5; color: #dc3545; }
+    .text-dark { color: #1e293b !important; }
+    
+    .breadcrumb { background: transparent; padding: 0; margin-bottom: 1.5rem; font-size: 0.85rem; }
+    .breadcrumb-item a { color: #64748b; text-decoration: none; }
+    .breadcrumb-item.active { color: #435ebe; font-weight: 600; }
+
+    .card { border-radius: 12px; transition: all 0.2s ease-in-out; border: 1px solid #f1f5f9; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important; }
+    
+    .table thead th { 
+        background-color: #f8fafc; 
+        border-bottom: 1px solid #e2e8f0; 
+        font-size: 0.7rem; 
+        letter-spacing: 0.05em; 
+        color: #64748b;
+    }
+    
+    .btn-animate { transition: all 0.2s; }
+    .btn-animate:hover:not(:disabled) { transform: scale(1.02); filter: brightness(1.1); }
+    
+    .icon-shape i { display: inline-flex; align-items: center; justify-content: center; line-height: 0; }
+</style>
 @endsection
 
 @section('js')
@@ -146,7 +168,6 @@
         periodoTexto = periodo;
         document.getElementById('periodo-tabla').innerText = "Capturando datos del: " + periodo;
         
-        // Ocultar bloques iniciales y mostrar tablas
         document.getElementById('bloques-estados').classList.add('d-none');
         document.getElementById('seccion-tablas').classList.remove('d-none');
         
@@ -201,30 +222,3 @@
     }
 </script>
 @endsection
-
-<style>
-    /* Estilos de soporte para la limpieza visual */
-    .bg-light-primary { background-color: #f0f5ff; color: #435ebe; }
-    .bg-light-danger { background-color: #fff5f5; color: #dc3545; }
-    .text-dark { color: #1e293b !important; }
-    
-    .breadcrumb { background: transparent; padding: 0; margin-bottom: 1.5rem; font-size: 0.85rem; }
-    .breadcrumb-item a { color: #64748b; text-decoration: none; }
-    .breadcrumb-item.active { color: #435ebe; font-weight: 600; }
-
-    .card { border-radius: 12px; transition: all 0.2s ease-in-out; border: 1px solid #f1f5f9; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important; }
-    
-    .table thead th { 
-        background-color: #f8fafc; 
-        border-bottom: 1px solid #e2e8f0; 
-        font-size: 0.7rem; 
-        letter-spacing: 0.05em; 
-        color: #64748b;
-    }
-    
-    .btn-animate { transition: all 0.2s; }
-    .btn-animate:hover:not(:disabled) { transform: scale(1.02); filter: brightness(1.1); }
-    
-    .icon-shape i { display: inline-flex; align-items: center; justify-content: center; line-height: 0; }
-</style>
