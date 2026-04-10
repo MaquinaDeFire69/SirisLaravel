@@ -1,20 +1,27 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CambiarContrasenaController;
 use Illuminate\Support\Facades\Route;
+//Controlador de las vistas de cambio de contraseña 
+// (la función index redirecciona a administrador y la función index_e redirecciona a enlace;
+// esto para evitar la duplicidad de controlador para cada uno)
+use App\Http\Controllers\CambiarContrasenaController;
 
-use App\Http\Controllers\admin\conf\EntesPublicosController;
-use App\Http\Controllers\admin\conf\PeriodoInformeController;
-use App\Http\Controllers\admin\conf\PlazoInformeController;
-use App\Http\Controllers\Admin\Panel_informativo\PanelInformativoController;
-use App\Http\Controllers\admin\sancionados\ReportesController;
-use App\Http\Controllers\admin\informes\PeriodoInformadoController;
+//Controladores de admin
+use App\Http\Controllers\Admin\PanelInformativo\PanelInformativoController;
+use App\Http\Controllers\Admin\Informes\PeriodoInformadoController;
+use App\Http\Controllers\Admin\Sancionados\ExpedienteSancionadosController;
+use App\Http\Controllers\Admin\Sancionados\ReportesController;
+use App\Http\Controllers\Admin\Conf\PeriodoInformeController;
+use App\Http\Controllers\Admin\Conf\PlazoInformeController;
+use App\Http\Controllers\Admin\Conf\EntesPublicosController;
+use App\Http\Controllers\Admin\Conf\RegistroUsuariosController;
 
-
-use App\Http\Controllers\enlace\informeQuincenal\InformeQuincenalController;
-use App\Http\Controllers\enlace\Panel_informativo\PanelInformativoEnlaceController;
-use App\Http\Controllers\enlace\sancionadosEnlaceReporte\sancionadosEnlaceReporteController;
+//Controladores de enlace
+use App\Http\Controllers\Enlace\PanelInformativo\PanelInformativoEnlaceController;
+use App\Http\Controllers\Enlace\InformeQuincenal\InformeQuincenalController;
+use App\Http\Controllers\Enlace\ConsultarInformes\ConsultarInformesController;
+use App\Http\Controllers\Enlace\Sancionados\SancionadosReporteController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,22 +33,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Cambiar contraseña
-Route::get('/cambiar-contrasena', [CambiarContrasenaController::class, 'index'])
-    ->middleware(['auth','verified'])
-    ->name('admin.cambiarcontra');
-
-Route::get('/enlace/cambiar-contrasena', [CambiarContrasenaController::class, 'index_e'])
-    ->middleware(['auth','verified'])
-    ->name('enlace.cambiarcontra');
-
-
 // RUTAS DE ADMINISTRADOR
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/cambiar-contrasena', [CambiarContrasenaController::class, 'index'])
+        ->name('admin.cambiarcontra');
 
-    Route::get('/dashboard', [PanelInformativoController::class, 'index'])
-        ->name('dashboard');
+    // Panel_informativo
+    Route::get('/panel-informativo', [PanelInformativoController::class, 'index'])
+        ->name('panel-informativo');
 
+    // informes
     Route::get('/informe/ente-publico', function () {
         return view('admin.informeQuincenal.entepublico');
     })->name('informe.ente-publico');
@@ -49,12 +50,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/informe/periodo', [PeriodoInformadoController::class, 'index'])
         ->name('informe.periodo');
 
+    // sancionados
+    Route::get('/sancionados/expediente/{id}', [ExpedienteSancionadosController::class, 'mostrar'])
+        ->name('sancionados.info_expediente');
+
     Route::get('/sancionados/reportes', [ReportesController::class, 'index'])
         ->name('sancionados.sancionados');
 
-    Route::get('/panel-informativo', [PanelInformativoController::class, 'index'])
-        ->name('panelInformativo.index');
-
+    // conf
     Route::get('/configuracion/periodo-informe', [PeriodoInformeController::class, 'index'])
         ->name('conf.periodo_informe');
 
@@ -63,25 +66,37 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/configuracion/entes-publicos', [EntesPublicosController::class, 'index'])
         ->name('conf.entes_publicos');
-
+    
+    Route::get('/configuracion/registro-usuarios', [RegistroUsuariosController::class, 'index'])
+        ->name('conf.registro_usuarios');
 });
 
 
-// RUTAS DE ENLACE
+// RUTAS DE ENLACE 
+// Ingresan a través de enlace/panel-informativo, y desde ahí pueden acceder a las demás vistas
 Route::prefix('enlace')->middleware(['auth', 'verified'])->group(function () {
-
+    Route::get('/cambiar-contrasena', [CambiarContrasenaController::class, 'index_e'])
+        ->name('enlace.cambiarcontra');
+    
     Route::get('/dashboard', function () {
         return view('enlace.dashboard');
     })->name('enlace.dashboard');
 
+    // Panel_informativo
     Route::get('/panel-informativo', [PanelInformativoEnlaceController::class, 'index'])
-        ->name('enlace.panel_informativo.panel_informativo');
+        ->name('enlace.panel_informativo');
 
+    // informeQuincenal
     Route::get('/informe-quincenal', [InformeQuincenalController::class, 'index'])
             ->name('enlace.informeQuincenal.index');
 
-    Route::get('/reporteSancionados', [sancionadosEnlaceReporteController::class, 'index'])
-        ->name('enlace.sancionadosEnlaceReporte.index');
+    // consultarInformes
+    Route::get('/informes/consultar', [ConsultarInformesController::class, 'index'])
+        ->name('informes.consultar');
+    
+    // Sancionados
+    Route::get('/sancionados', [SancionadosReporteController::class, 'index'])
+        ->name('enlace.sancionadosEnlaceReporte');
 });
 
 require __DIR__.'/auth.php';

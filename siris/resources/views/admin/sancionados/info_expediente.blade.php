@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
 @section('title', 'Información del Expediente')
 
@@ -17,7 +17,7 @@
         <div class="col-12 col-md-4 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('sancionados.sancionados') }}">Sancionados</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Sancionados</a></li>
                     <li class="breadcrumb-item text-warning fw-bold active" aria-current="page">Expediente</li>
                 </ol>
             </nav>
@@ -124,7 +124,9 @@
                             <tbody>
                                 @foreach($datosExpediente['sanciones'] as $index => $sancion)
                                 <tr>
-                                    <td class="bg-secondary {{ $index % 2 == 0 ? 'bg-opacity-10' : 'bg-opacity-25' }}">{{ $sancion }}</td>
+                                    <td class="bg-secondary {{ $index % 2 == 0 ? 'bg-opacity-10' : 'bg-opacity-25' }}">
+                                        <strong class="text-dark">{{ $sancion }}</strong>
+                                    </td>                                
                                 </tr>
                                 @endforeach
                             </tbody>

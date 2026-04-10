@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin.master')
 
 @section('title', 'Panel Informativo')
 
@@ -7,6 +7,13 @@
         <div class="row">
             <div class="col-12 col-md-8 order-md-1 order-last">
                 <h3>Panel informativo</h3>
+            </div>
+            <div class="col-12 col-md-4 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Periodo informativo/</a></li>
+                    </ol>
+                </nav>
             </div>
         </div>
     </div>
@@ -29,7 +36,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card shadow-sm h-100 border-start border-danger border-4">
                     <div class="card-body text-center d-flex flex-column justify-content-center">
-                        <p class="card-text text-dark mb-2 small">Entes públicos<br>Proveedores de información</p>
+                        <p class="card-text fw-bold text-dark mb-2 small">Entes públicos<br>Proveedores de información</p>
                         <h1 class="display-3 fw-bold text-danger mb-0">24</h1>
                     </div>
                 </div>
@@ -38,7 +45,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card shadow-sm h-100 border-start border-info border-4">
                     <div class="card-body text-center d-flex flex-column justify-content-center">
-                        <p class="card-text text-dark mb-2 small">Entes públicos que<br>reportaron en tiempo</p>
+                        <p class="card-text fw-bold text-dark mb-2 small">Entes públicos que<br>reportaron en tiempo</p>
                         <h1 class="display-3 fw-bold text-info mb-0">24</h1>
                     </div>
                 </div>
@@ -47,7 +54,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card shadow-sm h-100 border-start border-primary border-4">
                     <div class="card-body text-center d-flex flex-column justify-content-center">
-                        <p class="card-text text-dark mb-2 small">Entes públicos omisos</p>
+                        <p class="card-text fw-bold text-dark mb-2 small">Entes públicos omisos</p>
                         <h1 class="display-3 fw-bold text-primary mb-0">0</h1>
                     </div>
                 </div>
