@@ -39,8 +39,80 @@
 <br>
 {{-- Contenido --}}
 <div class="page-content">
-    {{-- Cards --}}
 
+    {{-- Filtros de busqueda --}}
+    <!-- FILTROS -->
+    <section class="basic-choices">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Filtros de búsqueda</h4>
+            </div>
+            <div class="card-body">
+
+                <!-- AÑO Y MES -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h6>Año</h6>
+                        <select class="choices form-select">
+                            <option value="">Seleccionar año</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                            <option>2026</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h6>Mes</h6>
+                        <select class="choices form-select">
+                            <option value="">Seleccionar mes</option>
+                            <option>Enero</option>
+                            <option>Febrero</option>
+                            <option>Marzo</option>
+                            <option>Abril</option>
+                            <option>Mayo</option>
+                            <option>Junio</option>
+                            <option>Julio</option>
+                            <option>Agosto</option>
+                            <option>Septiembre</option>
+                            <option>Octubre</option>
+                            <option>Noviembre</option>
+                            <option>Diciembre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- PROVEEDOR -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <h6>Proveedor de información</h6>
+                        <select class="choices form-select">
+                            <option value="">Seleccionar ente público</option>
+                            <option>Secretaria Ejecutiva del Sistema Anticorrupción del Estado de Quintana Roo</option>
+                            <option>Tribunal Electoral de Quintana Roo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- BOTONES -->
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <button class="btn btn-success w-100">
+                            <i class="bi bi-check-circle me-2"></i>
+                            Generar informe quincenal
+                        </button>
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <button class="btn btn-secondary w-100">
+                            <i class="bi bi-eraser me-2"></i>
+                            Limpiar filtros de búsqueda
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     {{-- Tabla con JQuery --}}
     <section class="section">
@@ -355,8 +427,6 @@
     </section>
 
     {{-- Cards --}}
-
-    {{-- Filtros de busqueda --}}
 
 
 </div>
