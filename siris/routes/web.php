@@ -99,4 +99,8 @@ Route::prefix('enlace')->middleware(['auth', 'verified'])->group(function () {
         ->name('enlace.sancionadosEnlaceReporte');
 });
 
+Route::get('/base', function () {
+    return view('base');
+})->name('base');
+
 require __DIR__.'/auth.php';
