@@ -1,6 +1,11 @@
+// @ts-check
 const SVGNS = 'http://www.w3.org/2000/svg'
 
 class Point {
+  /**
+   * @param {number|{x:number,y:number}} x
+   * @param {number} [y]
+   */
   constructor(x, y) {
     if (typeof x === 'object') {
       this.x = x.x
@@ -11,6 +16,9 @@ class Point {
     }
   }
 
+  /**
+   * @param {Matrix} matrix
+   */
   transform(matrix) {
     return matrix.apply(this)
   }
@@ -21,6 +29,14 @@ class Point {
 }
 
 class Matrix {
+  /**
+   * @param {number} a
+   * @param {number} b
+   * @param {number} c
+   * @param {number} d
+   * @param {number} e
+   * @param {number} f
+   */
   constructor(a, b, c, d, e, f) {
     this.a = a ?? 1
     this.b = b ?? 0
@@ -30,6 +46,9 @@ class Matrix {
     this.f = f ?? 0
   }
 
+  /**
+   * @param {number} deg
+   */
   rotate(deg) {
     const rad = (deg * Math.PI) / 180
     const cos = Math.cos(rad)
@@ -37,10 +56,17 @@ class Matrix {
     return this.multiply(new Matrix(cos, sin, -sin, cos, 0, 0))
   }
 
+  /**
+   * @param {number} sx
+   * @param {number} sy
+   */
   scale(sx, sy) {
     return this.multiply(new Matrix(sx, 0, 0, sy ?? sx, 0, 0))
   }
 
+  /**
+   * @param {Matrix} m
+   */
   multiply(m) {
     return new Matrix(
       this.a * m.a + this.c * m.b,
@@ -48,19 +74,28 @@ class Matrix {
       this.a * m.c + this.c * m.d,
       this.b * m.c + this.d * m.d,
       this.a * m.e + this.c * m.f + this.e,
-      this.b * m.e + this.d * m.f + this.f
+      this.b * m.e + this.d * m.f + this.f,
     )
   }
 
+  /**
+   * @param {Point} point
+   */
   apply(point) {
     return new Point(
       this.a * point.x + this.c * point.y + this.e,
-      this.b * point.x + this.d * point.y + this.f
+      this.b * point.x + this.d * point.y + this.f,
     )
   }
 }
 
 class Box {
+  /**
+   * @param {number} x
+   * @param {number} y
+   * @param {number} w
+   * @param {number} h
+   */
   constructor(x, y, w, h) {
     this.x = x
     this.y = y
