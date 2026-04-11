@@ -40,6 +40,68 @@
 {{-- Contenido --}}
 <div class="page-content">
 
+
+    {{-- Modal para mostrar informacion adicional --}}
+    <section id="basic-modal">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    Vertically Centered
+                </h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <p>
+                        Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically
+                        center the modal. Si es necesario quitar el atributo data-bs-backdrop="false" para que el modal se cierre al hacer click fuera del modal, o agregar el atributo data-bs-backdrop="static" para que no se cierre al hacer click fuera del modal, dependiendo de la necesidad de cada modal.
+                    </p>
+                    <!-- button trigger for  Vertically Centered modal -->
+                    <button type="button" class="btn btn-outline-primary block" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalCenter">
+                        Launch Modal
+                    </button>
+                    <!-- Vertically Centered modal Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" data-bs-backdrop="false" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+                            role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Vertically Centered
+                                    </h5>
+                                    <button type="button" class="close" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                        <i data-feather="x"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        Croissant jelly-o halvah chocolate sesame snaps. Brownie caramels candy
+                                        canes chocolate cake
+                                        marshmallow icing lollipop I love. Gummies macaroon donut caramels
+                                        biscuit topping danish.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light-secondary"
+                                        data-bs-dismiss="modal">
+                                        <i class="bx bx-x d-block d-sm-none"></i>
+                                        <span class="d-none d-sm-block">Close</span>
+                                    </button>
+                                    <button type="button" class="btn btn-primary ms-1" data-bs-dismiss="modal">
+                                        <i class="bx bx-check d-block d-sm-none"></i>
+                                        <span class="d-none d-sm-block">Accept</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     {{-- Filtros de busqueda --}}
     <!-- FILTROS -->
     <section class="basic-choices">
@@ -427,7 +489,42 @@
     </section>
 
     {{-- Cards --}}
+    <section class="section">
+        <h4 class="card-title">
+            Cards
+        </h4>
+        <!-- CARDS -->
+        <div class="row mt-4">
 
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card shadow-sm h-100 border-start border-primary border-4">
+                    <div class="card-body text-center">
+                        <p class="fw-bold small">Efectividad de cumplimiento</p>
+                        <h1 class="display-3 fw-bold text-primary">50%</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card shadow-sm h-100 border-start border-success border-4">
+                    <div class="card-body text-center">
+                        <p class="fw-bold small">Informes reportados en tiempo</p>
+                        <h1 class="display-3 fw-bold text-success">1</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 mb-4">
+                <div class="card shadow-sm h-100 border-start border-danger border-4">
+                    <div class="card-body text-center">
+                        <p class="fw-bold small">Informes reportados en extemporáneo</p>
+                        <h1 class="display-3 fw-bold text-danger">1</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
 </div>
 

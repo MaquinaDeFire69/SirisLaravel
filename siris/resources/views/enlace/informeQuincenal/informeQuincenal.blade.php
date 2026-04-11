@@ -128,7 +128,7 @@
             <div class="text-center pb-1 mt-3"> 
                 <div class="p-3 d-inline-block rounded-pill mb-3 px-4 shadow-sm" 
                     style="background-color: #e2e8f0; color: #475569;">
-                    <i class="bi bi-info-circle-fill me-2" style="color: #000000;"></i>
+                    <i class="bi bi-info-circle-fill me-2" style="color: #174877;"></i>
                     <span class="small fw-bold">Por favor, revisa la información antes de realizar el envío definitivo</span>
                 </div>
                 <br>
@@ -189,8 +189,8 @@
             text: "Se enviará el informe correspondiente al periodo " + periodoTexto,
             icon: 'question',
             showCancelButton: true,
-            confirmButtonColor: '#1a202c',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#1dc463',
+            cancelButtonColor: 'rgb(154, 41, 41)',
             confirmButtonText: 'Sí, enviar ahora',
             cancelButtonText: 'Revisar datos',
             borderRadius: '15px',
