@@ -125,13 +125,16 @@
             </div>
             @endforeach
 
-            <div class="text-center pb-5 mt-4">
-                <div class="bg-dark text-white p-3 d-inline-block rounded-pill mb-4 px-4 shadow-sm">
-                    <i class="bi bi-info-circle me-2"></i>
-                    <span class="small fw-medium">Revisa la información antes de realizar el envío definitivo</span>
+            <div class="text-center pb-1 mt-3"> 
+                <div class="p-3 d-inline-block rounded-pill mb-3 px-4 shadow-sm" 
+                    style="background-color: #e2e8f0; color: #475569;">
+                    <i class="bi bi-info-circle-fill me-2" style="color: #000000;"></i>
+                    <span class="small fw-bold">Por favor, revisa la información antes de realizar el envío definitivo</span>
                 </div>
                 <br>
-                <button class="btn btn-dark btn-lg px-5 rounded-pill shadow py-3 fw-bold btn-animate" onclick="enviarInforme()">
+                <button class="btn btn-lg px-5 rounded-pill shadow py-3 fw-bold btn-animate" 
+                        style="background-color: #435ebe; border-color: #435ebe; color: white;"
+                        onclick="enviarInforme()">
                     <i class="bi bi-send-check me-2"></i> Finalizar y Enviar Reporte
                 </button>
             </div>
