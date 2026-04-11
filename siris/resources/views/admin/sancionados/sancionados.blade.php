@@ -3,38 +3,51 @@
 @section('title', 'Sancionados')
 
 @section('styles')
-    @vite(['resources/src/assets/scss/iconly.scss'])
+@vite([
+'resources/src/assets/scss/iconly.scss',
+'resources/dist/assets/extensions/jquery/jquery.min.js',
+'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.css',
+])
 @endsection
 
 @section('content')
-<div class="page-heading">
 
-    {{-- HEADER --}}
+<div class="page-title">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
             <h3>Entes públicos sancionados</h3>
-            <p class="text-subtitle text-muted">El presente apartado visualiza la información del estatus de sanción de un ente público</p>
+            <p class="text-subtitle text-muted">
+                El presente apartado visualiza la información del estatus de sanción de un ente público
+            </p>
         </div>
         <div class="col-12 col-md-4 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Sancionados</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Reportes</li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('panel-informativo') }}">Sancionados</a>
+                    </li>
+                    <li class="breadcrumb-item active">Reportes</li>
                 </ol>
             </nav>
         </div>
     </div>
+</div>
+
+<br>
+
+<div class="page-content">
 
     {{-- FILTROS --}}
-    <div class="card border mb-4">
-        <div class="card-body">
-            <form method="GET" action="{{ route('sancionados.sancionados') }}" id="formFiltros">
+    <section class="basic-choices">
+        <div class="card">
 
-                <div class="row mb-3">
-                    {{-- SANCIONADOS --}}
-                    <div class="col-md-6">
-                        <h6>Sancionados:</h6>
-                        <div class="form-group">
+            <div class="card-body">
+                <form method="GET" action="{{ route('sancionados.sancionados') }}" id="formFiltros">
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-6">
+                            <h6>Sancionados</h6>
                             <select name="sancionado" class="form-select text-dark fw-bold">
                                 <option value="">Seleccione un tipo de sancionado...</option>
                                 @foreach($tipos as $tipo)
@@ -44,12 +57,9 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div>
 
-                    {{-- PERIODOS --}}
-                    <div class="col-md-6">
-                        <h6>Periodos informativos:</h6>
-                        <div class="form-group">
+                        <div class="col-md-6">
+                            <h6>Periodos informativos</h6>
                             <select name="periodo" class="form-select text-dark fw-bold">
                                 <option value="">Seleccione...</option>
                                 @foreach($periodos as $periodo)
@@ -59,14 +69,12 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div>
-                </div>
 
-                {{-- ENTES --}}
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <h6>*Entes públicos proveedores</h6>
-                        <div class="form-group">
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <h6>Entes públicos proveedores</h6>
                             <select name="ente" class="form-select text-dark fw-bold">
                                 <option value="">Seleccione...</option>
                                 @foreach($entes as $ente)
@@ -77,94 +85,52 @@
                             </select>
                         </div>
                     </div>
-                </div>
 
-                {{-- BOTONES --}}
-                <div class="text-center">
-                    <button type="submit" class="btn btn-outline-primary me-2">
-                        <i class="bi bi-search"></i> Buscar sancionados
-                    </button>
+                    <div class="row mt-3 justify-content-center">
+                        <div class="col-md-6 mb-2">
+                            <button type="submit" class="btn btn-outline-primary">
+                                <i class="bi bi-search me-2"></i>
+                                Buscar sancionados
+                            </button>
+                            <button type="button" onclick="limpiarFiltros()" class="btn btn-outline-primary">
+                                <i class="bi bi-eraser me-2"></i>
+                                Limpiar filtros de búsqueda
+                            </button>
+                        </div>
+                    </div>
 
-                    <button type="button" onclick="limpiarFiltros()" class="btn btn-outline-primary me-2">
-                        <i class="bi bi-eraser"></i> Limpiar filtros de búsqueda
-                    </button>
-                </div>
-
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
+    </section>
 
-    {{-- SCRIPT LIMPIAR --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function limpiarFiltros() {
-            // Limpia visualmente
-            document.getElementById('formFiltros').reset();
-
-            // Redirige sin parámetros (esto limpia backend)
-            window.location.href = "{{ route('sancionados.sancionados') }}";
-        }
-
-        document.getElementById('formFiltros').addEventListener('submit', function(e) {
-            const ente = document.querySelector('select[name="ente"]');
-
-            if (!ente.value) {
-                e.preventDefault(); // Evita envío
-
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Campo obligatorio',
-                    text: 'Debes seleccionar un ente público proveedor',
-                    confirmButtonText: 'Entendido'
-                });
-
-                ente.focus();
-            }
-        });
-    </script>
 
     {{-- TABLA --}}
-    <div class="card">
-        <div class="card-header text-center mb-3">
-            Listado de sancionados
-        </div>
-
-        <div class="card-body">
-            {{-- TOP CONTROLS --}}
-            <div class="d-flex justify-content-between mb-2">
-                <div>
-                    Mostrar 
-                    <select class="form-select d-inline-block" style="width: 80px;">
-                        <option>5</option>
-                        <option>10</option>
-                        <option>25</option>
-                    </select>
-                    Registros
-                </div>
-
-                <div>
-                    Buscar:
-                    <input type="text" class="form-control d-inline-block" style="width: 200px;">
-                </div>
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">
+                    Listado de sancionados
+                </h5>
             </div>
 
-            {{-- TABLA --}}
-            <div class="table-responsive datatable-minimal">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>No. expediente</th>
-                            <th>Nombre completo</th>
-                            <th>Ente público</th>
-                            <th>Falta cometida</th>
-                            <th>Tipo sanciones</th>
-                            <th>Tipo sancionado</th>
-                        </tr>
-                    </thead>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="table1">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>No.</th>
+                                <th>No. expediente</th>
+                                <th>Nombre completo</th>
+                                <th>Ente público</th>
+                                <th>Falta cometida</th>
+                                <th>Tipo sanciones</th>
+                                <th>Tipo sancionado</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        @foreach($sancionados as $index => $s)
+                        <tbody>
+                            @foreach($sancionados as $index => $s)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
                                 <td>
@@ -178,27 +144,73 @@
                                 <td>{{ $s['sancion'] }}</td>
                                 <td>{{ $s['tipo'] }}</td>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                            @endforeach
+                        </tbody>
 
-            {{-- PAGINACIÓN --}}
-            <div class="d-flex justify-content-between mt-3">
-                <div>
-                    Mostrando registros del 1 al 5 de un total de 15
-                </div>
-
-                <div>
-                    <button class="btn btn-sm btn-outline-secondary">Anterior</button>
-                    <button class="btn btn-sm btn-warning">1</button>
-                    <button class="btn btn-sm btn-outline-secondary">2</button>
-                    <button class="btn btn-sm btn-outline-secondary">3</button>
-                    <button class="btn btn-sm btn-outline-secondary">Siguiente</button>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 </div>
+
+@endsection
+
+@section('js')
+
+@vite([
+'resources/dist/assets/extensions/jquery/jquery.min.js',
+'resources/dist/assets/extensions/apexcharts/apexcharts.min.js',
+'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.js',
+'resources/dist/assets/static/js/pages/sweetalert2.js',
+])
+
+<script>
+function limpiarFiltros() {
+    document.getElementById('formFiltros').reset();
+    window.location.href = "{{ route('sancionados.sancionados') }}";
+}
+
+document.getElementById('formFiltros').addEventListener('submit', function(e) {
+    const ente = document.querySelector('select[name="ente"]');
+
+    if (!ente.value) {
+        e.preventDefault();
+
+        Swal.fire({
+            icon: 'warning',
+            title: 'Campo obligatorio',
+            text: 'Debes seleccionar un ente público proveedor',
+            confirmButtonText: 'Entendido'
+        });
+
+        ente.focus();
+    }
+});
+
+
+$(document).ready(function () {
+    $('#table1').DataTable({
+        responsive: true,
+        autoWidth: false,
+        pageLength: 10,
+        lengthMenu: [5, 10, 25, 50],
+        language: {
+            lengthMenu: "_MENU_ registros por página",
+            search: "Buscar:",
+            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+            infoEmpty: "Mostrando 0 a 0 de 0 registros",
+            zeroRecords: "No se encontraron resultados",
+            paginate: {
+                first: "Primero",
+                last: "Último",
+                next: "›",
+                previous: "‹"
+            }
+        }
+    });
+});
+</script>
+
 @endsection

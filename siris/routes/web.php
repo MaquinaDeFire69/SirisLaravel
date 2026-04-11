@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\Conf\PeriodoInformeController;
 use App\Http\Controllers\Admin\Conf\PlazoInformeController;
 use App\Http\Controllers\Admin\Conf\EntesPublicosController;
 use App\Http\Controllers\Admin\Conf\RegistroUsuariosController;
-
+use App\Http\Controllers\Admin\Informes\InformeEnteController;
 //Controladores de enlace
 use App\Http\Controllers\Enlace\PanelInformativo\PanelInformativoEnlaceController;
 use App\Http\Controllers\Enlace\InformeQuincenal\InformeQuincenalController;
@@ -43,9 +43,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('panel-informativo');
 
     // informes
-    Route::get('/informe/ente-publico', function () {
-        return view('admin.informeQuincenal.entepublico');
-    })->name('informe.ente-publico');
+    Route::get('/informe/ente-publico', [InformeEnteController::class, 'index'])
+    ->name('informe.ente-publico');
 
     Route::get('/informe/periodo', [PeriodoInformadoController::class, 'index'])
         ->name('informe.periodo');
