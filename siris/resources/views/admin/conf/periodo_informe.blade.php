@@ -5,45 +5,40 @@
 @section('content')
 <div class="page-heading">
 
-    <!-- TITULO -->
-    <!-- Definir titulo y ruta-->
-            <div class="row">
-                <div class="col-12 col-md-8 order-md-1 order-last">
-                    <h3>Plazos</h3>
-                    <p class="text-subtitle text-muted">El presente apartado visualiza la información de los plazos de entrega disponibles</p>
-                </div>
-                <div class="col-12 col-md-4 order-md-2 order-first">
-                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Configuración</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Plazos informes</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-            <!-- Fin titulo y ruta-->
-    <!-- CARD -->
+    <div class="row">
+        <div class="col-12 col-md-8 order-md-1 order-last">
+            <h3>Periodo</h3>
+            <p class="text-subtitle text-muted">
+                El presente apartado visualiza la información de los plazos de entrega disponibles
+            </p>
+        </div>
+        <div class="col-12 col-md-4 order-md-2 order-first">
+            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Configuración</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Plazos informes</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+           
     <div class="card">
         <div class="card-body">
 
             <h5 class="text-center mb-3">Listado de plazos</h5>
 
-            <!-- BOTON + FILTROS -->
             <div class="d-flex justify-content-between align-items-center mb-2">
 
-                <!-- BOTON -->
                 <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalNuevo">
-    <i class="bi bi-plus-square"></i> Nuevo plazo
-</button>
+                    <i class="bi bi-plus-square"></i> Nuevo plazo
+                </button>
 
-                <!-- BUSCADOR -->
                 <div>
                     <label>Buscar:</label>
                     <input type="text" class="form-control d-inline-block" style="width: 200px;">
                 </div>
             </div>
 
-            <!-- MOSTRAR REGISTROS -->
             <div class="mb-2">
                 Mostrar 
                 <select class="form-select d-inline-block" style="width: 80px;">
@@ -54,7 +49,6 @@
                 Registros
             </div>
 
-            <!-- TABLA -->
             <div class="table-responsive">
                 <table class="table table-bordered table-striped text-center">
                     <thead class="table-secondary">
@@ -80,15 +74,15 @@
                                 </td>
                                 <td>
                                     <button 
-    class="btn btn-sm btn-outline-primary btnEditar"
-    data-bs-toggle="modal" 
-    data-bs-target="#modalEditar"
-    data-anio="{{ $plazo['anio'] }}"
-    data-dias="{{ $plazo['dias'] }}"
-    data-estatus="{{ $plazo['estatus'] }}"
->
-    <i class="bi bi-pencil-square"></i> Actualizar
-</button>
+                                        class="btn btn-sm btn-outline-primary btnEditar"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#modalEditar"
+                                        data-anio="{{ $plazo['anio'] }}"
+                                        data-dias="{{ $plazo['dias'] }}"
+                                        data-estatus="{{ $plazo['estatus'] }}"
+                                    >
+                                        <i class="bi bi-pencil-square"></i> Actualizar
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -96,7 +90,6 @@
                 </table>
             </div>
 
-            <!-- FOOTER TABLA -->
             <div class="d-flex justify-content-between mt-2">
                 <small>
                     Mostrando registros del 1 al {{ count($plazos) }} de un total de {{ count($plazos) }}
@@ -117,27 +110,22 @@
 <div class="modal fade" id="modalNuevo" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <div class="modal-header">
                 <h5 class="modal-title text-primary">Registrar nuevo plazo:</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-
             <div class="modal-body">
-
                 <form>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>* Año de aplicación:</label>
                             <input type="number" class="form-control">
                         </div>
-
                         <div class="col-md-6">
                             <label>* Plazo en días:</label>
                             <input type="number" class="form-control">
                         </div>
                     </div>
-
                     <div class="mb-3">
                         <label>* Estatus:</label>
                         <select class="form-select">
@@ -146,18 +134,15 @@
                             <option>INACTIVO</option>
                         </select>
                     </div>
-
                     <div class="text-center">
                         <button class="btn btn-primary">
                             <i class="bi bi-check-circle"></i> Registrar Plazo
                         </button>
-
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             <i class="bi bi-x-circle"></i> Cancelar
                         </button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
@@ -167,27 +152,22 @@
 <div class="modal fade" id="modalEditar" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <div class="modal-header">
                 <h5 class="modal-title text-primary">Actualizar plazo:</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-
             <div class="modal-body">
-
                 <form>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>* Año de aplicación:</label>
                             <input type="number" id="editAnio" class="form-control">
                         </div>
-
                         <div class="col-md-6">
                             <label>* Plazo en días:</label>
                             <input type="number" id="editDias" class="form-control">
                         </div>
                     </div>
-
                     <div class="mb-3">
                         <label>* Estatus:</label>
                         <select id="editEstatus" class="form-select">
@@ -195,18 +175,15 @@
                             <option>INACTIVO</option>
                         </select>
                     </div>
-
                     <div class="text-center">
                         <button class="btn btn-primary">
                             <i class="bi bi-check-circle"></i> Actualizar Plazo
                         </button>
-
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             <i class="bi bi-x-circle"></i> Cancelar
                         </button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>

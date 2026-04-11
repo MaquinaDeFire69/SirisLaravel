@@ -27,52 +27,55 @@
 
     {{-- FILTROS --}}
     <div class="card border mb-4">
-        <div class="card-header bg-light fw-bold">
-            Filtros de búsqueda
-        </div>
-
         <div class="card-body">
             <form method="GET" action="{{ route('sancionados.sancionados') }}" id="formFiltros">
+
                 <div class="row mb-3">
                     {{-- SANCIONADOS --}}
                     <div class="col-md-6">
-                        <label class="fw-bold">Sancionados:</label>
-                        <select name="sancionado" class="form-select">
-                            <option value="">Seleccione un tipo de sancionado...</option>
-                            @foreach($tipos as $tipo)
-                                <option value="{{ $tipo }}" {{ request('sancionado') == $tipo ? 'selected' : '' }}>
-                                    {{ $tipo }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <h6>Sancionados:</h6>
+                        <div class="form-group">
+                            <select name="sancionado" class="form-select text-dark fw-bold">
+                                <option value="">Seleccione un tipo de sancionado...</option>
+                                @foreach($tipos as $tipo)
+                                    <option value="{{ $tipo }}" {{ request('sancionado') == $tipo ? 'selected' : '' }}>
+                                        {{ $tipo }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
                     {{-- PERIODOS --}}
                     <div class="col-md-6">
-                        <label class="fw-bold">Periodos informativos:</label>
-                        <select name="periodo" class="form-select">
-                            <option value="">Seleccione...</option>
-                            @foreach($periodos as $periodo)
-                                <option value="{{ $periodo }}" {{ request('periodo') == $periodo ? 'selected' : '' }}>
-                                    {{ $periodo }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <h6>Periodos informativos:</h6>
+                        <div class="form-group">
+                            <select name="periodo" class="form-select text-dark fw-bold">
+                                <option value="">Seleccione...</option>
+                                @foreach($periodos as $periodo)
+                                    <option value="{{ $periodo }}" {{ request('periodo') == $periodo ? 'selected' : '' }}>
+                                        {{ $periodo }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
 
                 {{-- ENTES --}}
                 <div class="row mb-3">
                     <div class="col-12">
-                        <label class="fw-bold">*Entes públicos proveedores</label>
-                        <select name="ente" class="form-select">
-                            <option value="">Seleccione...</option>
-                            @foreach($entes as $ente)
-                                <option value="{{ $ente }}" {{ request('ente') == $ente ? 'selected' : '' }}>
-                                    {{ $ente }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <h6>*Entes públicos proveedores</h6>
+                        <div class="form-group">
+                            <select name="ente" class="form-select text-dark fw-bold">
+                                <option value="">Seleccione...</option>
+                                @foreach($entes as $ente)
+                                    <option value="{{ $ente }}" {{ request('ente') == $ente ? 'selected' : '' }}>
+                                        {{ $ente }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -82,10 +85,11 @@
                         <i class="bi bi-search"></i> Buscar sancionados
                     </button>
 
-                    <button type="button" onclick="limpiarFiltros()" class="btn btn-outline-secondary">
+                    <button type="button" onclick="limpiarFiltros()" class="btn btn-outline-primary me-2">
                         <i class="bi bi-eraser"></i> Limpiar filtros de búsqueda
                     </button>
                 </div>
+
             </form>
         </div>
     </div>
@@ -121,7 +125,7 @@
 
     {{-- TABLA --}}
     <div class="card">
-        <div class="card-header text-center fw-bold">
+        <div class="card-header text-center mb-3">
             Listado de sancionados
         </div>
 

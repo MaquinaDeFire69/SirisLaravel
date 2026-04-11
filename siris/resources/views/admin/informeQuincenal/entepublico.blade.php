@@ -22,70 +22,79 @@
 
     <!-- FILTROS -->
     <section class="basic-choices">
-        <div class="card">
-            <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
 
-                <!-- AÑO Y MES -->
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <h6>Año</h6>
-                        <select class="choices form-select">
-                            <option value="">Seleccionar año</option>
-                            <option>2024</option>
-                            <option>2025</option>
-                            <option>2026</option>
-                        </select>
-                    </div>
+                            <!-- AÑO Y MES -->
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <h6>*Seleccione el año</h6>
+                                    <div class="form-group">
+                                        <select class="form-select text-dark fw-bold">
+                                            <option value="">Seleccionar año</option>
+                                            <option>2024</option>
+                                            <option>2025</option>
+                                            <option>2026</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                    <div class="col-md-6">
-                        <h6>Mes</h6>
-                        <select class="choices form-select">
-                            <option value="">Seleccionar mes</option>
-                            <option>Enero</option>
-                            <option>Febrero</option>
-                            <option>Marzo</option>
-                            <option>Abril</option>
-                            <option>Mayo</option>
-                            <option>Junio</option>
-                            <option>Julio</option>
-                            <option>Agosto</option>
-                            <option>Septiembre</option>
-                            <option>Octubre</option>
-                            <option>Noviembre</option>
-                            <option>Diciembre</option>
-                        </select>
+                                <div class="col-md-6">
+                                    <h6>* Seleccione el mes</h6>
+                                    <div class="form-group">
+                                        <select class="form-select text-dark fw-bold">
+                                            <option value="">Seleccionar mes</option>
+                                            <option>Enero</option>
+                                            <option>Febrero</option>
+                                            <option>Marzo</option>
+                                            <option>Abril</option>
+                                            <option>Mayo</option>
+                                            <option>Junio</option>
+                                            <option>Julio</option>
+                                            <option>Agosto</option>
+                                            <option>Septiembre</option>
+                                            <option>Octubre</option>
+                                            <option>Noviembre</option>
+                                            <option>Diciembre</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PROVEEDOR -->
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <h6>* Proveedor de información</h6>
+                                    <div class="form-group">
+                                        <select class="form-select text-dark fw-bold">
+                                            <option value="">Seleccionar ente público</option>
+                                            <option>Secretaria Ejecutiva del Sistema Anticorrupción del Estado de Quintana Roo</option>
+                                            <option>Tribunal Electoral de Quintana Roo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BOTONES -->
+                            
+                            <div class="row">
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-outline-primary me-2">
+                                       <i class="bi bi-check-circle me-2"></i>Generar informe quincenal
+                                    </button>
+
+                                    <button type="button" onclick="limpiarFiltros()" class="btn btn-outline-primary me-2">
+                                       <i class="bi bi-eraser me-2"></i>Limpiar filtros de búsqueda
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-
-                <!-- PROVEEDOR -->
-                <div class="row mb-3">
-                    <div class="col-md-12">
-                        <h6>Proveedor de información</h6>
-                        <select class="choices form-select">
-                            <option value="">Seleccionar ente público</option>
-                            <option>Secretaria Ejecutiva del Sistema Anticorrupción del Estado de Quintana Roo</option>
-                            <option>Tribunal Electoral de Quintana Roo</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- BOTONES -->
-                <div class="row">
-                    <div class="col-md-6 mb-2">
-                        <button class="btn btn-success w-100">
-                            <i class="bi bi-check-circle me-2"></i>
-                            Generar informe quincenal
-                        </button>
-                    </div>
-
-                    <div class="col-md-6 mb-2">
-                        <button class="btn btn-secondary w-100">
-                            <i class="bi bi-eraser me-2"></i>
-                            Limpiar filtros de búsqueda
-                        </button>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -94,28 +103,28 @@
     <div class="row mt-4">
 
         <div class="col-12 col-md-4 mb-4">
-            <div class="card shadow-sm h-100 border-start border-primary border-4">
-                <div class="card-body text-center">
-                    <p class="fw-bold small">Efectividad de cumplimiento</p>
-                    <h1 class="display-3 fw-bold text-primary">50%</h1>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-4 mb-4">
-            <div class="card shadow-sm h-100 border-start border-success border-4">
-                <div class="card-body text-center">
-                    <p class="fw-bold small">Informes reportados en tiempo</p>
-                    <h1 class="display-3 fw-bold text-success">1</h1>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-4 mb-4">
             <div class="card shadow-sm h-100 border-start border-danger border-4">
                 <div class="card-body text-center">
+                    <p class="fw-bold small">Efectividad de cumplimiento</p>
+                    <h1 class="display-3 fw-bold text-danger mb-0">50%</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card shadow-sm h-100 border-start border-info border-4">
+                <div class="card-body text-center">
+                    <p class="fw-bold small">Informes reportados en tiempo</p>
+                    <h1 class="display-3 fw-bold text-info mb-0">1</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card shadow-sm h-100 border-start border-primary border-4">
+                <div class="card-body text-center">
                     <p class="fw-bold small">Informes reportados en extemporáneo</p>
-                    <h1 class="display-3 fw-bold text-danger">1</h1>
+                    <h1 class="display-3 fw-bold text-primary mb-0">1</h1>
                 </div>
             </div>
         </div>
@@ -126,7 +135,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h5>Listado de informes quincenales reportados en el periodo</h5>
+                <h5 class="text-center mb-3">Listado de informes quincenales reportados en el periodo</h5>
             </div>
 
             <div class="card-body">
@@ -151,9 +160,9 @@
                             <td>2026-01-18</td>
                             <td><span class="badge bg-success">Normal</span></td>
                             <td>
-                                <button class="btn btn-primary btn-sm">
-                                    Descargar acuse
-                                </button>
+                                <a href="#" class="btn btn-outline-primary">
+                                    <i class="bi bi-download"></i> Descargar acuse
+                                </a>
                             </td>
                         </tr>
 
@@ -164,9 +173,9 @@
                             <td>2026-02-03</td>
                             <td><span class="badge bg-warning">Extemporáneo</span></td>
                             <td>
-                                <button class="btn btn-primary btn-sm">
-                                    Descargar acuse
-                                </button>
+                                <a href="#" class="btn btn-outline-primary">
+                                    <i class="bi bi-download"></i> Descargar acuse
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -174,10 +183,10 @@
 
                 <!-- BOTON PDF -->
                 <div class="text-center mt-4">
-                    <button class="btn btn-danger">
-                        <i class="bi bi-file-earmark-pdf me-2"></i>
-                        Exportar a PDF la información del ente público
-                    </button>
+                    <a href="#" class="btn btn-outline-primary">
+                        <i class="bi bi-file-earmark-pdf"></i>
+                        Exportar a PDF la información del Periodo
+                    </a>
                 </div>
 
             </div>

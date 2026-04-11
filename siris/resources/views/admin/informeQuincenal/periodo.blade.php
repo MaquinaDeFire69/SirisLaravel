@@ -57,30 +57,36 @@
             {{-- ===== STATS CARDS ===== --}}
             <div class="row justify-content-center">
                 @foreach($stats as $stat)
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-4 py-4-5">
-                                <div class="row">
-                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
-                                        <div class="stats-icon {{ $stat['color'] }} mb-2">
-                                            <i class="{{ $stat['icon'] }}"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="text-muted font-semibold">{{ $stat['label'] }}</h6>
-                                        <h6 class="font-extrabold mb-0">{{ $stat['value'] }}</h6>
-                                    </div>
-                                </div>
+                    @php
+                        $colors = [
+                            ['border' => '#dc3545', 'text' => '#dc3545'], // rojo
+                            ['border' => '#0dcaf0', 'text' => '#0dcaf0'], // azul
+                            ['border' => '#6f42c1', 'text' => '#6f42c1'], // morado
+                        ];
+
+                        $color = $colors[$loop->index] ?? ['border' => '#6c757d', 'text' => '#6c757d'];
+                    @endphp
+
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card shadow-sm h-100 border-start border-4"
+                            style="border-left-color: {{ $color['border'] }} !important;">
+                            <div class="card-body text-center d-flex flex-column justify-content-center">
+                                <p class="card-text fw-bold text-dark mb-2 small">
+                                    {{ $stat['label'] }}
+                                </p>
+                                <h1 class="display-3 fw-bold"
+                                    style="color: {{ $color['text'] }};">
+                                    {{ $stat['value'] }}
+                                </h1>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-
             <section class="section">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">
+                        <h5 class="text-center mb-3">
                             Listado de entes públicos
                         </h5>
                     </div>
@@ -127,8 +133,9 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-primary rounded-pill">
-                                                    <i class="bi bi-download"></i> Descargar acuse</a>
+                                                <a href="#" class="btn btn-outline-primary">
+                                                    <i class="bi bi-download"></i> Descargar acuse
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -136,7 +143,7 @@
                             </table>
 
                             <div class="text-center mt-3">
-                                <a href="#" class="btn btn-outline-secondary">
+                                <a href="#" class="btn btn-outline-primary">
                                     <i class="bi bi-file-earmark-pdf"></i>
                                     Exportar a PDF la información del Periodo
                                 </a>
