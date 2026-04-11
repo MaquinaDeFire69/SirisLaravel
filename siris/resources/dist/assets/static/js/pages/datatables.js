@@ -1,5 +1,8 @@
 let jquery_datatable = $("#table1").DataTable({
-    responsive: true
+    responsive: true,
+    language: {
+        url: 'https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+    }
 })
 let customized_datatable = $("#table2").DataTable({
     responsive: true,
