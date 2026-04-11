@@ -1,259 +1,224 @@
-
 @extends('layouts.admin.master')
 
 @section('title', 'Dashboard')
 
 @section('styles')
-    @vite(['resources/src/assets/scss/iconly.scss'])
+@vite(['resources/src/assets/scss/iconly.scss'])
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
 @endsection
 
 @section('content')
 <div class="page-heading">
+
     <div class="page-title">
-        <!-- Definir titulo y ruta-->
-        <div class="row">
-            <div class="col-12 col-md-8 order-md-1 order-last">
-                <h3>Entes públicos proveedores de información</h3>
-                <p class="text-subtitle text-muted">El presente apartado visualiza la información del estatus de cumplimiento de un ente público proveedor de información</p>
-            </div>
-            <div class="col-12 col-md-4 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Informe quincenal</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Entes públicos</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <!-- Fin titulo y ruta-->
+        <h3>Entes públicos proveedores de información</h3>
+        <p class="text-subtitle text-muted">
+            El presente apartado visualiza la información del estatus de cumplimiento de un ente público proveedor de información
+        </p>
+    </div>
 
-    <!-- Basic choices start -->
+    <!-- FILTROS -->
     <section class="basic-choices">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-12">
-                <div class="card">
-                   <!-- <div class="card-header">
-                        <h4 class="card-title">Choices</h4>
-                    </div> -->
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h6>Proveedor de información</h6>
-                                    <div class="form-group">
-                                        <select class="choices form-select">
-                                            <option value="">Seleccionar ente público</option>
-                                            <option value="sesaeqroo">Secretaria Ejecutiva del Sistema Anticorrupción del Estado de Quintana Roo</option>
-                                            <option value="teqroo">Tribunal Electoral de Quintana Roo</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="card">
+            <div class="card-body">
+
+                <!-- AÑO Y MES -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h6>Año</h6>
+                        <select class="choices form-select">
+                            <option value="">Seleccionar año</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                            <option>2026</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h6>Mes</h6>
+                        <select class="choices form-select">
+                            <option value="">Seleccionar mes</option>
+                            <option>Enero</option>
+                            <option>Febrero</option>
+                            <option>Marzo</option>
+                            <option>Abril</option>
+                            <option>Mayo</option>
+                            <option>Junio</option>
+                            <option>Julio</option>
+                            <option>Agosto</option>
+                            <option>Septiembre</option>
+                            <option>Octubre</option>
+                            <option>Noviembre</option>
+                            <option>Diciembre</option>
+                        </select>
                     </div>
                 </div>
+
+                <!-- PROVEEDOR -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <h6>Proveedor de información</h6>
+                        <select class="choices form-select">
+                            <option value="">Seleccionar ente público</option>
+                            <option>Secretaria Ejecutiva del Sistema Anticorrupción del Estado de Quintana Roo</option>
+                            <option>Tribunal Electoral de Quintana Roo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- BOTONES -->
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <button class="btn btn-success w-100">
+                            <i class="bi bi-check-circle me-2"></i>
+                            Generar informe quincenal
+                        </button>
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                        <button class="btn btn-secondary w-100">
+                            <i class="bi bi-eraser me-2"></i>
+                            Limpiar filtros de búsqueda
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
-    <!-- Basic choices end -->
 
-    {{-- ===== STATS CARDS ===== --}}
-    <div class="row justify-content-center">
-        @php
-            $stats = [
-                ['color' => 'purple', 'icon' => 'iconly-boldSend', 'label' => 'Efectividad de cumplimiento', 'value' => '50%'],
-                ['color' => 'green', 'icon' => 'iconly-boldDocument', 'label' => 'Informes reportados en tiempo', 'value' => '1'],
-                ['color' => 'red', 'icon' => 'iconly-boldDocument', 'label' => 'Informes reportados en extemporáneo', 'value' => '1'],
-            ];
-        @endphp
+    <!-- CARDS -->
+    <div class="row mt-4">
 
-        @foreach($stats as $stat)
-        <div class="col-6 col-lg-3 col-md-6">
-            <div class="card" >
-                <div class="card-body px-4 py-4-5">
-                    <div class="row">
-                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
-                            <div class="stats-icon {{ $stat['color'] }} mb-2">
-                                <i class="{{ $stat['icon'] }}"></i>
-                            </div>
-                        </div>
-                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                            <h6 class="text-muted font-semibold">{{ $stat['label'] }}</h6>
-                            <h6 class="font-extrabold mb-0">{{ $stat['value'] }}</h6>
-                        </div>
-                    </div> 
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card shadow-sm h-100 border-start border-primary border-4">
+                <div class="card-body text-center">
+                    <p class="fw-bold small">Efectividad de cumplimiento</p>
+                    <h1 class="display-3 fw-bold text-primary">50%</h1>
                 </div>
             </div>
         </div>
-        @endforeach
-    </div>    
-             
-    <!-- Basic Vertical form layout section start -->
-    <!--<section id="basic-vertical-layouts">
-        <div class="row match-height">
-            <div class="col-md-6 col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Vertical Form with Icons</h4>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body">
-                            <form class="form form-vertical">
-                                <div class="form-body">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group has-icon-left">
-                                                <label for="first-name-icon">First Name</label>
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control"
-                                                        placeholder="Input with icon left" id="first-name-icon">
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-person"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
 
-                                            <div class="form-group has-icon-left">
-                                                <label for="email-id-icon">Email</label>
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="Email"
-                                                        id="email-id-icon">
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-envelope"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group has-icon-left">
-                                                <label for="mobile-id-icon">Mobile</label>
-                                                <div class="position-relative">
-                                                    <input type="text" class="form-control" placeholder="Mobile"
-                                                        id="mobile-id-icon">
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-phone"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group has-icon-left">
-                                                <label for="password-id-icon">Password</label>
-                                                <div class="position-relative">
-                                                    <input type="password" class="form-control" placeholder="Password"
-                                                        id="password-id-icon">
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-lock"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class='form-check'>
-                                                <div class="checkbox mt-2">
-                                                    <input type="checkbox" id="remember-me-v" class='form-check-input'
-                                                        checked>
-                                                    <label for="remember-me-v">Remember Me</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                            <button type="reset"
-                                                class="btn btn-light-secondary me-1 mb-1">Reset</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card shadow-sm h-100 border-start border-success border-4">
+                <div class="card-body text-center">
+                    <p class="fw-bold small">Informes reportados en tiempo</p>
+                    <h1 class="display-3 fw-bold text-success">1</h1>
                 </div>
             </div>
         </div>
-    </section>
--->
-    <!-- // Basic Vertical form layout section end -->
 
-    <!-- Minimal jQuery Datatable end -->
-    <!-- Basic Tables start -->
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card shadow-sm h-100 border-start border-danger border-4">
+                <div class="card-body text-center">
+                    <p class="fw-bold small">Informes reportados en extemporáneo</p>
+                    <h1 class="display-3 fw-bold text-danger">1</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TABLA -->
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">
-                    Listado de informes quincenales reportados en el periodo
-                </h5>
+                <h5>Listado de informes quincenales reportados en el periodo</h5>
             </div>
-            <div class="card-body">
-                <div class="table-responsive datatable-minimal">
-                    <div class="d-flex justify-content-between mb-2">
-                        <div>
-                            Mostrar 
-                            <select class="form-select d-inline-block" style="width: 80px;">
-                                <option>5</option>
-                                <option>10</option>
-                                <option>25</option>
-                            </select>
-                            Registros
-                        </div>
 
-                        <div>
-                            Buscar:
-                            <input type="text" class="form-control d-inline-block" style="width: 200px;">
-                        </div>
-                    </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Periodo del informe</th>
-                                <th>Registros reportados</th>
-                                <th>Fecha envió reporte</th>
-                                <th>Estatus</th>
-                                <th>Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Enero 01 al 15 2026</td>
-                                <td>3</td>
-                                <td>2026-01-18</td>
-                                <td>
-                                    <span class="badge bg-success">Normal</span>
-                                </td>
-                                <td>
-                                    <div class="buttons">
-                                        <a href="#" class="btn btn-primary rounded-pill">Descargar acuse</a>                                    
-                                    </div>    
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Enero 16 al 31 2026</td>
-                                <td>3</td>
-                                <td>2026-02-03</td>
-                                <td>
-                                    <span class="badge bg-warning">Extemporanea</span>
-                                </td>
-                                <td>
-                                    <div class="buttons">
-                                        <a href="#" class="btn btn-primary rounded-pill">Descargar acuse</a>                                    
-                                    </div>                                     
-                                </td>
-                            </tr>                            
-                        </tbody>
-                    </table>
+            <div class="card-body">
+
+                <table id="tablaInformes" class="table table-striped table-bordered nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Periodo del informe</th>
+                            <th>Registros reportados</th>
+                            <th>Fecha envío reporte</th>
+                            <th>Estatus</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Enero 01 al 15 2026</td>
+                            <td>3</td>
+                            <td>2026-01-18</td>
+                            <td><span class="badge bg-success">Normal</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm">
+                                    Descargar acuse
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Enero 16 al 31 2026</td>
+                            <td>3</td>
+                            <td>2026-02-03</td>
+                            <td><span class="badge bg-warning">Extemporáneo</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm">
+                                    Descargar acuse
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- BOTON PDF -->
+                <div class="text-center mt-4">
+                    <button class="btn btn-danger">
+                        <i class="bi bi-file-earmark-pdf me-2"></i>
+                        Exportar a PDF la información del ente público
+                    </button>
                 </div>
+
             </div>
         </div>
-
     </section>
-    <!-- Basic Tables end -->
-  
 
-
-    </div>
 </div>
+@endsection
+
+@section('scripts')
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- DataTables -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<!-- Responsive -->
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('#tablaInformes').DataTable({
+        responsive: true,
+        pageLength: 10,
+        lengthMenu: [5,10,25,50],
+        language: {
+            lengthMenu: "_MENU_ registros por página",
+            search: "Buscar:",
+            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
+            paginate: {
+                first: "Primero",
+                last: "Último",
+                next: "›",
+                previous: "‹"
+            }
+        }
+    });
+});
+</script>
+
 @endsection

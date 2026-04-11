@@ -34,7 +34,6 @@
                 <!-- BOTON -->
                <div class="d-flex gap-2">
                     <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#nuevoEnte">
-                        <i class="bi bi-plus-square"></i> Nuevo Ente
                     </button>
 
                     <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#validarEnte">
