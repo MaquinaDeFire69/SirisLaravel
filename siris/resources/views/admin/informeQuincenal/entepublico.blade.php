@@ -25,8 +25,9 @@
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('panel-informativo') }}">Inicio</a>
+                        <a href="{{ route('panel-informativo') }}">Informe quincenal</a>
                     </li>
+                    <li class="breadcrumb-item active" aria-current="page">Entes públicos</li>
                 </ol>
             </nav>
         </div>

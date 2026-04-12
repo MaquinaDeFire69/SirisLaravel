@@ -51,11 +51,11 @@
                         <thead class="bg-light">
                             <tr>
                                 <th>No.</th>
-                                <th>PERIODO</th>
-                                <th>INICIO REPORTE</th>
-                                <th>FIN REPORTE</th>
-                                <th>ESTATUS</th>
-                                <th>ACCIONES</th>
+                                <th>Periodo</th>
+                                <th>Inicio reporte</th>
+                                <th>Fin reporte</th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
 
