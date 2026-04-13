@@ -60,10 +60,10 @@
                     <thead class="bg-light">
                         <tr>
                             <th>No.</th>
-                            <th>AÑO DE APLICACIÓN</th>
-                            <th>PLAZO EN DÍAS</th>
-                            <th>ESTATUS</th>
-                            <th>ACCIONES</th>
+                            <th>Año de aplicación</th>
+                            <th>Plazo en días</th>
+                            <th>Estatus</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
 

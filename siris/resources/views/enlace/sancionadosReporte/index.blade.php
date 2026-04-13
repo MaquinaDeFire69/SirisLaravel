@@ -2,131 +2,181 @@
 
 @section('title', 'Listado de Sancionados')
 
+@section('styles')
+@vite([
+'resources/src/assets/scss/iconly.scss',
+'resources/dist/assets/extensions/jquery/jquery.min.js',
+'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.css',
+])
+@endsection
+
 @section('content')
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('enlace.panel_informativo') }}">Inicio</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Listado de Sancionados</li>
-    </ol>
-</nav>
 
-<div class="card shadow-sm" style="border-radius: 10px;">
-    <div class="card-body">
-        <h5 class="text-center mb-4 fw-bold text-dark">Listado de Sancionados</h5>
-
-        <div class="row mb-4 justify-content-center">
-            <div class="col-md-4 d-flex align-items-center">
-                <span class="me-2 fw-bold text-dark" style="font-size: 0.8rem;">EJERCICIO</span>
-                <select class="form-select bg-light border-0" id="filtroEjercicio" style="width: 150px;">
-                    <option value="2026">2026</option>
-                    <option value="2025">2025</option>
-                </select>
-            </div>
-            <div class="col-md-5 d-flex align-items-center">
-                <span class="me-2 fw-bold text-dark" style="font-size: 0.8rem;">PERIODO INFORMADO</span>
-                <select class="form-select bg-light border-0" id="filtroPeriodo" style="width: 180px;">
-                    <option value="ENERO">ENERO</option>
-                    <option value="FEBRERO">FEBRERO</option>
-                </select>
-                <button class="btn ms-3 text-white fw-bold shadow-sm" style="background-color: #a54844; border-radius: 8px;">Buscar</button>
-            </div>
-        </div>
-
-        <hr class="opacity-25">
-
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <div class="d-flex align-items-center text-muted">
-                <span class="small">Mostrar</span>
-                <select class="form-select form-select-sm mx-2" id="mostrarRegistros" style="width: auto;">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                </select>
-                <span class="small">Registros</span>
-            </div>
-            <div class="d-flex align-items-center text-muted">
-                <span class="me-2 small">Buscar:</span>
-                <input type="text" id="inputBusqueda" class="form-control form-control-sm shadow-sm" placeholder="Escribe para filtrar..." style="width: 200px;">
-            </div>
-        </div>
-
-        <div class="table-responsive">
-            <table class="table table-hover align-middle" id="tablaSancionados" style="font-size: 0.9rem; color: #333;">
-                <thead style="background-color: #f8fafc; border-bottom: 2px solid #dee2e6;">
-                    <tr class="text-dark">
-                        <th class="fw-bold">No.</th>
-                        <th class="fw-bold">No. expediente</th>
-                        <th class="fw-bold">Nombre completo</th>
-                        <th class="fw-bold">Ente público</th>
-                        <th class="fw-bold text-center">Falta cometida</th>
-                        <th class="fw-bold">Tipo sanciones</th>
-                        <th class="fw-bold">Tipo sancionado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><a href="#" class="text-decoration-none fw-bold" style="color: #4f5fbd;">SP-01/2026</a></td>
-                        <td class="text-dark">ARMANDO PADILLA SANCHEZ</td>
-                        <td>SABGOB</td>
-                        <td class="text-center"><span class="badge bg-light-danger text-danger px-3">PECULADO</span></td>
-                        <td>INHABILITACIÓN, ECONÓMICA</td>
-                        <td>PERSONA FÍSICA</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><a href="#" class="text-decoration-none fw-bold" style="color: #4f5fbd;">SP-01/2026</a></td>
-                        <td class="text-dark">JAVIER ARTURO RANGEL ABELAR</td>
-                        <td>SABGOB</td>
-                        <td class="text-center"><span class="badge bg-light-danger text-danger px-3">PECULADO</span></td>
-                        <td>INHABILITACIÓN, ECONÓMICA</td>
-                        <td>PERSONA FÍSICA</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><a href="#" class="text-decoration-none fw-bold" style="color: #4f5fbd;">SP-01/2026</a></td>
-                        <td class="text-dark">ARIEL ALEJANDRO RIVERO MOO</td>
-                        <td>SABGOB</td>
-                        <td class="text-center"><span class="badge bg-light-danger text-danger px-3">PECULADO</span></td>
-                        <td>INHABILITACIÓN, ECONÓMICA</td>
-                        <td>PERSONA FÍSICA</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><a href="#" class="text-decoration-none fw-bold" style="color: #4f5fbd;">SP-01/2026</a></td>
-                        <td class="text-dark">JOSE LUIS CHAVEZ ZETINA</td>
-                        <td>SABGOB</td>
-                        <td class="text-center"><span class="badge bg-light-danger text-danger px-3">PECULADO</span></td>
-                        <td>INHABILITACIÓN, ECONÓMICA</td>
-                        <td>PERSONA FÍSICA</td>
-                    </tr>
-                    </tbody>
-            </table>
-        </div>
-
-        <div class="d-flex justify-content-between align-items-center mt-4 p-3 bg-dark text-white rounded-3 shadow-sm">
-            <p class="mb-0 small" id="infoRegistros">
-                <i class="bi bi-info-circle me-2"></i> Mostrando registros filtrados
+{{-- Siempre debe estar presente --}}
+<div class="page-title">
+    <div class="row">
+        <div class="col-12 col-md-8 order-md-1 order-last">
+            <h3>Sancionados reporte</h3>
+            <p class="text-subtitle text-muted">
+                El presente apartado muestra registros oficiales de sanciones correspondientes al periodo seleccionado.
             </p>
-            <span class="badge bg-secondary">Ejercicio 2026</span>
+        </div>
+        <div class="col-12 col-md-4 order-md-2 order-first">
+            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Sancionados</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Reporte</li>
+                </ol>
+            </nav>
         </div>
     </div>
 </div>
 
-<style>
-    .bg-light-danger { background-color: #fee2e2; color: #dc2626; }
-    .breadcrumb-item a { text-decoration: none; color: #6c757d; }
-    .breadcrumb-item.active { color: #4f5fbd; font-weight: bold; }
-</style>
+<br>
 
-<script>
-    document.getElementById('inputBusqueda').addEventListener('keyup', function() {
-        let filtro = this.value.toLowerCase();
-        let filas = document.querySelectorAll('#tablaSancionados tbody tr');
+<div class="page-content">
 
-        filas.forEach(fila => {
-            let textoFila = fila.innerText.toLowerCase();
-            fila.style.display = textoFila.includes(filtro) ? "" : "none";
-        });
-    });
-</script>
+    {{-- FILTROS --}}
+    <section class="basic-choices">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h6>Año</h6>
+                        <select class="form-select text-dark fw-bold" id="filtroEjercicio">
+                            <option value="">Todos</option>
+                            <option value="2026" selected>2026</option>
+                            <option value="2025">2025</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h6>Mes</h6>
+                        <select class="form-select text-dark fw-bold" id="filtroPeriodo">
+                            <option value="">Seleccionar...</option>
+                            <option value="ENERO">Enero</option>
+                            <option value="FEBRERO">Febrero</option>
+                            <option value="MARZO">Marzo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <h6>Buscar</h6>
+                        <input type="text" id="inputBusquedaReal" class="form-control text-dark fw-bold" placeholder="Nombre o expediente...">
+                    </div>
+                </div>
+
+                <div class="row mt-3 justify-content-center">
+                    <div class="col-md-6 mb-2 text-center">
+                        <button id="btnBuscar" class="btn btn-outline-primary me-2">
+                            <i class="bi bi-search me-2"></i>
+                            Buscar
+                        </button>
+                    
+                        <button id="btnLimpiar" class="btn btn-outline-primary">
+                            <i class="bi bi-arrow-counterclockwise me-2"></i>
+                            Limpiar filtros de búsqueda
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- TABLA --}}
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">
+                    Listado de Sancionados
+                </h5>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="table1">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>No.</th>
+                                <th>No. expediente</th>
+                                <th>Nombre completo</th>
+                                <th>Ente público</th>
+                                <th class="text-center">Falta cometida</th>
+                                <th>Tipo sanción</th>
+                                <th>Tipo sancionado</th>
+                                <th class="d-none">Año</th>
+                                <th class="d-none">Mes</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{-- Registros 2026 --}}
+                            <tr>
+                                <td>1</td>
+                                <td><a href="#" class="text-decoration-none fw-bold text-primary">SP-01/2026</a></td>
+                                <td>ARMANDO PADILLA SANCHEZ</td>
+                                <td>SABGOB</td>
+                                <td class="text-center"><span class="badge bg-danger">PECULADO</span></td>
+                                <td>INHABILITACIÓN</td>
+                                <td>PERSONA FÍSICA</td>
+                                <td class="d-none">2026</td>
+                                <td class="d-none">ENERO</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><a href="#" class="text-decoration-none fw-bold text-primary">SP-05/2026</a></td>
+                                <td>MARIA ELENA LOPEZ</td>
+                                <td>MUNICIPIO</td>
+                                <td class="text-center"><span class="badge bg-danger">PECULADO</span></td>
+                                <td>INHABILITACIÓN</td>
+                                <td>PERSONA FÍSICA</td>
+                                <td class="d-none">2026</td>
+                                <td class="d-none">ENERO</td>
+                            </tr>
+                            {{-- Registros 2025 --}}
+                            <tr>
+                                <td>3</td>
+                                <td><a href="#" class="text-decoration-none fw-bold text-primary">SP-02/2025</a></td>
+                                <td>JAVIER ARTURO RANGEL</td>
+                                <td>SABGOB</td>
+                                <td class="text-center"><span class="badge bg-danger">COHECHO</span></td>
+                                <td>ECONÓMICA</td>
+                                <td>PERSONA FÍSICA</td>
+                                <td class="d-none">2025</td>
+                                <td class="d-none">FEBRERO</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><a href="#" class="text-decoration-none fw-bold text-primary">SP-03/2025</a></td>
+                                <td>ARIEL ALEJANDRO RIVERO</td>
+                                <td>SABGOB</td>
+                                <td class="text-center"><span class="badge bg-danger">PECULADO</span></td>
+                                <td>INHABILITACIÓN</td>
+                                <td>PERSONA FÍSICA</td>
+                                <td class="d-none">2025</td>
+                                <td class="d-none">MARZO</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+@endsection
+
+@section('js')
+@vite([
+'resources/dist/assets/extensions/jquery/jquery.min.js',
+'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.js',
+'resources/dist/assets/static/js/pages/sweetalert2.js',
+])
 @endsection
