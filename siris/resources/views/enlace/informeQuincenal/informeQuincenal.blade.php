@@ -8,11 +8,13 @@
         <div class="row">
             <div class="col-12 col-md-8 order-md-1 order-last">
                 <h3 class="text-gray-800">Informe quincenal</h3>
+                <p>Observa a detalle el informe quincenal</p>
             </div>
             <div class="col-12 col-md-4 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('enlace.panel_informativo') }}">Informe quincenal /</a></li>
+                        <li class="breadcrumb-item"><a href="">Informe quincenal</a></li>
+                        <li class="breadcrumb-item d-none" id="breadcrumb-iniciar"><a>Iniciar informe</a></li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +23,6 @@
 </div>
 
 <div class="page-content">
-
     <div id="contenedor-principal">
         <div class="row" id="bloques-estados">
             <div id="bloque-atrasado" class="col-md-6 mb-4">
@@ -77,7 +78,7 @@
                     <h2 class="fw-bold text-dark mb-0">Detalle de Faltas</h2>
                     <p class="text-muted mb-0 small" id="periodo-tabla"></p>
                 </div>
-                <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" onclick="location.reload()">
+                <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" onclick="regresarAlInicio()">
                     <i class="bi bi-arrow-left me-1"></i> Cancelar
                 </button>
             </div>
@@ -126,8 +127,7 @@
             @endforeach
 
             <div class="text-center pb-1 mt-3"> 
-                <div class="p-3 d-inline-block rounded-pill mb-3 px-4 shadow-sm" 
-                    style="background-color: #e2e8f0; color: #475569;">
+                <div class="p-3 d-inline-block rounded-pill mb-3 px-4 shadow-sm" style="background-color: #e2e8f0; color: #475569;">
                     <i class="bi bi-info-circle-fill me-2" style="color: #174877;"></i>
                     <span class="small fw-bold">Por favor, revisa la información antes de realizar el envío definitivo</span>
                 </div>
@@ -146,11 +146,8 @@
     .bg-light-primary { background-color: #f0f5ff; color: #435ebe; }
     .bg-light-danger { background-color: #fff5f5; color: #dc3545; }
     .text-dark { color: #1e293b !important; }
-    
-
     .card { border-radius: 12px; transition: all 0.2s ease-in-out; border: 1px solid #f1f5f9; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important; }
-    
     .table thead th { 
         background-color: #f8fafc; 
         border-bottom: 1px solid #e2e8f0; 
@@ -158,10 +155,8 @@
         letter-spacing: 0.05em; 
         color: #64748b;
     }
-    
     .btn-animate { transition: all 0.2s; }
     .btn-animate:hover:not(:disabled) { transform: scale(1.02); filter: brightness(1.1); }
-    
     .icon-shape i { display: inline-flex; align-items: center; justify-content: center; line-height: 0; }
 </style>
 @endsection
@@ -172,15 +167,29 @@
     let informeActual = '';
     let periodoTexto = '';
 
+    // Función para entrar al detalle (Cards -> Tablas)
     function mostrarTablas(tipo, periodo) {
         informeActual = tipo;
         periodoTexto = periodo;
         document.getElementById('periodo-tabla').innerText = "Capturando datos del: " + periodo;
         
+        // Intercambiar vistas
         document.getElementById('bloques-estados').classList.add('d-none');
         document.getElementById('seccion-tablas').classList.remove('d-none');
         
+        // MOSTRAR Breadcrumb dinámico
+        document.getElementById('breadcrumb-iniciar').classList.remove('d-none');
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Función para salir del detalle sin enviar (Tablas -> Cards)
+    function regresarAlInicio() {
+        document.getElementById('seccion-tablas').classList.add('d-none');
+        document.getElementById('bloques-estados').classList.remove('d-none');
+        
+        // OCULTAR Breadcrumb dinámico
+        document.getElementById('breadcrumb-iniciar').classList.add('d-none');
     }
 
     function enviarInforme() {
@@ -193,7 +202,6 @@
             cancelButtonColor: 'rgb(154, 41, 41)',
             confirmButtonText: 'Sí, enviar ahora',
             cancelButtonText: 'Revisar datos',
-            borderRadius: '15px',
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
@@ -202,8 +210,7 @@
                     text: 'Los datos se han procesado correctamente.',
                     icon: 'success',
                     showConfirmButton: false,
-                    timer: 2000,
-                    borderRadius: '15px'
+                    timer: 2000
                 });
                 procesarAceptar();
             }
@@ -211,8 +218,8 @@
     }
 
     function procesarAceptar() {
-        document.getElementById('seccion-tablas').classList.add('d-none');
-        document.getElementById('bloques-estados').classList.remove('d-none');
+        // Regresar a la vista principal y ocultar breadcrumb
+        regresarAlInicio();
 
         if (informeActual === 'atrasado') {
             document.getElementById('contenido-atrasado').classList.add('d-none');
