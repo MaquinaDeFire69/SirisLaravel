@@ -5,32 +5,6 @@
 @section('styles')
 @vite(['resources/src/assets/scss/iconly.scss'])
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-<style>
-    .bg-light-danger { background-color: #fee2e2; color: #dc2626; }
-    .breadcrumb-item a { text-decoration: none; color: #6c757d; }
-    .breadcrumb-item.active { color: #4f5fbd; font-weight: bold; }
-    .filtro-label { font-size: 0.8rem; color: #000; font-weight: bold; }
-    .filtro-select { width: 150px; border: 1px solid #dee2e6; background-color: transparent; color: #000; font-weight: 500; }
-    
-    /* Leyenda inferior original */
-    .dataTables_info { 
-        color: #333 !important; 
-        font-size: 0.85rem; 
-        font-weight: 500; 
-        padding-top: 1.5rem !important; 
-    }
-    
-    /* Estilo de la paginación */
-    .pagination .page-link { color: #4f5fbd; border: none; }
-    .pagination .page-item.active .page-link { background-color: #4f5fbd; border-radius: 5px; color: white !important; }
-
-    .dataTables_filter { display: none; } /* Ocultamos el buscador nativo */
-
-    #btnLimpiar:hover {
-        background-color: #f1f1f1;
-        color: #333;
-    }
-</style>
 @endsection
 
 @section('content')
@@ -161,59 +135,4 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-
-<script>
-$(document).ready(function () {
-    // 1. Inicializar DataTable
-    var table = $('#tablaSancionados').DataTable({
-        responsive: true,
-        pageLength: 5,
-        dom: 'rtip', 
-        language: {
-            url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
-        }
-    });
-
-    // 2. Buscador en tiempo real
-    $('#inputBusquedaReal').on('keyup', function () {
-        table.search(this.value).draw();
-    });
-
-    // 3. Lógica de filtrado personalizada
-    $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
-        var filtroEj = $('#filtroEjercicio').val();
-        var filtroPe = $('#filtroPeriodo').val();
-        
-        var dataEj = data[7]; // Columna Año (oculta)
-        var dataPe = data[8]; // Columna Mes (oculta)
-
-        if (
-            (filtroEj === "" || dataEj === filtroEj) &&
-            (filtroPe === "" || dataPe === filtroPe)
-        ) {
-            return true;
-        }
-        return false;
-    });
-
-    // 4. Botón Buscar
-    $('#btnBuscar').on('click', function() {
-        table.draw();
-    });
-
-    // 5. Botón Borrar Filtros
-    $('#btnLimpiar').on('click', function() {
-        // Resetear controles
-        $('#filtroEjercicio').val('2026'); // Vuelve al año actual
-        $('#filtroPeriodo').val('');      // Limpia el mes
-        $('#inputBusquedaReal').val('');  // Limpia el buscador
-        
-        // Limpiar búsqueda interna y redibujar
-        table.search('').draw();
-    });
-    
-    // Ejecutar filtro inicial al cargar (opcional)
-    table.draw();
-});
-</script>
 @endsection
