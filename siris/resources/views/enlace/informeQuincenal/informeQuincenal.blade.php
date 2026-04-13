@@ -78,8 +78,8 @@
                     <h2 class="fw-bold text-dark mb-0">Detalle de Faltas</h2>
                     <p class="text-muted mb-0 small" id="periodo-tabla"></p>
                 </div>
-                <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" onclick="regresarAlInicio()">
-                    <i class="bi bi-arrow-left me-1"></i> Cancelar
+                <button class="btn btn-outline-secondary px-3" onclick="regresarAlInicio()">
+                    <i class="bi bi-arrow-left me-1"></i> Cancelar informe
                 </button>
             </div>
 
@@ -104,19 +104,19 @@
                         <table class="table table-hover align-middle mb-0">
                             <thead>
                                 <tr>
-                                    <th class="ps-4 py-3 text-muted fw-bold small text-uppercase">Expediente</th>
-                                    <th class="text-muted fw-bold small text-uppercase">Nombre Completo</th>
-                                    <th class="text-muted fw-bold small text-uppercase">CURP/RFC</th>
-                                    <th class="text-muted fw-bold small text-uppercase">Falta</th>
-                                    <th class="text-end pe-4 text-muted fw-bold small text-uppercase">Sanción</th>
+                                    <th class="ps-4 py-3 text-muted fw-bold small">Expediente</th>
+                                    <th class="text-muted fw-bold small">Nombre Completo</th>
+                                    <th class="text-muted fw-bold small">CURP/RFC</th>
+                                    <th class="text-muted fw-bold small">Falta</th>
+                                    <th class="text-end pe-4 text-muted fw-bold small">Sanción</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="ps-4 fw-bold text-dark text-nowrap">PME-01/2026</td>
                                     <td class="text-dark">Juan Pérez López</td>
-                                    <td><code class="text-primary bg-light px-2 py-1 rounded small">PELJ809858HRT</code></td>
-                                    <td><span class="badge bg-light-danger text-danger rounded-pill fw-medium">Peculado</span></td>
+                                    <td class="text-dark">PELJ809858HRT</td>
+                                    <td class="text-dark">Peculado</td>
                                     <td class="text-end pe-4 text-muted">Inhabilitación</td>
                                 </tr>
                             </tbody>
@@ -198,8 +198,8 @@
             text: "Se enviará el informe correspondiente al periodo " + periodoTexto,
             icon: 'question',
             showCancelButton: true,
-            confirmButtonColor: '#1dc463',
-            cancelButtonColor: 'rgb(154, 41, 41)',
+            confirmButtonColor: '#1e902b',
+            cancelButtonColor: 'rgb(60, 96, 213)',
             confirmButtonText: 'Sí, enviar ahora',
             cancelButtonText: 'Revisar datos',
             reverseButtons: true
@@ -218,22 +218,35 @@
     }
 
     function procesarAceptar() {
-        // Regresar a la vista principal y ocultar breadcrumb
         regresarAlInicio();
 
         if (informeActual === 'atrasado') {
             document.getElementById('contenido-atrasado').classList.add('d-none');
-            document.getElementById('a-vacio').classList.remove('d-none');
+            
+            let aVacio = document.getElementById('a-vacio');
+            aVacio.classList.remove('d-none');
+            
+            aVacio.innerHTML = `
+                <i class="bi bi-check2-all text-success" style="font-size: 3rem;"></i>
+                <p class="text-muted mt-3 mb-0"><i>No hay reportes pendientes</i></p>
+            `;
             
             let btnV = document.getElementById('btn-v');
             if(btnV) {
                 btnV.classList.remove('btn-light-secondary', 'disabled');
                 btnV.classList.add('btn-primary', 'shadow-sm');
                 btnV.innerHTML = '<i class="bi bi-pencil-square me-2"></i> INICIAR REPORTE';
+                btnV.parentElement.querySelector('p').innerText = "Periodo correspondiente";
             }
         } else {
             document.getElementById('contenido-vigente').classList.add('d-none');
-            document.getElementById('v-vacio').classList.remove('d-none');
+            let vVacioFinal = document.getElementById('v-vacio');
+            vVacioFinal.classList.remove('d-none');
+            
+            vVacioFinal.innerHTML = `
+                <i class="bi bi-send-check text-primary" style="font-size: 3rem;"></i>
+                <p class="text-muted mt-3 mb-0"><i>Reporte enviado con éxito</i></p>
+            `;
         }
     }
 </script>

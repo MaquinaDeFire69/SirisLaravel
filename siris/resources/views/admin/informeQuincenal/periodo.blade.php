@@ -26,7 +26,7 @@
                         <li class="breadcrumb-item">
                             <a href="{{ route('panel-informativo') }}">Informe quincenal</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Periodos</li>
+                        <li class="breadcrumb-item active" aria-current="page">Periodo Informado</li>
                     </ol>
                 </nav>
             </div>

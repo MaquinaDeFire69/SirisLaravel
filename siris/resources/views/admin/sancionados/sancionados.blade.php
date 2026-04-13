@@ -15,7 +15,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
-            <h3>Entes públicos sancionados</h3>
+            <h3>Sancionados</h3>
             <p class="text-subtitle text-muted">
                 El presente apartado visualiza la información del estatus de sanción de un ente público
             </p>
