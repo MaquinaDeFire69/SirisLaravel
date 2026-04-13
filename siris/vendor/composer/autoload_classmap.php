@@ -22,7 +22,6 @@ return array(
     'App\\Http\\Controllers\\admin\\conf\\PeriodoInformeController' => $baseDir . '/app/Http/Controllers/admin/conf/PeriodoInformeController.php',
     'App\\Http\\Controllers\\admin\\conf\\PlazoInformeController' => $baseDir . '/app/Http/Controllers/admin/conf/PlazoInformeController.php',
     'App\\Http\\Controllers\\admin\\conf\\RegistroUsuariosController' => $baseDir . '/app/Http/Controllers/admin/conf/RegistroUsuariosController.php',
-    'App\\Http\\Controllers\\admin\\conf\\UsuarioController' => $baseDir . '/app/Http/Controllers/admin/conf/UsuarioController.php',
     'App\\Http\\Controllers\\admin\\informes\\PeriodoInformadoController' => $baseDir . '/app/Http/Controllers/admin/informes/PeriodoInformadoController.php',
     'App\\Http\\Controllers\\admin\\sancionados\\ReportesController' => $baseDir . '/app/Http/Controllers/admin/sancionados/ReportesController.php',
     'App\\Http\\Controllers\\enlace\\Sancionados\\SancionadosReporteController' => $baseDir . '/app/Http/Controllers/enlace/Sancionados/SancionadosReporteController.php',
