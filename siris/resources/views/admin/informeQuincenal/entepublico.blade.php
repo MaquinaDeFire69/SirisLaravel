@@ -186,28 +186,4 @@
 'resources/dist/assets/static/js/pages/sweetalert2.js',
 ])
 
-<script>
-$(document).ready(function () {
-    $('#table1').DataTable({
-        responsive: true,
-        autoWidth: false,
-        pageLength: 10,
-        lengthMenu: [5, 10, 25, 50],
-        language: {
-            lengthMenu: "_MENU_ registros por página",
-            search: "Buscar:",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando 0 a 0 de 0 registros",
-            zeroRecords: "No se encontraron resultados",
-            paginate: {
-                first: "Primero",
-                last: "Último",
-                next: "›",
-                previous: "‹"
-            }
-        }
-    });
-});
-</script>
-
 @endsection
