@@ -4,27 +4,30 @@
 
 @section('styles')
 @vite(['resources/src/assets/scss/iconly.scss'])
+{{-- Estilos necesarios para DataTables y Bootstrap 5 --}}
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
 <style>
+    /* Estilos personalizados de la plantilla base */
     .bg-light-danger { background-color: #fee2e2; color: #dc2626; }
     .breadcrumb-item a { text-decoration: none; color: #6c757d; }
     .breadcrumb-item.active { color: #4f5fbd; font-weight: bold; }
     .filtro-label { font-size: 0.8rem; color: #000; font-weight: bold; }
     .filtro-select { width: 150px; border: 1px solid #dee2e6; background-color: transparent; color: #000; font-weight: 500; }
     
-    /* Leyenda inferior original */
+    /* Personalización de la leyenda y paginación de DataTable */
     .dataTables_info { 
         color: #333 !important; 
         font-size: 0.85rem; 
         font-weight: 500; 
         padding-top: 1.5rem !important; 
     }
-    
-    /* Estilo de la paginación */
     .pagination .page-link { color: #4f5fbd; border: none; }
     .pagination .page-item.active .page-link { background-color: #4f5fbd; border-radius: 5px; color: white !important; }
 
-    .dataTables_filter { display: none; } /* Ocultamos el buscador nativo */
+    /* Ocultamos el buscador nativo para usar el de la plantilla */
+    .dataTables_filter { display: none; } 
 
     #btnLimpiar:hover {
         background-color: #f1f1f1;
@@ -34,10 +37,11 @@
 @endsection
 
 @section('content')
+{{-- Encabezado y Breadcrumb --}}
 <div class="d-flex justify-content-between align-items-center mb-2">
     <div>
         <h3 class="text-gray-800 m-0">Sancionados reporte</h3>
-        <p class="text-muted small m-0">El presente apartado muestra registros oficiales de sanciones correspondientes al periodo seleccionado.</p>
+        <p class="text-muted small m-0">Registros oficiales de sanciones correspondientes al periodo seleccionado.</p>
     </div>
 
     <nav aria-label="breadcrumb">
@@ -52,7 +56,7 @@
     <div class="card-body">
         <h5 class="text-center mb-4 fw-bold text-dark">Listado de Sancionados</h5>
 
-        {{-- Filtros Superiores --}}
+        {{-- SECCIÓN DE FILTROS (Año y Mes) --}}
         <div class="row mb-4 justify-content-center text-center">
             <div class="col-md-3 d-flex align-items-center justify-content-center">
                 <span class="me-2 filtro-label">Año</span>
@@ -60,6 +64,7 @@
                     <option value="">Todos</option>
                     <option value="2026" selected>2026</option>
                     <option value="2025">2025</option>
+                    <option value="2024">2024</option>
                 </select>
             </div>
             <div class="col-md-5 d-flex align-items-center justify-content-center">
@@ -69,6 +74,7 @@
                     <option value="ENERO">Enero</option>
                     <option value="FEBRERO">Febrero</option>
                     <option value="MARZO">Marzo</option>
+                    <option value="ABRIL">Abril</option>
                 </select>
                 
                 <button id="btnBuscar" class="btn ms-3 text-white fw-bold shadow-sm" style="background-color: #a54844; border-radius: 8px;">Buscar</button>
@@ -81,6 +87,7 @@
 
         <hr class="opacity-25">
 
+        {{-- BUSCADOR MANUAL --}}
         <div class="d-flex justify-content-end mb-3">
             <div class="d-flex align-items-center">
                 <span class="me-2 small fw-bold text-dark">Buscar:</span>
@@ -88,6 +95,7 @@
             </div>
         </div>
 
+        {{-- TABLA --}}
         <div class="table-responsive">
             <table class="table table-hover align-middle" id="tablaSancionados" style="font-size: 0.9rem; color: #333; width: 100%;">
                 <thead style="background-color: #f8fafc; border-bottom: 2px solid #dee2e6;">
@@ -99,12 +107,12 @@
                         <th class="text-center">Falta cometida</th>
                         <th>Tipo sanciones</th>
                         <th>Tipo sancionado</th>
-                        <th class="d-none">Año</th>
-                        <th class="d-none">Mes</th>
+                        {{-- Columnas ocultas para filtrado por script --}}
+                        <th class="d-none">Año_Hidden</th>
+                        <th class="d-none">Mes_Hidden</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- Registros 2026 --}}
                     <tr>
                         <td>1</td>
                         <td><a href="#" class="text-decoration-none fw-bold" style="color: #4f5fbd;">SP-01/2026</a></td>
@@ -127,7 +135,6 @@
                         <td class="d-none">2026</td>
                         <td class="d-none">ENERO</td>
                     </tr>
-                    {{-- Registros 2025 --}}
                     <tr>
                         <td>3</td>
                         <td><a href="#" class="text-decoration-none fw-bold" style="color: #4f5fbd;">SP-02/2025</a></td>
@@ -138,17 +145,6 @@
                         <td>PERSONA FÍSICA</td>
                         <td class="d-none">2025</td>
                         <td class="d-none">FEBRERO</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><a href="#" class="text-decoration-none fw-bold" style="color: #4f5fbd;">SP-03/2025</a></td>
-                        <td>ARIEL ALEJANDRO RIVERO</td>
-                        <td>SABGOB</td>
-                        <td class="text-center"><span class="badge bg-light-danger text-danger px-3">PECULADO</span></td>
-                        <td>INHABILITACIÓN</td>
-                        <td>PERSONA FÍSICA</td>
-                        <td class="d-none">2025</td>
-                        <td class="d-none">MARZO</td>
                     </tr>
                 </tbody>
             </table>
@@ -164,55 +160,53 @@
 
 <script>
 $(document).ready(function () {
-    // 1. Inicializar DataTable
+    
+    // 1. Inicialización de la tabla con los parámetros de la plantilla
     var table = $('#tablaSancionados').DataTable({
         responsive: true,
-        pageLength: 5,
-        dom: 'rtip', 
+        pageLength: 10,
+        dom: 'rtip', // Mantiene solo tabla, info y paginación
         language: {
             url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
-        }
+        },
+        columnDefs: [
+            { orderable: false, targets: [4] } // Desactiva orden en columna de badges si se prefiere
+        ]
     });
 
-    // 2. Buscador en tiempo real
+    // 2. Buscador Manual Vinculado
     $('#inputBusquedaReal').on('keyup', function () {
         table.search(this.value).draw();
     });
 
-    // 3. Lógica de filtrado personalizada
+    // 3. Lógica de Filtrado por Año y Mes (Columnas ocultas 7 y 8)
     $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
-        var filtroEj = $('#filtroEjercicio').val();
-        var filtroPe = $('#filtroPeriodo').val();
+        var filtroAnio = $('#filtroEjercicio').val();
+        var filtroMes = $('#filtroPeriodo').val();
         
-        var dataEj = data[7]; // Columna Año (oculta)
-        var dataPe = data[8]; // Columna Mes (oculta)
+        var colAnio = data[7] || ""; 
+        var colMes = data[8] || ""; 
 
-        if (
-            (filtroEj === "" || dataEj === filtroEj) &&
-            (filtroPe === "" || dataPe === filtroPe)
-        ) {
-            return true;
-        }
-        return false;
+        var matchAnio = (filtroAnio === "" || colAnio === filtroAnio);
+        var matchMes = (filtroMes === "" || colMes === filtroMes);
+
+        return matchAnio && matchMes;
     });
 
-    // 4. Botón Buscar
+    // 4. Botón Buscar - Redibuja aplicando los filtros del search.push
     $('#btnBuscar').on('click', function() {
         table.draw();
     });
 
-    // 5. Botón Borrar Filtros
+    // 5. Botón Limpiar - Resetea los campos y la tabla
     $('#btnLimpiar').on('click', function() {
-        // Resetear controles
-        $('#filtroEjercicio').val('2026'); // Vuelve al año actual
-        $('#filtroPeriodo').val('');      // Limpia el mes
-        $('#inputBusquedaReal').val('');  // Limpia el buscador
-        
-        // Limpiar búsqueda interna y redibujar
-        table.search('').draw();
+        $('#filtroEjercicio').val(''); 
+        $('#filtroPeriodo').val(''); 
+        $('#inputBusquedaReal').val('');
+        table.search('').draw(); 
     });
     
-    // Ejecutar filtro inicial al cargar (opcional)
+    // Draw inicial para aplicar el filtro de "2026" por defecto
     table.draw();
 });
 </script>
