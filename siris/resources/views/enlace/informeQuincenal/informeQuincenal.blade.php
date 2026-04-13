@@ -78,7 +78,7 @@
                     <h2 class="fw-bold text-dark mb-0">Detalle de Faltas</h2>
                     <p class="text-muted mb-0 small" id="periodo-tabla"></p>
                 </div>
-                <button class="btn btn-outline-secondary px-3" onclick="regresarAlInicio()">
+                <button class="btn btn-outline-danger px-3" onclick="regresarAlInicio()">
                     <i class="bi bi-arrow-left me-1"></i> Cancelar informe
                 </button>
             </div>
@@ -112,13 +112,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($periodos as $p)
                                 <tr>
-                                    <td class="ps-4 fw-bold text-dark text-nowrap">PME-01/2026</td>
-                                    <td class="text-dark">Juan Pérez López</td>
-                                    <td class="text-dark">PELJ809858HRT</td>
-                                    <td class="text-dark">Peculado</td>
-                                    <td class="text-end pe-4 text-muted">Inhabilitación</td>
+                                    <td class="ps-4 fw-bold text-dark text-nowrap">{{ $p['expediente'] }}</td>
+                                    <td class="text-dark">{{ $p['nombre'] }}</td>
+                                    
+                                    <td>
+                                        <span class="badge border text-dark fw-medium px-2 py-1" style="background-color: #f8f9fa;">
+                                            {{ $p['curp'] }}
+                                        </span>
+                                    </td>
+                                    
+                                    <td>
+                                        <span class="badge bg-light text-primary border border-primary-subtle px-2 py-1">
+                                            {{ $p['falta'] }}
+                                        </span>
+                                    </td>
+                                    
+                                    <td class="text-end pe-4 text-muted">{{ $p['sancion'] }}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
