@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="col-md-9 form-group">
                                             <input type="password" id="current_password" class="form-control" name="current_password"
-                                                placeholder="Ingrese su contraseña actual">
+                                                placeholder="Ingrese su contraseña actual" required>
                                             @error('current_password', 'updatePassword')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="col-md-9 form-group">
                                             <input type="password" id="password" class="form-control" name="password"
-                                                placeholder="Ingrese la nueva contraseña">
+                                                placeholder="Ingrese la nueva contraseña" required>
                                             @error('password', 'updatePassword')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -59,14 +59,17 @@
                                         </div>
                                         <div class="col-md-9 form-group">
                                             <input type="password" id="password_confirmation" class="form-control" name="password_confirmation"
-                                                placeholder="Confirme la nueva contraseña">
+                                                placeholder="Confirme la nueva contraseña" required>
                                         </div>
 
-                                        <div class="col-sm-12 d-flex justify-content-end mt-3">
-                                            <button type="submit" class="btn btn-success me-1 mb-1 btn-sm">Actualizar</button>
-                                            <button type="reset" class="btn btn-warning me-1 mb-1 btn-sm">Limpiar</button>
+                                        <div class="col-sm-12 d-flex justify-content-center mt-3">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1 btn-sm" style="width: 120px;">
+                                                <i class="bi bi-pencil-square"></i> Actualizar
+                                            </button>
+                                            <a href="{{ route('panel-informativo') }}" class="btn btn-danger mb-1 btn-sm" style="width: 120px;">
+                                                <i class="bi bi-x-circle-fill"></i> Cancelar
+                                            </a>
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </form>

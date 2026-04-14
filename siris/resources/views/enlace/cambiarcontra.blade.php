@@ -62,9 +62,13 @@
                                                 placeholder="Confirme la nueva contraseña">
                                         </div>
 
-                                        <div class="col-sm-12 d-flex justify-content-end mt-3">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Actualizar</button>
-                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Limpiar</button>
+                                        <div class="col-sm-12 d-flex justify-content-center mt-3">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1 btn-sm" style="width: 120px;">
+                                                <i class="bi bi-pencil-square"></i> Actualizar
+                                            </button>
+                                            <a href="{{ route('enlace.panel_informativo') }}" class="btn btn-danger mb-1 btn-sm" style="width: 120px;">
+                                                <i class="bi bi-x-circle-fill"></i> Cancelar
+                                            </a>
                                         </div>
                                         
                                     </div>
