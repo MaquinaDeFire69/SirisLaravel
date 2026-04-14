@@ -30,14 +30,14 @@
                     <div class="card-body p-0 d-flex flex-column text-center">
                         <div class="bg-danger p-4 text-white">
                             <i class="bi bi-clock-history" style="font-size: 2.5rem;"></i>
-                            <h5 class="text-white mt-2 mb-0 fw-bold">Pendiente de Envío</h5>
+                            <h5 class="text-white mt-2 mb-0 fw-bold">Pendiente de envío</h5>
                         </div>
                         <div id="contenido-atrasado" class="p-5 flex-grow-1 d-flex flex-column justify-content-center">
                             <p class="text-muted mb-1 small text-uppercase fw-semibold">Periodo correspondiente</p>
                             <h4 class="fw-bold text-dark mb-4">01 al 15 Febrero, 2026</h4>
                             <button id="btn-a" class="btn btn-danger btn-lg rounded-pill shadow-sm py-3 fw-bold btn-animate" 
                                     onclick="mostrarTablas('atrasado', '01 al 15 Feb 2026')">
-                                <i class="bi bi-pencil-square me-2"></i> INICIAR REPORTE
+                                <i class="bi bi-pencil-square me-2"></i> Iniciar reporte
                             </button>
                         </div>
                         <div id="a-vacio" class="p-5 d-none">
@@ -53,14 +53,14 @@
                     <div class="card-body p-0 d-flex flex-column text-center">
                         <div class="bg-primary p-4 text-white">
                             <i class="bi bi-calendar-check" style="font-size: 2.5rem;"></i>
-                            <h5 class="text-white mt-2 mb-0 fw-bold">Periodo Vigente</h5>
+                            <h5 class="text-white mt-2 mb-0 fw-bold">Periodo vigente</h5>
                         </div>
                         <div id="contenido-vigente" class="p-5 flex-grow-1 d-flex flex-column justify-content-center">
                             <p class="text-muted mb-1 small text-uppercase fw-semibold">Próximo cierre</p>
                             <h4 class="fw-bold text-dark mb-4">16 al 28 Febrero, 2026</h4>
                             <button id="btn-v" class="btn btn-light-secondary disabled btn-lg rounded-pill py-3 fw-bold btn-animate" 
                                     onclick="mostrarTablas('vigente', '16 al 28 Feb 2026')">
-                                <i class="bi bi-lock-fill me-2"></i> ESPERAR CIERRE
+                                <i class="bi bi-lock-fill me-2"></i> Envio pendiente
                             </button>
                         </div>
                         <div id="v-vacio" class="p-5 d-none">
@@ -148,7 +148,7 @@
                 <button class="btn btn-lg px-5 rounded-pill shadow py-3 fw-bold btn-animate" 
                         style="background-color: #435ebe; border-color: #435ebe; color: white;"
                         onclick="enviarInforme()">
-                    <i class="bi bi-send-check me-2"></i> Finalizar y Enviar Reporte
+                    <i class="bi bi-send-check me-2"></i> Finalizar y enviar reporte
                 </button>
             </div>
         </div>
