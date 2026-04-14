@@ -33,7 +33,7 @@
                                     <div class="row">
                                         
                                         <div class="col-md-3">
-                                            <label for="current_password">Contraseña actual</label>
+                                            <label for="current_password">Contraseña actual <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-md-9 form-group">
                                             <input type="password" id="current_password" class="form-control" name="current_password"
@@ -44,7 +44,7 @@
                                         </div>
 
                                         <div class="col-md-3">
-                                            <label for="password">Nueva contraseña</label>
+                                            <label for="password">Nueva contraseña <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-md-9 form-group">
                                             <input type="password" id="password" class="form-control" name="password"
@@ -55,7 +55,7 @@
                                         </div>
 
                                         <div class="col-md-3">
-                                            <label for="password_confirmation">Confirmar contraseña</label>
+                                            <label for="password_confirmation">Confirmar contraseña <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-md-9 form-group">
                                             <input type="password" id="password_confirmation" class="form-control" name="password_confirmation"
