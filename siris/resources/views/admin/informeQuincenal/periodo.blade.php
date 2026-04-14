@@ -15,7 +15,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-8 order-md-1 order-last">
-                <h3>Entes públicos proveedores de información</h3>
+                <h3>Periodo informado</h3>
                 <p class="text-subtitle text-muted">
                     El presente apartado visualiza la información del estatus de cumplimiento de un ente público en un periodo de entrega
                 </p>
@@ -24,7 +24,7 @@
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('panel-informativo') }}">Informe quincenal</a>
+                            <a href="">Informe quincenal</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Periodo Informado</li>
                     </ol>
@@ -122,21 +122,26 @@
                         </thead>
                         <tbody>
                             @foreach($entes as $index => $ente)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $ente['nombre'] }}</td>
-                                    <td>{{ $ente['registros'] }}</td>
-                                    <td>{{ $ente['fecha'] }}</td>
-                                    <td>
+                                <tr class="fs-6">
+                                    <td align="center"><small>{{ $index + 1 }}</small></td>
+                                    <td align="center"><small>{{ $ente['nombre'] }}</small></td>
+                                    <td align="center"><small>{{ $ente['registros'] }}</small></td>
+                                    <td align="center"><small>{{ $ente['fecha'] }}</small></td>
+                                    <td align="center">
                                         <span class="badge {{ $ente['estatus'] == 'Normal' ? 'bg-success' : 'bg-warning' }}">
-                                            {{ $ente['estatus'] }}
+                                            <small>
+                                                {{ $ente['estatus'] }}
+                                            </small>
                                         </span>
                                     </td>
-                                    <td>
-                                        <a href="#" class="btn btn-outline-primary">
-                                            <i class="bi bi-download"></i> Descargar acuse
-                                        </a>
+                                    <td align="center">
+                                        <a href="#" class="btn btn-outline-primary btn-sm">
+                                            <small>
+                                                <i class="bi bi-download"></i> Descargar acuse
+                                            </small>
+                                        </a>    
                                     </td>
+                                    
                                 </tr>
                             @endforeach
                         </tbody>
@@ -144,7 +149,7 @@
                 </div>
 
                 <div class="text-center mt-3">
-                    <a href="#" class="btn btn-outline-primary">
+                    <a href="#" class="btn btn-primary btn-sm">
                         <i class="bi bi-file-earmark-pdf"></i>
                         Exportar a PDF la información del Periodo
                     </a>

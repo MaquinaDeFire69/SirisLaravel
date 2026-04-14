@@ -16,7 +16,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
-            <h3>Entes públicos proveedores de información</h3>
+            <h3>Entes públicos</h3>
             <p class="text-subtitle text-muted">
                 El presente apartado visualiza la información del estatus de cumplimiento de un ente público proveedor de información
             </p>
@@ -25,7 +25,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('panel-informativo') }}">Informe quincenal</a>
+                        <a href="">Informe quincenal</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Entes públicos</li>
                 </ol>
@@ -42,6 +42,8 @@
     <section class="basic-choices">
         <div class="card">
             <div class="card-body">
+
+                <p><strong>Seleccione filtros de búsqueda</strong></p>
 
                 <div class="row mb-3">
                     <div class="col-md-6">
@@ -67,7 +69,7 @@
 
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <h6>* Ente público proveedor de información</h6>
+                        <h6><span class="text-danger">*</span> Ente público proveedor de información</h6>
                         <select class="form-select text-dark fw-bold" name="proveedor">
                             <option value="">Seleccionar ente público</option>
                             @foreach($proveedores as $prov)
@@ -81,12 +83,12 @@
 
                 <div class="row mt-3 justify-content-center">
                     <div class="col-md-6 mb-2">
-                        <button class="btn btn-outline-primary">
-                            <i class="bi bi-check-circle me-2"></i>
+                        <button class="btn btn-primary btn-sm">
+                            <i class="bi bi-check-circle-fill me-2"></i>
                             Generar informe quincenal
                         </button>
                    
-                        <button class="btn btn-outline-primary">
+                        <button class="btn btn-primary btn-sm">
                             <i class="bi bi-eraser me-2"></i>
                             Limpiar filtros de búsqueda
                         </button>
@@ -140,21 +142,25 @@
 
                         <tbody>
                             @foreach($informes as $index => $inf)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ $inf['periodo'] }}</td>
-                                <td>{{ $inf['registros'] }}</td>
-                                <td>{{ $inf['fecha'] }}</td>
-                                <td>
-                                    <span class="badge 
-                                        {{ $inf['estatus'] == 'Normal' ? 'bg-success' : 'bg-warning' }}">
-                                        {{ $inf['estatus'] }}
-                                    </span>
+                            <tr class="fs-6">
+                                <td align="center"><small>{{ $index + 1 }}</small></td>
+                                <td align="center"><small>{{ $inf['periodo'] }}</small></td>
+                                <td align="center"><small>{{ $inf['registros'] }}</small></td>
+                                <td align="center"><small>{{ $inf['fecha'] }}</small></td>
+                                <td align="center">
+                                    <small>
+                                        <span class="badge 
+                                            {{ $inf['estatus'] == 'Normal' ? 'bg-success' : 'bg-warning' }}">
+                                            {{ $inf['estatus'] }}
+                                        </span>
+                                    </small>
                                 </td>
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">
-                                        <i class="bi bi-download"></i> Descargar acuse
-                                    </a>
+                                <td align="center">
+                                    <small>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-download"></i> Descargar acuse
+                                        </a>
+                                    </small>
                                 </td>
                             </tr>
                             @endforeach
@@ -164,7 +170,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <a href="#" class="btn btn-outline-primary">
+                    <a href="#" class="btn btn-primary btn-sm">
                         <i class="bi bi-file-earmark-pdf"></i>
                         Exportar a PDF la información del Periodo
                     </a>

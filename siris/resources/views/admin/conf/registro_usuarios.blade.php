@@ -20,6 +20,17 @@
                 El presente apartado visualiza la información de los usuarios disponibles
             </p>
         </div>
+
+        <div class="col-12 col-md-4 order-md-2 order-first">
+            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="">Configuración</a>
+                    </li>
+                    <li class="breadcrumb-item active">Usuarios</li>
+                </ol>
+            </nav>
+        </div>
     </div>
 </div>
 
@@ -51,15 +62,15 @@
 
                     <tbody>
                         @foreach($registros_usuarios as $index => $usuario)
-                        <tr>
-                            <td>{{ $index + 1 }}</td>
-                            <td>{{ $usuario['nombre'] }}</td>
-                            <td>{{ $usuario['ente'] }}</td>
-                            <td>{{ $usuario['correo'] }}</td>
-                            <td>{{ $usuario['tipo'] }}</td>
-                            <td>
+                        <tr class="fs-6">
+                            <td align="center"><small>{{ $index + 1 }}</small></td>
+                            <td align="center"><small>{{ $usuario['nombre'] }}</small></td>
+                            <td align="center"><small>{{ $usuario['ente'] }}</small></td>
+                            <td align="center"><small>{{ $usuario['correo'] }}</small></td>
+                            <td align="center"><small>{{ $usuario['tipo'] }}</small></td>
+                            <td align="center">
                                 <span class="badge {{ $usuario['estatus'] == 'ACTIVO' ? 'bg-success' : 'bg-danger' }}">
-                                    {{ $usuario['estatus'] }}
+                                    <small>{{ $usuario['estatus'] }}</small>
                                 </span>
                             </td>
                         </tr>

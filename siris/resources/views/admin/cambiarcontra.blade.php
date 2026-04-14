@@ -63,8 +63,8 @@
                                         </div>
 
                                         <div class="col-sm-12 d-flex justify-content-end mt-3">
-                                            <button type="submit" class="btn btn-outline-primary me-1 mb-1">Actualizar</button>
-                                            <button type="reset" class="btn btn-outline-primary me-1 mb-1">Limpiar</button>
+                                            <button type="submit" class="btn btn-success me-1 mb-1 btn-sm">Actualizar</button>
+                                            <button type="reset" class="btn btn-warning me-1 mb-1 btn-sm">Limpiar</button>
                                         </div>
                                         
                                     </div>

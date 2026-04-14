@@ -17,8 +17,10 @@
         <div class="col-12 col-md-4 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Sancionados</a></li>
-                    <li class="breadcrumb-item text-warning fw-bold active" aria-current="page">Expediente</li>
+                    <li class="breadcrumb-item">
+                        <a href="">Sancionados</a>
+                    </li>
+                    <li class="breadcrumb-item active">Expediente</li>
                 </ol>
             </nav>
         </div>
@@ -36,7 +38,7 @@
             {{-- SECCIÓN: DATOS GENERALES --}}
             <div class="bg-secondary bg-opacity-25 text-dark p-2 mb-3 fw-bold">
                 Datos generales del sancionado 
-                <span class="badge bg-danger ms-2" title="ID dinámico recibido de la ruta">ID BD: {{ $id ?? 'N/A' }}</span>
+                <span class="badge bg-success ms-2" title="ID dinámico recibido de la ruta">ID BD: {{ $id ?? 'N/A' }}</span>
             </div>
             
             <div class="row mb-4 px-2">
@@ -116,9 +118,9 @@
                 <div class="col-12">
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <thead class="bg-primary text-white">
+                            <thead class="bg-secondary bg-opacity-10">
                                 <tr>
-                                    <th>Sanción</th>
+                                    <th><strong class="text-dark">Sanción</strong></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -138,11 +140,11 @@
             {{-- BOTONES INFERIORES --}}
             <div class="text-center mt-5 mb-2">
                 {{-- Nota: Asumo que la ruta sancionados.sancionados ya existe por tu compañero --}}
-                <a href="{{ route('sancionados.sancionados') }}" class="btn btn-outline-secondary me-3 fw-bold text-dark">
-                    <i class="bi bi-arrow-left-circle" style="color: #4a148c;"></i> Regresar al listado de sancionados
+                <a href="{{ route('sancionados.sancionados') }}" type="submit" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-arrow-left"></i> Regresar al listado de sancionados
                 </a>
-                <button class="btn btn-outline-secondary fw-bold text-dark">
-                    <i class="bi bi-file-earmark-pdf" style="color: #4a148c;"></i> Exportar a PDF la información del expediente
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="bi bi-file-earmark-pdf"></i> Exportar a PDF la información del expediente
                 </button>
             </div>
 

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\admin\conf;
+namespace App\Http\Controllers\Admin\Conf;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 class PlazoInformeController extends Controller
 {
     public function index()
@@ -15,5 +16,29 @@ class PlazoInformeController extends Controller
         ];
 
         return view('admin.conf.plazo_informe', compact('plazos'));
+    }
+
+    public function actualizar(Request $request)
+    {
+        $errores = [];
+
+        if(!$request->anio)
+            $errores[] = "Año de aplicación";
+
+        if(!$request->dias)
+            $errores[] = "Plazo en días";
+
+        if(!$request->estatus)
+            $errores[] = "Estatus";
+
+        if(count($errores) > 0){
+            return back()
+                ->withInput()
+                ->with('error_campos', $errores);
+        }
+
+        return redirect()
+            ->route('conf.plazo_informe')
+            ->with('success', 'Plazo actualizado correctamente');
     }
 }
