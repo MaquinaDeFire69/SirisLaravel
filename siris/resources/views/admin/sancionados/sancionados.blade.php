@@ -72,7 +72,7 @@
 
                     <div class="row mb-3">
                         <div class="col-12">
-                            <h6><span class="text-danger">*</span>Entes públicos proveedores</h6>
+                            <h6><span class="text-danger">*</span> Entes públicos proveedores</h6>
                             <select name="ente" class="form-select text-dark fw-bold">
                                 <option value="">Seleccione...</option>
                                 @foreach($entes as $ente)

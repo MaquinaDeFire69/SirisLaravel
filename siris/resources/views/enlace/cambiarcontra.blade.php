@@ -47,7 +47,7 @@
                                     <div class="row">
                                         
                                         <div class="col-12 form-group mb-3">
-                                            <label for="current_password" class="form-label">Contraseña actual <span class="text-danger">*</span></label>
+                                            <label for="current_password" class="form-label"> <span class="text-danger">*</span> Contraseña actual</label>
                                             <input type="password" id="current_password" class="form-control" name="current_password"
                                                 placeholder="Ingrese su contraseña actual" required>
                                             @error('current_password', 'updatePassword')
@@ -56,7 +56,7 @@
                                         </div>
 
                                         <div class="col-12 form-group mb-3">
-                                            <label for="password" class="form-label">Nueva contraseña <span class="text-danger">*</span></label>
+                                            <label for="password" class="form-label"> <span class="text-danger">*</span> Nueva contraseña</label>
                                             <input type="password" id="password" class="form-control" name="password"
                                                 placeholder="Ingrese la nueva contraseña" required>
                                             @error('password', 'updatePassword')
@@ -65,7 +65,7 @@
                                         </div>
 
                                         <div class="col-12 form-group mb-3">
-                                            <label for="password_confirmation" class="form-label">Confirmar contraseña <span class="text-danger">*</span></label>
+                                            <label for="password_confirmation" class="form-label"> <span class="text-danger">*</span> Confirmar contraseña</label>
                                             <input type="password" id="password_confirmation" class="form-control" name="password_confirmation"
                                                 placeholder="Confirme la nueva contraseña" required>
                                         </div>
