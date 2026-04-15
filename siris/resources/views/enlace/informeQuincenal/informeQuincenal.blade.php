@@ -78,7 +78,7 @@
                     <h2 class="fw-bold text-dark mb-0">Detalle de Faltas</h2>
                     <p class="text-muted mb-0 small" id="periodo-tabla"></p>
                 </div>
-                <button class="btn btn-danger px-3" onclick="regresarAlInicio()">
+                <button class="btn btn-secondary px-3" onclick="regresarAlInicio()">
                     <i class="bi bi-arrow-left me-1"></i> Cancelar informe
                 </button>
             </div>
