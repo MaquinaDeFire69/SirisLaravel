@@ -18,7 +18,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="">Sancionados</a>
+                        <a href="{{ route('sancionados.sancionados') }}">Sancionados</a>
                     </li>
                     <li class="breadcrumb-item active">Expediente</li>
                 </ol>
@@ -38,7 +38,7 @@
             {{-- SECCIÓN: DATOS GENERALES --}}
             <div class="bg-secondary bg-opacity-25 text-dark p-2 mb-3 fw-bold">
                 Datos generales del sancionado 
-                <span class="badge bg-success ms-2" title="ID dinámico recibido de la ruta">ID BD: {{ $id ?? 'N/A' }}</span>
+                <span class="badge bg-success ms-2">ID BD: {{ $id ?? 'N/A' }}</span>
             </div>
             
             <div class="row mb-4 px-2">
@@ -97,16 +97,6 @@
                 <div class="col-md-3 mb-3">
                     <strong>Fecha Fin Inhabilitación:</strong> {{ $datosExpediente['fecha_fin_inhab'] }}
                 </div>
-
-                <div class="col-md-4 mb-2">
-                    <strong>Años de Inhabilitación:</strong> {{ $datosExpediente['anios'] }}
-                </div>
-                <div class="col-md-4 mb-2">
-                    <strong>Meses de Inhabilitación:</strong> N/A
-                </div>
-                <div class="col-md-4 mb-2">
-                    <strong>Días de Inhabilitación:</strong> N/A
-                </div>
             </div>
 
             {{-- SECCIÓN: SANCIONES APLICADAS --}}
@@ -114,37 +104,32 @@
                 Sanciones aplicadas:
             </div>
 
-            <div class="row px-2 mb-4">
+            <div class="row px-4 mb-4">
                 <div class="col-12">
-                    <div class="table-responsive">
-                        <table class="table table-bordered mb-0">
-                            <thead class="bg-secondary bg-opacity-10">
-                                <tr>
-                                    <th><strong class="text-dark">Sanción</strong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($datosExpediente['sanciones'] as $index => $sancion)
-                                <tr>
-                                    <td class="bg-secondary {{ $index % 2 == 0 ? 'bg-opacity-10' : 'bg-opacity-25' }}">
-                                        <strong class="text-dark">{{ $sancion }}</strong>
-                                    </td>                                
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    <ul class="list-group list-group-flush">
+                        @forelse($datosExpediente['sanciones'] as $sancion)
+                            {{-- Usamos align-items-start para que el icono se quede arriba si el texto es largo --}}
+                            <li class="list-group-item d-flex align-items-start border-0 px-0 py-1">
+                                {{-- El icono tiene un pequeño margen superior (mt-1) para nivelarse con la primera línea de texto --}}
+                                <i class="bi bi-caret-right-fill text-primary me-2 mt-1" style="font-size: 0.8rem;"></i>
+                                <span class="text-dark fw-bold" style="line-height: 1.5;">
+                                    {{ $sancion }}
+                                </span>
+                            </li>
+                        @empty
+                            <li class="list-group-item text-muted border-0">No hay sanciones registradas.</li>
+                        @endforelse
+                    </ul>
                 </div>
             </div>
 
-            {{-- BOTONES INFERIORES --}}
+            {{-- BOTONES INFERIORES (MODIFICADO PARA MANTENER FILTROS) --}}
             <div class="text-center mt-5 mb-2">
-                {{-- Nota: Asumo que la ruta sancionados.sancionados ya existe por tu compañero --}}
-                <a href="{{ route('sancionados.sancionados') }}" type="submit" class="btn btn-secondary btn-sm">
+                <a href="{{ route('sancionados.sancionados', request()->except('id')) }}" class="btn btn-secondary btn-sm">
                     <i class="bi bi-arrow-left"></i> Regresar al listado de sancionados
                 </a>
-                <button type="submit" class="btn btn-primary btn-sm">
-                    <i class="bi bi-file-earmark-pdf"></i> Exportar a PDF la información del expediente
+                <button type="button" class="btn btn-primary btn-sm">
+                    <i class="bi bi-file-earmark-pdf"></i> Exportar a PDF
                 </button>
             </div>
 

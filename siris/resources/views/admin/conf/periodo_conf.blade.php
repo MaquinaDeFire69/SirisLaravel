@@ -78,7 +78,7 @@
                                         data-inicio="{{ $p['inicio'] }}"
                                         data-fin="{{ $p['fin'] }}"
                                     >
-                                       <small><i class="bi bi-pencil-square"></i> Actualizar</small>
+                                        <small><i class="bi bi-pencil-square"></i> Actualizar</small>
                                     </button>    
                                 </td>
                             </tr>
@@ -108,30 +108,30 @@
 
                     <div class="mb-3">
                         <label><span class="text-danger">*</span>Descripción del Periodo:</label>
-                        <input type="text" name="periodo" id="editPeriodo" class="form-control">
+                        <input type="text" name="periodo" id="editPeriodo" class="form-control" value="{{ old('periodo') }}">
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Inicio Periodo:</label>
-                            <input type="date" name="inicio" id="editInicio" class="form-control">
+                            <input type="date" name="inicio" id="editInicio" class="form-control" value="{{ old('inicio') }}">
                         </div>
 
                         <div class="col-md-6">
                             <label>Fin Periodo:</label>
-                            <input type="date" name="fin" id="editFin" class="form-control">
+                            <input type="date" name="fin" id="editFin" class="form-control" value="{{ old('fin') }}">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label><span class="text-danger">*</span>Inicio Reportes:</label>
-                            <input type="date" name="inicio_reportes" class="form-control">
+                            <input type="date" name="inicio_reportes" class="form-control" value="{{ old('inicio_reportes') }}">
                         </div>
 
                         <div class="col-md-6">
                             <label><span class="text-danger">*</span>Fin Reportes:</label>
-                            <input type="date" name="fin_reportes" class="form-control">
+                            <input type="date" name="fin_reportes" class="form-control" value="{{ old('fin_reportes') }}">
                         </div>
                     </div>
 
@@ -162,12 +162,18 @@
 <script>
 document.querySelectorAll('.btnEditar').forEach(btn => {
     btn.addEventListener('click', function() {
-
         document.getElementById('editPeriodo').value = this.dataset.periodo;
         document.getElementById('editInicio').value = this.dataset.inicio;
         document.getElementById('editFin').value = this.dataset.fin;
-
     });
+});
+
+// Abrir modal automáticamente si hay errores de validación
+document.addEventListener('DOMContentLoaded', function () {
+    @if(session('error_campos'))
+        var modalEditar = new bootstrap.Modal(document.getElementById('modalEditar'));
+        modalEditar.show();
+    @endif
 });
 
 $(document).ready(function () {
