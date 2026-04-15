@@ -16,7 +16,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
-            <h3>Entes públicos</h3>
+            <h3>Informe quincenal</h3>
             <p class="text-subtitle text-muted">
                 El presente apartado visualiza la información del estatus de cumplimiento de un ente público proveedor de información
             </p>
@@ -24,9 +24,6 @@
         <div class="col-12 col-md-4 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="">Informe quincenal</a>
-                    </li>
                     <li class="breadcrumb-item active" aria-current="page">Entes públicos</li>
                 </ol>
             </nav>
