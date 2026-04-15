@@ -78,7 +78,7 @@
                     <h2 class="fw-bold text-dark mb-0">Detalle de Faltas</h2>
                     <p class="text-muted mb-0 small" id="periodo-tabla"></p>
                 </div>
-                <button class="btn btn-outline-danger px-3" onclick="regresarAlInicio()">
+                <button class="btn btn-secondary px-3" onclick="regresarAlInicio()">
                     <i class="bi bi-arrow-left me-1"></i> Cancelar informe
                 </button>
             </div>
@@ -140,8 +140,8 @@
             @endforeach
 
             <div class="text-center pb-1 mt-3"> 
-                <div class="p-3 d-inline-block rounded-pill mb-3 px-4 shadow-sm" style="background-color: #e2e8f0; color: #475569;">
-                    <i class="bi bi-info-circle-fill me-2" style="color: #174877;"></i>
+                <div class="p-3 d-inline-block rounded-pill mb-3 px-4 shadow-sm" style="background-color: #fff3cd; color: #000000; border: 1px solid #ffeeba;">
+                    <i class="bi bi-exclamation-triangle-fill me-2" style="color: #ffc107;"></i>
                     <span class="small fw-bold">Por favor, revisa la información antes de realizar el envío definitivo</span>
                 </div>
                 <br>
