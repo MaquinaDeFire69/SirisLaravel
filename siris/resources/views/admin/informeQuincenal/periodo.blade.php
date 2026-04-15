@@ -42,7 +42,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h6>* Seleccione un periodo del informe</h6>
+                                    <h6> <span class="text-danger">*</span> Seleccione un periodo del informe</h6>
                                     <div class="form-group">
                                         <form method="GET" action="{{ route('informe.periodo') }}">
                                             <select name="periodo"
