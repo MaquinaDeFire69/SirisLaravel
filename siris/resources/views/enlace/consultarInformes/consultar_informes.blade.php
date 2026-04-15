@@ -24,8 +24,7 @@
         <div class="col-12 col-md-4 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a>Consultar</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Informe</li>
+                    <li class="breadcrumb-item"><a>Consultar informes</a></li>
                 </ol>
             </nav>
         </div>
@@ -65,12 +64,12 @@
 
                     <div class="row mt-4 justify-content-center">
                         <div class="col-md-6 mb-2 text-center">
-                            <button type="submit" class="btn btn-outline-primary me-2">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
                                 <i class="bi bi-search me-2"></i>
                                 Buscar
                             </button>
                         
-                            <a href="{{ url()->current() }}" class="btn btn-outline-primary">
+                            <a href="{{ url()->current() }}" class="btn btn-primary btn-sm">
                                 <i class="bi bi-arrow-counterclockwise me-2"></i>
                                 Limpiar filtros
                             </a>
@@ -103,27 +102,26 @@
                                 <th class="text-center">Acción</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             @foreach($informes as $informe)
-                            <tr>
-                                <td>{{ $informe['no'] }}</td>
-                                <td>{{ $informe['periodo'] }}</td>
-                                <td>{{ $informe['fecha'] }}</td>
+                            <tr class="fs-6">
+                                <td><small>{{ $informe['no'] }}</small></td>
+                                <td><small>{{ $informe['periodo'] }}</small></td>
+                                <td><small>{{ $informe['fecha'] }}</small></td>
                                 <td>
                                     @if($informe['estatus'] == 'Normal')
                                         <span class="badge bg-success">
-                                            NORMAL
+                                            <small>NORMAL</small>
                                         </span>
                                     @else
                                         <span class="badge bg-danger">
-                                            EXTEMPORÁNEO
+                                            <small>EXTEMPORÁNEO</small>
                                         </span>
                                     @endif
                                 </td>
                                 <td class="text-center">
                                     <button class="btn btn-outline-primary btn-sm" {{ $informe['estatus'] == 'Extemporaneo' ? 'disabled' : '' }}>
-                                        <i class="bi bi-download"></i> Acuse
+                                        <small><i class="bi bi-download"></i> Acuse</small>
                                     </button>
                                 </td>
                             </tr>

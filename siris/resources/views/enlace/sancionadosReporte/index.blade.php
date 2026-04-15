@@ -16,7 +16,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
-            <h3>Sancionados reporte</h3>
+            <h3>Sancionados</h3>
             <p class="text-subtitle text-muted">
                 El presente apartado muestra registros oficiales de sanciones correspondientes al periodo seleccionado.
             </p>
@@ -24,10 +24,7 @@
         <div class="col-12 col-md-4 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="#">Sancionados</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">Reporte</li>
+                    <li class="breadcrumb-item active" aria-current="page">Reportes</li>
                 </ol>
             </nav>
         </div>
@@ -73,12 +70,14 @@
 
                 <div class="row mt-3 justify-content-center">
                     <div class="col-md-6 mb-2 text-center">
-                        <button id="btnBuscar" class="btn btn-outline-primary me-2">
+                        <button id="btnBuscar" class="btn btn-primary me-2 btn-sm">
+                             <i class="bi bi-search me-2"></i>
+                             Buscar
                             <i class="bi bi-search me-2"></i>
                             Buscar
                         </button>
                     
-                        <button id="btnLimpiar" class="btn btn-outline-primary">
+                        <button id="btnLimpiar" class="btn btn-primary btn-sm">
                             <i class="bi bi-arrow-counterclockwise me-2"></i>
                             Limpiar filtros de búsqueda
                         </button>
@@ -117,50 +116,50 @@
 
                         <tbody>
                             {{-- Registros 2026 --}}
-                            <tr>
-                                <td>1</td>
-                                <td><a href="#" class="text-decoration-none fw-bold text-primary">SP-01/2026</a></td>
-                                <td>ARMANDO PADILLA SANCHEZ</td>
-                                <td>SABGOB</td>
-                                <td class="text-center"><span class="badge bg-danger">PECULADO</span></td>
-                                <td>INHABILITACIÓN</td>
-                                <td>PERSONA FÍSICA</td>
-                                <td class="d-none">2026</td>
-                                <td class="d-none">ENERO</td>
+                            <tr class="fs-6">
+                                <td><small>1</small></td>
+                                <td><small><a href="#" class="text-decoration-none fw-bold text-primary">SP-01/2026</a></small></td>
+                                <td><small>ARMANDO PADILLA SANCHEZ</small></td>
+                                <td><small>SABGOB</small></td>
+                                <td class="text-center"><span class="badge bg-danger"><small>PECULADO</small></span></td>
+                                <td><small>INHABILITACIÓN</small></td>
+                                <td><small>PERSONA FÍSICA</small></td>
+                                <td class="d-none"><small>2026</small></td>
+                                <td class="d-none"><small>ENERO</small></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><a href="#" class="text-decoration-none fw-bold text-primary">SP-05/2026</a></td>
-                                <td>MARIA ELENA LOPEZ</td>
-                                <td>MUNICIPIO</td>
-                                <td class="text-center"><span class="badge bg-danger">PECULADO</span></td>
-                                <td>INHABILITACIÓN</td>
-                                <td>PERSONA FÍSICA</td>
-                                <td class="d-none">2026</td>
-                                <td class="d-none">ENERO</td>
+                            <tr class="fs-6">
+                                <td><small>2</small></td>
+                                <td><small><a href="#" class="text-decoration-none fw-bold text-primary">SP-05/2026</a></small></td>
+                                <td><small>MARIA ELENA LOPEZ</small></td>
+                                <td><small>MUNICIPIO</small></td>
+                                <td class="text-center"><span class="badge bg-danger"><small>PECULADO</small></span></td>
+                                <td><small>INHABILITACIÓN</small></td>
+                                <td><small>PERSONA FÍSICA</small></td>
+                                <td class="d-none"><small>2026</small></td>
+                                <td class="d-none"><small>ENERO</small></td>
                             </tr>
                             {{-- Registros 2025 --}}
-                            <tr>
-                                <td>3</td>
-                                <td><a href="#" class="text-decoration-none fw-bold text-primary">SP-02/2025</a></td>
-                                <td>JAVIER ARTURO RANGEL</td>
-                                <td>SABGOB</td>
-                                <td class="text-center"><span class="badge bg-danger">COHECHO</span></td>
-                                <td>ECONÓMICA</td>
-                                <td>PERSONA FÍSICA</td>
-                                <td class="d-none">2025</td>
-                                <td class="d-none">FEBRERO</td>
+                            <tr class="fs-6">
+                                <td><small>3</small></td>
+                                <td><small><a href="#" class="text-decoration-none fw-bold text-primary">SP-02/2025</a></small></td>
+                                <td><small>JAVIER ARTURO RANGEL</small></td>
+                                <td><small>SABGOB</small></td>
+                                <td class="text-center"><span class="badge bg-danger"><small>COHECHO</small></span></td>
+                                <td><small>ECONÓMICA</small></td>
+                                <td><small>PERSONA FÍSICA</small></td>
+                                <td class="d-none"><small>2025</small></td>
+                                <td class="d-none"><small>FEBRERO</small></td>
                             </tr>
-                            <tr>
-                                <td>4</td>
-                                <td><a href="#" class="text-decoration-none fw-bold text-primary">SP-03/2025</a></td>
-                                <td>ARIEL ALEJANDRO RIVERO</td>
-                                <td>SABGOB</td>
-                                <td class="text-center"><span class="badge bg-danger">PECULADO</span></td>
-                                <td>INHABILITACIÓN</td>
-                                <td>PERSONA FÍSICA</td>
-                                <td class="d-none">2025</td>
-                                <td class="d-none">MARZO</td>
+                            <tr class="fs-6">
+                                <td><small>4</small></td>
+                                <td><small><a href="#" class="text-decoration-none fw-bold text-primary">SP-03/2025</a></small></td>
+                                <td><small>ARIEL ALEJANDRO RIVERO</small></td>
+                                <td><small>SABGOB</small></td>
+                                <td class="text-center"><span class="badge bg-danger"><small>PECULADO</small></span></td>
+                                <td><small>INHABILITACIÓN</small></td>
+                                <td><small>PERSONA FÍSICA</small></td>
+                                <td class="d-none"><small>2025</small></td>
+                                <td class="d-none"><small>MARZO</small></td>
                             </tr>
                         </tbody>
                     </table>
