@@ -71,8 +71,6 @@
                 <div class="row mt-3 justify-content-center">
                     <div class="col-md-6 mb-2 text-center">
                         <button id="btnBuscar" class="btn btn-primary me-2 btn-sm">
-                             <i class="bi bi-search me-2"></i>
-                             Buscar
                             <i class="bi bi-search me-2"></i>
                             Buscar
                         </button>
@@ -178,4 +176,52 @@
 'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.js',
 'resources/dist/assets/static/js/pages/sweetalert2.js',
 ])
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnBuscar = document.getElementById('btnBuscar');
+        const btnLimpiar = document.getElementById('btnLimpiar');
+        const filtroEjercicio = document.getElementById('filtroEjercicio');
+        const filtroPeriodo = document.getElementById('filtroPeriodo');
+        const inputBusqueda = document.getElementById('inputBusquedaReal');
+        const filas = document.querySelectorAll('#table1 tbody tr');
+
+        function filtrar() {
+            const valEjercicio = filtroEjercicio.value;
+            const valPeriodo = filtroPeriodo.value;
+            const valBusqueda = inputBusqueda.value.toLowerCase().trim();
+
+            filas.forEach(fila => {
+                const textoExpediente = fila.cells[1].textContent.toLowerCase();
+                const textoNombre = fila.cells[2].textContent.toLowerCase();
+                const textoAnio = fila.cells[7].textContent.trim();
+                const textoMes = fila.cells[8].textContent.trim();
+
+                const coincideAnio = valEjercicio === "" || textoAnio === valEjercicio;
+                const coincideMes = valPeriodo === "" || textoMes === valPeriodo;
+                const coincideBusqueda = valBusqueda === "" || 
+                                        textoExpediente.includes(valBusqueda) || 
+                                        textoNombre.includes(valBusqueda);
+
+                if (coincideAnio && coincideMes && coincideBusqueda) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            });
+        }
+
+        btnBuscar.addEventListener('click', filtrar);
+
+        btnLimpiar.addEventListener('click', function() {
+            filtroEjercicio.value = "";
+            filtroPeriodo.value = "";
+            inputBusqueda.value = "";
+            // Mostramos todas las filas
+            filas.forEach(fila => fila.style.display = "");
+        });
+
+        filtrar();
+    });
+</script>
 @endsection

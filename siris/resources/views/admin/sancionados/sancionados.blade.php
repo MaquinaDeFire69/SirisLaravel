@@ -87,10 +87,10 @@
                         </div>
                     </div>
 
-                    <div class="row mt-3 justify-content-center">
-                        <div class="col-md-6 mb-2">
+                    <div class="row mt-4">
+                        <div class="col-12 d-flex justify-content-center gap-2">
                             <button type="submit" class="btn btn-primary btn-sm">
-                                <i class="bi bi-search me-2 btn-sm"></i>
+                                <i class="bi bi-search me-2"></i>
                                 Buscar sancionados
                             </button>
                             <button type="button" onclick="limpiarFiltros()" class="btn btn-primary btn-sm">

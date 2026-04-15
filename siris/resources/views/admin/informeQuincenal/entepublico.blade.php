@@ -48,7 +48,7 @@
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <h6>Año</h6>
-                        <select class="form-select text-dark fw-bold" name="anio">
+                        <select class="form-select text-dark fw-bold" name="anio" id="filtroAnio">
                             <option value="">Seleccionar año</option>
                             @foreach($anios as $anio)
                                 <option value="{{ $anio }}">{{ $anio }}</option>
@@ -58,7 +58,7 @@
 
                     <div class="col-md-6">
                         <h6>Mes</h6>
-                        <select class="form-select text-dark fw-bold" name="mes">
+                        <select class="form-select text-dark fw-bold" name="mes" id="filtroMes">
                             <option value="">Seleccionar mes</option>
                             @foreach($meses as $key => $mes)
                                 <option value="{{ $key }}">{{ $mes }}</option>
@@ -70,7 +70,7 @@
                 <div class="row mb-3">
                     <div class="col-md-12">
                         <h6><span class="text-danger">*</span> Ente público proveedor de información</h6>
-                        <select class="form-select text-dark fw-bold" name="proveedor">
+                        <select class="form-select text-dark fw-bold" name="proveedor" id="filtroProveedor">
                             <option value="">Seleccionar ente público</option>
                             @foreach($proveedores as $prov)
                                 <option value="{{ $prov['id'] }}">
@@ -82,13 +82,13 @@
                 </div>
 
                 <div class="row mt-3 justify-content-center">
-                    <div class="col-md-6 mb-2">
-                        <button class="btn btn-primary btn-sm">
+                    <div class="col-md-6 mb-2 text-center">
+                        <button id="btnGenerar" class="btn btn-primary btn-sm me-2">
                             <i class="bi bi-check-circle-fill me-2"></i>
                             Generar informe quincenal
                         </button>
                    
-                        <button class="btn btn-primary btn-sm">
+                        <button id="btnLimpiar" class="btn btn-primary btn-sm">
                             <i class="bi bi-eraser me-2"></i>
                             Limpiar filtros de búsqueda
                         </button>
@@ -192,4 +192,60 @@
 'resources/dist/assets/static/js/pages/sweetalert2.js',
 ])
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnGenerar = document.getElementById('btnGenerar');
+        const btnLimpiar = document.getElementById('btnLimpiar');
+        
+        const filtroAnio = document.getElementById('filtroAnio');
+        const filtroMes = document.getElementById('filtroMes');
+        const filtroProveedor = document.getElementById('filtroProveedor');
+
+        // Lógica del botón Generar
+        btnGenerar.addEventListener('click', function() {
+            const anio = filtroAnio.value;
+            const mes = filtroMes.value;
+            const proveedor = filtroProveedor.value;
+
+            // Validación: El proveedor es obligatorio según el asterisco rojo del diseño
+            if (proveedor === "") {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Atención',
+                    text: 'Debe seleccionar un Ente público proveedor de información.',
+                    confirmButtonColor: '#435ebe'
+                });
+                return;
+            }
+
+            // Aquí puedes ejecutar el filtrado. 
+            // Si la tabla se carga vía servidor (Laravel), lo ideal es redirigir:
+            // window.location.href = `?anio=${anio}&mes=${mes}&proveedor=${proveedor}`;
+            
+            // Si solo quieres una alerta de éxito por ahora:
+            Swal.fire({
+                icon: 'success',
+                title: 'Generando informe',
+                text: 'Procesando la información del periodo seleccionado...',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        });
+
+        // Lógica del botón Limpiar
+        btnLimpiar.addEventListener('click', function() {
+            filtroAnio.value = "";
+            filtroMes.value = "";
+            filtroProveedor.value = "";
+
+            Swal.fire({
+                icon: 'info',
+                title: 'Filtros restablecidos',
+                text: 'Se han limpiado los criterios de búsqueda.',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        });
+    });
+</script>
 @endsection
