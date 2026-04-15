@@ -27,21 +27,34 @@ class PeriodoInformeController extends Controller
                 'inicio' => '2026-02-16',
                 'fin' => '2026-02-18',
                 'estatus' => 'ACTIVO'
-            ],
-            [
-                'periodo' => 'FEBRERO 16 AL 28 DE 2026',
-                'inicio' => '2026-03-01',
-                'fin' => '2026-03-03',
-                'estatus' => 'INACTIVO'
-            ],
-            [
-                'periodo' => 'MARZO 01 AL 15 DE 2026',
-                'inicio' => '2026-03-16',
-                'fin' => '2026-03-18',
-                'estatus' => 'INACTIVO'
-            ],
+            ]
         ];
 
         return view('admin.conf.periodo_conf', compact('periodos'));
+    }
+
+
+    public function actualizar(Request $request)
+    {
+        $errores = [];
+
+        if(!$request->periodo)
+            $errores[] = "Descripción del periodo";
+
+        if(!$request->inicio_reportes)
+            $errores[] = "Inicio reportes";
+
+        if(!$request->fin_reportes)
+            $errores[] = "Fin reportes";
+
+        if(count($errores) > 0){
+            return back()
+                ->withInput()
+                ->with('error_campos', $errores);
+        }
+
+        return redirect()
+            ->route('conf.periodo_informe')
+            ->with('success', 'Periodo actualizado correctamente');
     }
 }

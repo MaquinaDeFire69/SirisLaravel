@@ -11,7 +11,7 @@
             <div class="col-12 col-md-4 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Periodo informativo/</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('panel-informativo') }}">Panel informativo </a></li>
                     </ol>
                 </nav>
             </div>
@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle-fill btn-sm"></i> Cerrar</button>
                 </div>
             </div>
         </div>

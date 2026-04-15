@@ -69,15 +69,16 @@
                 </a>
 
                 <ul class="submenu">                    
-                    <li class="submenu-item {{ request()->routeIs('conf.periodo_informe') ? 'active' : '' }}">
-                        <a href="{{ route('conf.periodo_informe') }}" class="submenu-link">
-                            Periodo informe
+                    
+                    <li class="submenu-item {{ request()->routeIs('conf.plazo_informe') ? 'active' : '' }}">
+                        <a href="{{ route('conf.plazo_informe') }}" class="submenu-link">
+                            Plazos informes
                         </a>
                     </li>
 
-                    <li class="submenu-item {{ request()->routeIs('conf.plazo_informe') ? 'active' : '' }}">
-                        <a href="{{ route('conf.plazo_informe') }}" class="submenu-link">
-                            Plazo informe
+                    <li class="submenu-item {{ request()->routeIs('conf.periodo_informe') ? 'active' : '' }}">
+                        <a href="{{ route('conf.periodo_informe') }}" class="submenu-link">
+                            Periodos
                         </a>
                     </li>
 

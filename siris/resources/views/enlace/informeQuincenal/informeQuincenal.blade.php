@@ -8,11 +8,13 @@
         <div class="row">
             <div class="col-12 col-md-8 order-md-1 order-last">
                 <h3 class="text-gray-800">Informe quincenal</h3>
+                <p>Observa a detalle el informe quincenal</p>
             </div>
             <div class="col-12 col-md-4 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('enlace.panel_informativo') }}">Informe quincenal/</a></li>
+                        <li class="breadcrumb-item"><a href="">Informe quincenal</a></li>
+                        <li class="breadcrumb-item d-none" id="breadcrumb-iniciar"><a>Iniciar informe</a></li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +23,6 @@
 </div>
 
 <div class="page-content">
-
     <div id="contenedor-principal">
         <div class="row" id="bloques-estados">
             <div id="bloque-atrasado" class="col-md-6 mb-4">
@@ -29,14 +30,14 @@
                     <div class="card-body p-0 d-flex flex-column text-center">
                         <div class="bg-danger p-4 text-white">
                             <i class="bi bi-clock-history" style="font-size: 2.5rem;"></i>
-                            <h5 class="text-white mt-2 mb-0 fw-bold">Pendiente de Envío</h5>
+                            <h5 class="text-white mt-2 mb-0 fw-bold">Pendiente de envío</h5>
                         </div>
                         <div id="contenido-atrasado" class="p-5 flex-grow-1 d-flex flex-column justify-content-center">
                             <p class="text-muted mb-1 small text-uppercase fw-semibold">Periodo correspondiente</p>
                             <h4 class="fw-bold text-dark mb-4">01 al 15 Febrero, 2026</h4>
                             <button id="btn-a" class="btn btn-danger btn-lg rounded-pill shadow-sm py-3 fw-bold btn-animate" 
                                     onclick="mostrarTablas('atrasado', '01 al 15 Feb 2026')">
-                                <i class="bi bi-pencil-square me-2"></i> INICIAR REPORTE
+                                <i class="bi bi-pencil-square me-2"></i> Iniciar reporte
                             </button>
                         </div>
                         <div id="a-vacio" class="p-5 d-none">
@@ -52,14 +53,14 @@
                     <div class="card-body p-0 d-flex flex-column text-center">
                         <div class="bg-primary p-4 text-white">
                             <i class="bi bi-calendar-check" style="font-size: 2.5rem;"></i>
-                            <h5 class="text-white mt-2 mb-0 fw-bold">Periodo Vigente</h5>
+                            <h5 class="text-white mt-2 mb-0 fw-bold">Periodo vigente</h5>
                         </div>
                         <div id="contenido-vigente" class="p-5 flex-grow-1 d-flex flex-column justify-content-center">
                             <p class="text-muted mb-1 small text-uppercase fw-semibold">Próximo cierre</p>
                             <h4 class="fw-bold text-dark mb-4">16 al 28 Febrero, 2026</h4>
                             <button id="btn-v" class="btn btn-light-secondary disabled btn-lg rounded-pill py-3 fw-bold btn-animate" 
                                     onclick="mostrarTablas('vigente', '16 al 28 Feb 2026')">
-                                <i class="bi bi-lock-fill me-2"></i> ESPERAR CIERRE
+                                <i class="bi bi-lock-fill me-2"></i> Envio pendiente
                             </button>
                         </div>
                         <div id="v-vacio" class="p-5 d-none">
@@ -77,8 +78,8 @@
                     <h2 class="fw-bold text-dark mb-0">Detalle de Faltas</h2>
                     <p class="text-muted mb-0 small" id="periodo-tabla"></p>
                 </div>
-                <button class="btn btn-outline-secondary btn-sm rounded-pill px-3" onclick="location.reload()">
-                    <i class="bi bi-arrow-left me-1"></i> Cancelar
+                <button class="btn btn-outline-danger px-3" onclick="regresarAlInicio()">
+                    <i class="bi bi-arrow-left me-1"></i> Cancelar informe
                 </button>
             </div>
 
@@ -103,21 +104,34 @@
                         <table class="table table-hover align-middle mb-0">
                             <thead>
                                 <tr>
-                                    <th class="ps-4 py-3 text-muted fw-bold small text-uppercase">Expediente</th>
-                                    <th class="text-muted fw-bold small text-uppercase">Nombre Completo</th>
-                                    <th class="text-muted fw-bold small text-uppercase">CURP/RFC</th>
-                                    <th class="text-muted fw-bold small text-uppercase">Falta</th>
-                                    <th class="text-end pe-4 text-muted fw-bold small text-uppercase">Sanción</th>
+                                    <th class="ps-4 py-3 text-muted fw-bold small">Expediente</th>
+                                    <th class="text-muted fw-bold small">Nombre Completo</th>
+                                    <th class="text-muted fw-bold small">CURP/RFC</th>
+                                    <th class="text-muted fw-bold small">Falta</th>
+                                    <th class="text-end pe-4 text-muted fw-bold small">Sanción</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($periodos as $p)
                                 <tr>
-                                    <td class="ps-4 fw-bold text-dark text-nowrap">PME-01/2026</td>
-                                    <td class="text-dark">Juan Pérez López</td>
-                                    <td><code class="text-primary bg-light px-2 py-1 rounded small">PELJ809858HRT</code></td>
-                                    <td><span class="badge bg-light-danger text-danger rounded-pill fw-medium">Peculado</span></td>
-                                    <td class="text-end pe-4 text-muted">Inhabilitación</td>
+                                    <td class="ps-4 fw-bold text-dark text-nowrap">{{ $p['expediente'] }}</td>
+                                    <td class="text-dark">{{ $p['nombre'] }}</td>
+                                    
+                                    <td>
+                                        <span class="badge border text-dark fw-medium px-2 py-1" style="background-color: #f8f9fa;">
+                                            {{ $p['curp'] }}
+                                        </span>
+                                    </td>
+                                    
+                                    <td>
+                                        <span class="badge bg-light text-primary border border-primary-subtle px-2 py-1">
+                                            {{ $p['falta'] }}
+                                        </span>
+                                    </td>
+                                    
+                                    <td class="text-end pe-4 text-muted">{{ $p['sancion'] }}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -126,8 +140,7 @@
             @endforeach
 
             <div class="text-center pb-1 mt-3"> 
-                <div class="p-3 d-inline-block rounded-pill mb-3 px-4 shadow-sm" 
-                    style="background-color: #e2e8f0; color: #475569;">
+                <div class="p-3 d-inline-block rounded-pill mb-3 px-4 shadow-sm" style="background-color: #e2e8f0; color: #475569;">
                     <i class="bi bi-info-circle-fill me-2" style="color: #174877;"></i>
                     <span class="small fw-bold">Por favor, revisa la información antes de realizar el envío definitivo</span>
                 </div>
@@ -135,7 +148,7 @@
                 <button class="btn btn-lg px-5 rounded-pill shadow py-3 fw-bold btn-animate" 
                         style="background-color: #435ebe; border-color: #435ebe; color: white;"
                         onclick="enviarInforme()">
-                    <i class="bi bi-send-check me-2"></i> Finalizar y Enviar Reporte
+                    <i class="bi bi-send-check me-2"></i> Finalizar y enviar reporte
                 </button>
             </div>
         </div>
@@ -146,11 +159,8 @@
     .bg-light-primary { background-color: #f0f5ff; color: #435ebe; }
     .bg-light-danger { background-color: #fff5f5; color: #dc3545; }
     .text-dark { color: #1e293b !important; }
-    
-
     .card { border-radius: 12px; transition: all 0.2s ease-in-out; border: 1px solid #f1f5f9; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important; }
-    
     .table thead th { 
         background-color: #f8fafc; 
         border-bottom: 1px solid #e2e8f0; 
@@ -158,10 +168,8 @@
         letter-spacing: 0.05em; 
         color: #64748b;
     }
-    
     .btn-animate { transition: all 0.2s; }
     .btn-animate:hover:not(:disabled) { transform: scale(1.02); filter: brightness(1.1); }
-    
     .icon-shape i { display: inline-flex; align-items: center; justify-content: center; line-height: 0; }
 </style>
 @endsection
@@ -172,15 +180,29 @@
     let informeActual = '';
     let periodoTexto = '';
 
+    // Función para entrar al detalle (Cards -> Tablas)
     function mostrarTablas(tipo, periodo) {
         informeActual = tipo;
         periodoTexto = periodo;
         document.getElementById('periodo-tabla').innerText = "Capturando datos del: " + periodo;
         
+        // Intercambiar vistas
         document.getElementById('bloques-estados').classList.add('d-none');
         document.getElementById('seccion-tablas').classList.remove('d-none');
         
+        // MOSTRAR Breadcrumb dinámico
+        document.getElementById('breadcrumb-iniciar').classList.remove('d-none');
+        
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Función para salir del detalle sin enviar (Tablas -> Cards)
+    function regresarAlInicio() {
+        document.getElementById('seccion-tablas').classList.add('d-none');
+        document.getElementById('bloques-estados').classList.remove('d-none');
+        
+        // OCULTAR Breadcrumb dinámico
+        document.getElementById('breadcrumb-iniciar').classList.add('d-none');
     }
 
     function enviarInforme() {
@@ -189,11 +211,10 @@
             text: "Se enviará el informe correspondiente al periodo " + periodoTexto,
             icon: 'question',
             showCancelButton: true,
-            confirmButtonColor: '#1dc463',
-            cancelButtonColor: 'rgb(154, 41, 41)',
+            confirmButtonColor: '#1e902b',
+            cancelButtonColor: 'rgb(60, 96, 213)',
             confirmButtonText: 'Sí, enviar ahora',
             cancelButtonText: 'Revisar datos',
-            borderRadius: '15px',
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
@@ -202,8 +223,7 @@
                     text: 'Los datos se han procesado correctamente.',
                     icon: 'success',
                     showConfirmButton: false,
-                    timer: 2000,
-                    borderRadius: '15px'
+                    timer: 2000
                 });
                 procesarAceptar();
             }
@@ -211,22 +231,35 @@
     }
 
     function procesarAceptar() {
-        document.getElementById('seccion-tablas').classList.add('d-none');
-        document.getElementById('bloques-estados').classList.remove('d-none');
+        regresarAlInicio();
 
         if (informeActual === 'atrasado') {
             document.getElementById('contenido-atrasado').classList.add('d-none');
-            document.getElementById('a-vacio').classList.remove('d-none');
+            
+            let aVacio = document.getElementById('a-vacio');
+            aVacio.classList.remove('d-none');
+            
+            aVacio.innerHTML = `
+                <i class="bi bi-check2-all text-success" style="font-size: 3rem;"></i>
+                <p class="text-muted mt-3 mb-0"><i>No hay reportes pendientes</i></p>
+            `;
             
             let btnV = document.getElementById('btn-v');
             if(btnV) {
                 btnV.classList.remove('btn-light-secondary', 'disabled');
                 btnV.classList.add('btn-primary', 'shadow-sm');
                 btnV.innerHTML = '<i class="bi bi-pencil-square me-2"></i> INICIAR REPORTE';
+                btnV.parentElement.querySelector('p').innerText = "Periodo correspondiente";
             }
         } else {
             document.getElementById('contenido-vigente').classList.add('d-none');
-            document.getElementById('v-vacio').classList.remove('d-none');
+            let vVacioFinal = document.getElementById('v-vacio');
+            vVacioFinal.classList.remove('d-none');
+            
+            vVacioFinal.innerHTML = `
+                <i class="bi bi-send-check text-primary" style="font-size: 3rem;"></i>
+                <p class="text-muted mt-3 mb-0"><i>Reporte enviado con éxito</i></p>
+            `;
         }
     }
 </script>

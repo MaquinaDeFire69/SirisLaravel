@@ -25,7 +25,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('panel-informativo') }}">Configuración</a>
+                        <a href="">Configuración</a>
                     </li>
                     <li class="breadcrumb-item active">
                         Entes públicos
@@ -40,25 +40,28 @@
     <div class="page-content">
         <section class="section">
             <div class="card">
+
                 <div class="card-header">
-                    <h5 class="card-title">
-                        Listado de entes públicos
-                    </h5>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 align-self-start">
+                            <h5 class="card-title">Listado de entes públicos</h5>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 align-self-end text-end">
+                            <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#nuevoEnte">
+                                <i class="bi bi-database-add"></i> Importar entes públicos
+                            </button>
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#validarEnte">
+                                <i class="bi bi-check2-square"></i> Validar entes públicos
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body">
 
                     <!-- BOTONES -->
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#nuevoEnte">
-                                <i class="bi bi-plus-square"></i> Exportar entes públicos
-                            </button>
-
-                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#validarEnte">
-                                <i class="bi bi-list"></i> Validar entes públicos
-                            </button>
-                        </div>
+                       
                     </div>
 
                     <!-- TABLA -->
@@ -75,15 +78,15 @@
 
                             <tbody>
                                 @foreach($entes as $index => $ente)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $ente['nombre'] }}</td>
-                                    <td>{{ $ente['id_s3'] }}</td>
-                                    <td>
-                                        <span class="badge {{ $ente['estatus'] == 'Activo' ? 'bg-success' : 'bg-warning' }}">
-                                            {{ $ente['estatus'] }}
-                                        </span>
-                                    </td>
+                                <tr class="fs-6">
+                                    <td align="center"><small>{{ $index + 1 }}</small></td>
+                                    <td align="center"><small>{{ $ente['nombre'] }}</small></td>
+                                    <td align="center"><small>{{ $ente['id_s3'] }}</small></td>
+                                    <td align="center">
+                                        <span class="badge {{ $ente['estatus'] == 'Activo' ? 'bg-success' : 'bg-danger' }}">
+                                           <small> {{ $ente['estatus'] }}</small>
+                                        </span>    
+                                    </td>                                    
                                 </tr>
                                 @endforeach
                             </tbody>

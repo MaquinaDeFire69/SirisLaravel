@@ -15,7 +15,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
-            <h3>Entes públicos sancionados</h3>
+            <h3>Sancionados</h3>
             <p class="text-subtitle text-muted">
                 El presente apartado visualiza la información del estatus de sanción de un ente público
             </p>
@@ -24,7 +24,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('panel-informativo') }}">Sancionados</a>
+                        <a href="">Sancionados</a>
                     </li>
                     <li class="breadcrumb-item active">Reportes</li>
                 </ol>
@@ -45,6 +45,7 @@
                 <form method="GET" action="{{ route('sancionados.sancionados') }}" id="formFiltros">
 
                     <div class="row mb-3">
+                        <p><strong>Seleccione filtros de búsqueda</strong></p>
 
                         <div class="col-md-6">
                             <h6>Sancionados</h6>
@@ -74,7 +75,7 @@
 
                     <div class="row mb-3">
                         <div class="col-12">
-                            <h6>Entes públicos proveedores</h6>
+                            <h6><span class="text-danger">*</span>Entes públicos proveedores</h6>
                             <select name="ente" class="form-select text-dark fw-bold">
                                 <option value="">Seleccione...</option>
                                 @foreach($entes as $ente)
@@ -86,13 +87,13 @@
                         </div>
                     </div>
 
-                    <div class="row mt-3 justify-content-center">
-                        <div class="col-md-6 mb-2">
-                            <button type="submit" class="btn btn-outline-primary">
+                    <div class="row mt-4">
+                        <div class="col-12 d-flex justify-content-center gap-2">
+                            <button type="submit" class="btn btn-primary btn-sm">
                                 <i class="bi bi-search me-2"></i>
                                 Buscar sancionados
                             </button>
-                            <button type="button" onclick="limpiarFiltros()" class="btn btn-outline-primary">
+                            <button type="button" onclick="limpiarFiltros()" class="btn btn-primary btn-sm">
                                 <i class="bi bi-eraser me-2"></i>
                                 Limpiar filtros de búsqueda
                             </button>
@@ -131,18 +132,20 @@
 
                         <tbody>
                             @foreach($sancionados as $index => $s)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>
+                            <tr class="fs-6">
+                                <td align="center"><small>{{ $index + 1 }}</small></td>
+                                <td align="center">
                                     <a href="{{ route('sancionados.info_expediente', $s['id']) }}" class="text-primary fw-bold">
-                                        {{ $s['expediente'] }}
-                                    </a>
+                                        <small>   
+                                            {{ $s['expediente'] }}
+                                        </small>
+                                    </a>    
                                 </td>
-                                <td>{{ $s['nombre'] }}</td>
-                                <td>{{ $s['ente'] }}</td>
-                                <td>{{ $s['falta'] }}</td>
-                                <td>{{ $s['sancion'] }}</td>
-                                <td>{{ $s['tipo'] }}</td>
+                                <td align="center"><small>{{ $s['nombre'] }}</small></td>
+                                <td align="center"><small>{{ $s['ente'] }}</small></td>
+                                <td align="center"><small>{{ $s['falta'] }}</small></td>
+                                <td align="center"><small>{{ $s['sancion'] }}</small></td>
+                                <td align="center"><small>{{ $s['tipo'] }}</small></td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -5,7 +5,6 @@
 @section('styles')
 @vite([
 'resources/src/assets/scss/iconly.scss',
-'resources/dist/assets/extensions/jquery/jquery.min.js',
 ])
 @endsection
 
@@ -14,7 +13,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
-            <h3>Periodo</h3>
+            <h3>Periodos</h3>
             <p class="text-subtitle text-muted">
                 El presente apartado visualiza la información de los periodos de entrega disponibles
             </p>
@@ -23,7 +22,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('panel-informativo') }}">Configuración</a>
+                        <a href="">Configuración</a>
                     </li>
                     <li class="breadcrumb-item active">Periodos</li>
                 </ol>
@@ -35,7 +34,6 @@
 <br>
 
 <div class="page-content">
-
     <section class="section">
         <div class="card">
             <div class="card-header">
@@ -51,26 +49,25 @@
                         <thead class="bg-light">
                             <tr>
                                 <th>No.</th>
-                                <th>PERIODO</th>
-                                <th>INICIO REPORTE</th>
-                                <th>FIN REPORTE</th>
-                                <th>ESTATUS</th>
-                                <th>ACCIONES</th>
+                                <th>Periodo</th>
+                                <th>Inicio reporte</th>
+                                <th>Fin reporte</th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             @foreach($periodos as $i => $p)
-                            <tr>
-                                <td>{{ $i+1 }}</td>
-                                <td>{{ $p['periodo'] }}</td>
-                                <td>{{ $p['inicio'] }}</td>
-                                <td>{{ $p['fin'] }}</td>
+                            <tr class="fs-6">
+                                <td><small>{{ $i+1 }}</small></td>
+                                <td><small>{{ $p['periodo'] }}</small></td>
+                                <td><small>{{ $p['inicio'] }}</small></td>
+                                <td><small>{{ $p['fin'] }}</small></td>
                                 <td>
-                                    <span class="badge 
-                                        {{ $p['estatus']=='ACTIVO' ? 'bg-success':'bg-danger' }}">
-                                        {{ $p['estatus'] }}
-                                    </span>
+                                    <span class="badge {{ $p['estatus']=='ACTIVO' ? 'bg-success':'bg-danger' }}">
+                                        <small>{{ $p['estatus'] }}</small>
+                                    </span>    
                                 </td>
                                 <td>
                                     <button 
@@ -80,10 +77,9 @@
                                         data-periodo="{{ $p['periodo'] }}"
                                         data-inicio="{{ $p['inicio'] }}"
                                         data-fin="{{ $p['fin'] }}"
-                                        data-estatus="{{ $p['estatus'] }}"
                                     >
-                                        Actualizar
-                                    </button>
+                                       <small><i class="bi bi-pencil-square"></i> Actualizar</small>
+                                    </button>    
                                 </td>
                             </tr>
                             @endforeach
@@ -94,71 +90,58 @@
             </div>
         </div>
     </section>
-
 </div>
 
-{{-- MODAL EDITAR --}}
 <div class="modal fade" id="modalEditar" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <div class="modal-header">
                 <h5 class="modal-title">Actualizar datos del periodo</h5>
-                <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <div class="modal-body">
 
-                <form>
+                <form method="POST" action="{{ route('conf.periodo_informe.actualizar') }}">
+                    @csrf
 
                     <div class="mb-3">
-                        <label>*Descripción del Periodo:</label>
-                        <input type="text" id="editPeriodo" class="form-control">
+                        <label><span class="text-danger">*</span>Descripción del Periodo:</label>
+                        <input type="text" name="periodo" id="editPeriodo" class="form-control">
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Inicio Periodo:</label>
-                            <div class="d-flex">
-                                <input type="date" id="editInicio" class="form-control">
-                                <button class="btn btn-dark ms-2">Elegir</button>
-                            </div>
+                            <input type="date" name="inicio" id="editInicio" class="form-control">
                         </div>
 
                         <div class="col-md-6">
                             <label>Fin Periodo:</label>
-                            <div class="d-flex">
-                                <input type="date" id="editFin" class="form-control">
-                                <button class="btn btn-dark ms-2">Elegir</button>
-                            </div>
+                            <input type="date" name="fin" id="editFin" class="form-control">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label>*Inicio Reportes:</label>
-                            <div class="d-flex">
-                                <input type="date" class="form-control">
-                                <button class="btn btn-dark ms-2">Elegir</button>
-                            </div>
+                            <label><span class="text-danger">*</span>Inicio Reportes:</label>
+                            <input type="date" name="inicio_reportes" class="form-control">
                         </div>
 
                         <div class="col-md-6">
-                            <label>*Fin Reportes:</label>
-                            <div class="d-flex">
-                                <input type="date" class="form-control">
-                                <button class="btn btn-dark ms-2">Elegir</button>
-                            </div>
+                            <label><span class="text-danger">*</span>Fin Reportes:</label>
+                            <input type="date" name="fin_reportes" class="form-control">
                         </div>
                     </div>
 
                     <div class="text-center mt-4">
-                        <button class="btn btn-primary">
-                            ✔ Actualizar Periodo
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-pencil-square"></i> Actualizar Periodo
                         </button>
 
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            ✖ Cancelar
+                            <i class="bi bi-x-circle-fill"></i> Cancelar
                         </button>
                     </div>
 
@@ -174,9 +157,7 @@
 
 @section('js')
 
-@vite([
-'resources/dist/assets/extensions/jquery/jquery.min.js',
-])
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 document.querySelectorAll('.btnEditar').forEach(btn => {
@@ -188,7 +169,6 @@ document.querySelectorAll('.btnEditar').forEach(btn => {
 
     });
 });
-
 
 $(document).ready(function () {
     $('#table1').DataTable({
@@ -212,5 +192,25 @@ $(document).ready(function () {
     });
 });
 </script>
+
+@if(session('error_campos'))
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Campos obligatorios',
+    html: `Debes proporcionar:<br><br>{!! implode("<br>", session('error_campos')) !!}`
+});
+</script>
+@endif
+
+@if(session('success'))
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Éxito',
+    text: "{{ session('success') }}"
+});
+</script>
+@endif
 
 @endsection

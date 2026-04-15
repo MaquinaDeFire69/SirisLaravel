@@ -16,7 +16,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
-            <h3>Entes públicos proveedores de información</h3>
+            <h3>Entes públicos</h3>
             <p class="text-subtitle text-muted">
                 El presente apartado visualiza la información del estatus de cumplimiento de un ente público proveedor de información
             </p>
@@ -25,8 +25,9 @@
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('panel-informativo') }}">Inicio</a>
+                        <a href="">Informe quincenal</a>
                     </li>
+                    <li class="breadcrumb-item active" aria-current="page">Entes públicos</li>
                 </ol>
             </nav>
         </div>
@@ -42,10 +43,12 @@
         <div class="card">
             <div class="card-body">
 
+                <p><strong>Seleccione filtros de búsqueda</strong></p>
+
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <h6>Año</h6>
-                        <select class="form-select text-dark fw-bold" name="anio">
+                        <select class="form-select text-dark fw-bold" name="anio" id="filtroAnio">
                             <option value="">Seleccionar año</option>
                             @foreach($anios as $anio)
                                 <option value="{{ $anio }}">{{ $anio }}</option>
@@ -55,7 +58,7 @@
 
                     <div class="col-md-6">
                         <h6>Mes</h6>
-                        <select class="form-select text-dark fw-bold" name="mes">
+                        <select class="form-select text-dark fw-bold" name="mes" id="filtroMes">
                             <option value="">Seleccionar mes</option>
                             @foreach($meses as $key => $mes)
                                 <option value="{{ $key }}">{{ $mes }}</option>
@@ -66,8 +69,8 @@
 
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <h6>* Ente público proveedor de información</h6>
-                        <select class="form-select text-dark fw-bold" name="proveedor">
+                        <h6><span class="text-danger">*</span> Ente público proveedor de información</h6>
+                        <select class="form-select text-dark fw-bold" name="proveedor" id="filtroProveedor">
                             <option value="">Seleccionar ente público</option>
                             @foreach($proveedores as $prov)
                                 <option value="{{ $prov['id'] }}">
@@ -79,13 +82,13 @@
                 </div>
 
                 <div class="row mt-3 justify-content-center">
-                    <div class="col-md-6 mb-2">
-                        <button class="btn btn-outline-primary">
-                            <i class="bi bi-check-circle me-2"></i>
+                    <div class="col-md-6 mb-2 text-center">
+                        <button id="btnGenerar" class="btn btn-primary btn-sm me-2">
+                            <i class="bi bi-check-circle-fill me-2"></i>
                             Generar informe quincenal
                         </button>
                    
-                        <button class="btn btn-outline-primary">
+                        <button id="btnLimpiar" class="btn btn-primary btn-sm">
                             <i class="bi bi-eraser me-2"></i>
                             Limpiar filtros de búsqueda
                         </button>
@@ -139,21 +142,25 @@
 
                         <tbody>
                             @foreach($informes as $index => $inf)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ $inf['periodo'] }}</td>
-                                <td>{{ $inf['registros'] }}</td>
-                                <td>{{ $inf['fecha'] }}</td>
-                                <td>
-                                    <span class="badge 
-                                        {{ $inf['estatus'] == 'Normal' ? 'bg-success' : 'bg-warning' }}">
-                                        {{ $inf['estatus'] }}
-                                    </span>
+                            <tr class="fs-6">
+                                <td align="center"><small>{{ $index + 1 }}</small></td>
+                                <td align="center"><small>{{ $inf['periodo'] }}</small></td>
+                                <td align="center"><small>{{ $inf['registros'] }}</small></td>
+                                <td align="center"><small>{{ $inf['fecha'] }}</small></td>
+                                <td align="center">
+                                    <small>
+                                        <span class="badge 
+                                            {{ $inf['estatus'] == 'Normal' ? 'bg-success' : 'bg-warning' }}">
+                                            {{ $inf['estatus'] }}
+                                        </span>
+                                    </small>
                                 </td>
-                                <td>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">
-                                        <i class="bi bi-download"></i> Descargar acuse
-                                    </a>
+                                <td align="center">
+                                    <small>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">
+                                            <i class="bi bi-download"></i> Descargar acuse
+                                        </a>
+                                    </small>
                                 </td>
                             </tr>
                             @endforeach
@@ -163,7 +170,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <a href="#" class="btn btn-outline-primary">
+                    <a href="#" class="btn btn-primary btn-sm">
                         <i class="bi bi-file-earmark-pdf"></i>
                         Exportar a PDF la información del Periodo
                     </a>
@@ -186,27 +193,59 @@
 ])
 
 <script>
-$(document).ready(function () {
-    $('#table1').DataTable({
-        responsive: true,
-        autoWidth: false,
-        pageLength: 10,
-        lengthMenu: [5, 10, 25, 50],
-        language: {
-            lengthMenu: "_MENU_ registros por página",
-            search: "Buscar:",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando 0 a 0 de 0 registros",
-            zeroRecords: "No se encontraron resultados",
-            paginate: {
-                first: "Primero",
-                last: "Último",
-                next: "›",
-                previous: "‹"
-            }
-        }
-    });
-});
-</script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnGenerar = document.getElementById('btnGenerar');
+        const btnLimpiar = document.getElementById('btnLimpiar');
+        
+        const filtroAnio = document.getElementById('filtroAnio');
+        const filtroMes = document.getElementById('filtroMes');
+        const filtroProveedor = document.getElementById('filtroProveedor');
 
+        // Lógica del botón Generar
+        btnGenerar.addEventListener('click', function() {
+            const anio = filtroAnio.value;
+            const mes = filtroMes.value;
+            const proveedor = filtroProveedor.value;
+
+            // Validación: El proveedor es obligatorio según el asterisco rojo del diseño
+            if (proveedor === "") {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Atención',
+                    text: 'Debe seleccionar un Ente público proveedor de información.',
+                    confirmButtonColor: '#435ebe'
+                });
+                return;
+            }
+
+            // Aquí puedes ejecutar el filtrado. 
+            // Si la tabla se carga vía servidor (Laravel), lo ideal es redirigir:
+            // window.location.href = `?anio=${anio}&mes=${mes}&proveedor=${proveedor}`;
+            
+            // Si solo quieres una alerta de éxito por ahora:
+            Swal.fire({
+                icon: 'success',
+                title: 'Generando informe',
+                text: 'Procesando la información del periodo seleccionado...',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        });
+
+        // Lógica del botón Limpiar
+        btnLimpiar.addEventListener('click', function() {
+            filtroAnio.value = "";
+            filtroMes.value = "";
+            filtroProveedor.value = "";
+
+            Swal.fire({
+                icon: 'info',
+                title: 'Filtros restablecidos',
+                text: 'Se han limpiado los criterios de búsqueda.',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        });
+    });
+</script>
 @endsection

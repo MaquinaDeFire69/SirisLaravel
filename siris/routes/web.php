@@ -60,8 +60,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/configuracion/periodo-informe', [PeriodoInformeController::class, 'index'])
         ->name('conf.periodo_informe');
 
+    Route::post('/configuracion/periodo-informe/actualizar', [PeriodoInformeController::class, 'actualizar'])
+        ->name('conf.periodo_informe.actualizar');
+
     Route::get('/configuracion/plazo-informe', [PlazoInformeController::class, 'index'])
         ->name('conf.plazo_informe');
+
+    Route::post('/configuracion/plazo-informe/actualizar', [PlazoInformeController::class, 'actualizar'])
+        ->name('conf.plazo_informe.actualizar');
 
     Route::get('/configuracion/entes-publicos', [EntesPublicosController::class, 'index'])
         ->name('conf.entes_publicos');

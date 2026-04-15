@@ -33,40 +33,43 @@
                                     <div class="row">
                                         
                                         <div class="col-md-3">
-                                            <label for="current_password">Contraseña actual</label>
+                                            <label for="current_password">Contraseña actual <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-md-9 form-group">
                                             <input type="password" id="current_password" class="form-control" name="current_password"
-                                                placeholder="Ingrese su contraseña actual">
+                                                placeholder="Ingrese su contraseña actual" required>
                                             @error('current_password', 'updatePassword')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
 
                                         <div class="col-md-3">
-                                            <label for="password">Nueva contraseña</label>
+                                            <label for="password">Nueva contraseña <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-md-9 form-group">
                                             <input type="password" id="password" class="form-control" name="password"
-                                                placeholder="Ingrese la nueva contraseña">
+                                                placeholder="Ingrese la nueva contraseña" required>
                                             @error('password', 'updatePassword')
                                                 <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
 
                                         <div class="col-md-3">
-                                            <label for="password_confirmation">Confirmar contraseña</label>
+                                            <label for="password_confirmation">Confirmar contraseña <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-md-9 form-group">
                                             <input type="password" id="password_confirmation" class="form-control" name="password_confirmation"
-                                                placeholder="Confirme la nueva contraseña">
+                                                placeholder="Confirme la nueva contraseña" required>
                                         </div>
 
-                                        <div class="col-sm-12 d-flex justify-content-end mt-3">
-                                            <button type="submit" class="btn btn-outline-primary">Actualizar</button>
-                                            <button type="reset" class="btn btn-outline-primary me-1 mb-1">Limpiar</button>
+                                        <div class="col-sm-12 d-flex justify-content-center mt-3">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1 btn-sm" style="width: 120px;">
+                                                <i class="bi bi-pencil-square"></i> Actualizar
+                                            </button>
+                                            <a href="{{ route('panel-informativo') }}" class="btn btn-danger mb-1 btn-sm" style="width: 120px;">
+                                                <i class="bi bi-x-circle-fill"></i> Cancelar
+                                            </a>
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </form>
