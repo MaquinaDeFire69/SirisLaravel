@@ -13,7 +13,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-12 col-md-8 order-md-1 order-last">
-            <h3>Periodos</h3>
+            <h3>Configuración</h3>
             <p class="text-subtitle text-muted">
                 El presente apartado visualiza la información de los periodos de entrega disponibles
             </p>
@@ -21,9 +21,6 @@
         <div class="col-12 col-md-4 order-md-2 order-first">
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="">Configuración</a>
-                    </li>
                     <li class="breadcrumb-item active">Periodos</li>
                 </ol>
             </nav>
@@ -78,7 +75,7 @@
                                         data-inicio="{{ $p['inicio'] }}"
                                         data-fin="{{ $p['fin'] }}"
                                     >
-                                       <small><i class="bi bi-pencil-square"></i> Actualizar</small>
+                                        <small><i class="bi bi-pencil-square"></i> Actualizar</small>
                                     </button>    
                                 </td>
                             </tr>
@@ -108,30 +105,30 @@
 
                     <div class="mb-3">
                         <label><span class="text-danger">*</span>Descripción del Periodo:</label>
-                        <input type="text" name="periodo" id="editPeriodo" class="form-control">
+                        <input type="text" name="periodo" id="editPeriodo" class="form-control" value="{{ old('periodo') }}">
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label>Inicio Periodo:</label>
-                            <input type="date" name="inicio" id="editInicio" class="form-control">
+                            <input type="date" name="inicio" id="editInicio" class="form-control" value="{{ old('inicio') }}">
                         </div>
 
                         <div class="col-md-6">
                             <label>Fin Periodo:</label>
-                            <input type="date" name="fin" id="editFin" class="form-control">
+                            <input type="date" name="fin" id="editFin" class="form-control" value="{{ old('fin') }}">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label><span class="text-danger">*</span>Inicio Reportes:</label>
-                            <input type="date" name="inicio_reportes" class="form-control">
+                            <input type="date" name="inicio_reportes" class="form-control" value="{{ old('inicio_reportes') }}">
                         </div>
 
                         <div class="col-md-6">
                             <label><span class="text-danger">*</span>Fin Reportes:</label>
-                            <input type="date" name="fin_reportes" class="form-control">
+                            <input type="date" name="fin_reportes" class="form-control" value="{{ old('fin_reportes') }}">
                         </div>
                     </div>
 
@@ -162,12 +159,18 @@
 <script>
 document.querySelectorAll('.btnEditar').forEach(btn => {
     btn.addEventListener('click', function() {
-
         document.getElementById('editPeriodo').value = this.dataset.periodo;
         document.getElementById('editInicio').value = this.dataset.inicio;
         document.getElementById('editFin').value = this.dataset.fin;
-
     });
+});
+
+// Abrir modal automáticamente si hay errores de validación
+document.addEventListener('DOMContentLoaded', function () {
+    @if(session('error_campos'))
+        var modalEditar = new bootstrap.Modal(document.getElementById('modalEditar'));
+        modalEditar.show();
+    @endif
 });
 
 $(document).ready(function () {
