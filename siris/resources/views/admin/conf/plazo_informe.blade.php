@@ -131,11 +131,11 @@
 
                     <div class="text-center mt-3">
                         <button type="button" class="btn btn-primary">
-                            <i class="bi bi-check-circle"></i> Guardar
+                            <i class="bi bi-pencil-square"></i> Guardar
                         </button>
 
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="bi bi-x-circle"></i> Cancelar
+                            <i class="bi bi-x-circle-fill"></i> Cancelar
                         </button>
                     </div>
 
@@ -184,11 +184,11 @@
 
                     <div class="text-center mt-3">
                         <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-check-circle"></i> Actualizar Plazo
+                            <i class="bi bi-pencil-square"></i> Actualizar Plazo
                         </button>
 
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="bi bi-x-circle"></i> Cancelar
+                            <i class="bi bi-x-circle-fill"></i> Cancelar
                         </button>
                     </div>
 
