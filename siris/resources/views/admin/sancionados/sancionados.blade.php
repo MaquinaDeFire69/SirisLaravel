@@ -4,6 +4,7 @@
 
 @section('styles')
 @vite([
+'resources/css/my.css', //CSS personalizado para el select con búsqueda
 'resources/src/assets/scss/iconly.scss',
 'resources/dist/assets/extensions/jquery/jquery.min.js',
 'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.css',
@@ -47,7 +48,7 @@
                         <div class="col-md-6">
                             <h6>Sancionados</h6>
                             <select name="sancionado" class="form-select text-dark fw-bold">
-                                <option value="">Seleccione un tipo de sancionado...</option>
+                                <option value="" disabled selected hidde>Seleccione un tipo de sancionado...</option>
                                 @foreach($tipos as $tipo)
                                     <option value="{{ $tipo }}" {{ request('sancionado') == $tipo ? 'selected' : '' }}>
                                         {{ $tipo }}
@@ -59,7 +60,8 @@
                         <div class="col-md-6">
                             <h6>Periodos informativos</h6>
                             <select name="periodo" class="form-select text-dark fw-bold">
-                                <option value="">Seleccione...</option>
+                                <option value="" disabled selected hidden>Seleccione...</option>
+                                
                                 @foreach($periodos as $periodo)
                                     <option value="{{ $periodo }}" {{ request('periodo') == $periodo ? 'selected' : '' }}>
                                         {{ $periodo }}
@@ -73,14 +75,17 @@
                     <div class="row mb-3">
                         <div class="col-12">
                             <h6><span class="text-danger">*</span> Entes públicos proveedores</h6>
-                            <select name="ente" class="form-select text-dark fw-bold">
-                                <option value="">Seleccione...</option>
-                                @foreach($entes as $ente)
-                                    <option value="{{ $ente }}" {{ request('ente') == $ente ? 'selected' : '' }}>
-                                        {{ $ente }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <div class="text-dark fw-bold">
+                                <select name="ente" class="choices form-select">
+                                    <option value="" disabled selected hidde>Seleccione...</option>
+                                    @foreach($entes as $ente)
+                                        <option value="{{ $ente }}" {{ request('ente') == $ente ? 'selected' : '' }}>
+                                            {{ $ente }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                                
                         </div>
                     </div>
 
@@ -189,28 +194,6 @@ document.getElementById('formFiltros').addEventListener('submit', function(e) {
     }
 });
 
-
-$(document).ready(function () {
-    $('#table1').DataTable({
-        responsive: true,
-        autoWidth: false,
-        pageLength: 10,
-        lengthMenu: [5, 10, 25, 50],
-        language: {
-            lengthMenu: "_MENU_ registros por página",
-            search: "Buscar:",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando 0 a 0 de 0 registros",
-            zeroRecords: "No se encontraron resultados",
-            paginate: {
-                first: "Primero",
-                last: "Último",
-                next: "›",
-                previous: "‹"
-            }
-        }
-    });
-});
 </script>
 
 @endsection

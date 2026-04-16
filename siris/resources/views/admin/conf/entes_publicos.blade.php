@@ -6,7 +6,6 @@
 @vite([
 'resources/src/assets/scss/iconly.scss',
 'resources/dist/assets/extensions/jquery/jquery.min.js',
-'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.css',
 ])
 @endsection
 
@@ -44,10 +43,10 @@
                             <h5 class="card-title">Listado de entes públicos</h5>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 align-self-end text-end">
-                            <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#nuevoEnte">
+                            <button class="btn btn-success btn-sm">
                                 <i class="bi bi-database-add"></i> Importar entes públicos
                             </button>
-                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#validarEnte">
+                            <button class="btn btn-warning btn-sm">
                                 <i class="bi bi-check2-square"></i> Validar entes públicos
                             </button>
                         </div>
@@ -98,107 +97,6 @@
 
 </div>
 
-
-<!-- MODAL EXPORTAR -->
-<div class="modal fade" id="nuevoEnte" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title text-primary">Registrar nuevo ente:</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <form>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label>* Nombre:</label>
-                            <input type="text" class="form-control">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label>* ID S3:</label>
-                            <input type="number" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>* Estatus:</label>
-                        <select class="form-select">
-                            <option selected disabled>Seleccione Estatus...</option>
-                            <option>ACTIVO</option>
-                            <option>INACTIVO</option>
-                        </select>
-                    </div>
-
-                    <div class="text-center">
-                        <button class="btn btn-primary">
-                            <i class="bi bi-check-circle"></i> Registrar ente
-                        </button>
-
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="bi bi-x-circle"></i> Cancelar
-                        </button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- MODAL VALIDAR -->
-<div class="modal fade" id="validarEnte" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title text-primary">Validar ente:</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <form>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label>* Nombre:</label>
-                            <input type="text" class="form-control">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label>* ID S3:</label>
-                            <input type="number" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>* Estatus:</label>
-                        <select class="form-select">
-                            <option>ACTIVO</option>
-                            <option>INACTIVO</option>
-                        </select>
-                    </div>
-
-                    <div class="text-center">
-                        <button class="btn btn-primary">
-                            <i class="bi bi-check-circle"></i> Validar ente
-                        </button>
-
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="bi bi-x-circle"></i> Cancelar
-                        </button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
-
 @endsection
 
 
@@ -206,38 +104,6 @@
 
 @vite([
 'resources/dist/assets/extensions/jquery/jquery.min.js',
-'resources/dist/assets/extensions/apexcharts/apexcharts.min.js',
-'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.js',
-'resources/dist/assets/static/js/pages/sweetalert2.js',
 ])
-
-<script>
-$(document).ready(function(){
-
-    $('#table1').DataTable({
-        responsive: true,
-        autoWidth: false,
-        pageLength: 10,
-        lengthMenu: [5, 10, 25, 50],
-        columnDefs: [
-            { orderable: false, targets: 0 }
-        ],
-        language: {
-            lengthMenu: "_MENU_ registros por página",
-            search: "Buscar:",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando 0 a 0 de 0 registros",
-            zeroRecords: "No se encontraron resultados",
-            paginate: {
-                first: "Primero",
-                last: "Último",
-                next: "›",
-                previous: "‹"
-            }
-        }
-    });
-
-});
-</script>
 
 @endsection

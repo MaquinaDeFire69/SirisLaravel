@@ -4,6 +4,7 @@
 
 @section('styles')
 @vite([
+'resources/css/my.css',
 'resources/src/assets/scss/iconly.scss',
 'resources/dist/assets/extensions/jquery/jquery.min.js',
 ])
@@ -23,7 +24,7 @@
             <div class="col-12 col-md-4 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">Periodo Informado</li>
+                        <li class="breadcrumb-item active" aria-current="page">Periodo informado</li>
                     </ol>
                 </nav>
             </div>
@@ -43,10 +44,10 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <h6> <span class="text-danger">*</span> Seleccione un periodo del informe</h6>
-                                    <div class="form-group">
+                                    <div class="text-dark fw-bold">
                                         <form method="GET" action="{{ route('informe.periodo') }}">
                                             <select name="periodo"
-                                                class="form-select text-dark fw-bold"
+                                                class="choices form-select"
                                                 onchange="this.form.submit()">
                                                 @foreach($periodos as $periodo)
                                                     <option value="{{ $periodo }}"
