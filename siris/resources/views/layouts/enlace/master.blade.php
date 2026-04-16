@@ -18,8 +18,6 @@
         'resources/dist/assets/compiled/css/table-datatable-jquery.css',
     ])
 <!--'resources/src/assets/scss/themes/dark/app-dark.scss'!-->
-    <link rel="shortcut icon" href="{{ asset('assets/static/images/logo/favicon.svg') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('assets/static/images/logo/favicon.png') }}" type="image/png">
 
     {{-- Sección de estilos adicionales --}}
     @yield('styles')

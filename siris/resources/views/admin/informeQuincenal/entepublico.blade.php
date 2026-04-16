@@ -4,6 +4,7 @@
 
 @section('styles')
 @vite([
+'resources/css/my.css', //CSS personalizado para el select con búsqueda
 'resources/src/assets/scss/iconly.scss',
 'resources/dist/assets/extensions/jquery/jquery.min.js',
 'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.css',
@@ -46,7 +47,7 @@
                     <div class="col-md-6">
                         <h6>Año</h6>
                         <select class="form-select text-dark fw-bold" name="anio" id="filtroAnio">
-                            <option value="">Seleccionar año</option>
+                            <option value="" disabled selected hidde>Seleccionar año</option>
                             @foreach($anios as $anio)
                                 <option value="{{ $anio }}">{{ $anio }}</option>
                             @endforeach
@@ -56,7 +57,7 @@
                     <div class="col-md-6">
                         <h6>Mes</h6>
                         <select class="form-select text-dark fw-bold" name="mes" id="filtroMes">
-                            <option value="">Seleccionar mes</option>
+                            <option value="" disabled selected hidde>Seleccionar mes</option>
                             @foreach($meses as $key => $mes)
                                 <option value="{{ $key }}">{{ $mes }}</option>
                             @endforeach
@@ -67,14 +68,16 @@
                 <div class="row mb-3">
                     <div class="col-md-12">
                         <h6><span class="text-danger">*</span> Ente público proveedor de información</h6>
-                        <select class="form-select text-dark fw-bold" name="proveedor" id="filtroProveedor">
-                            <option value="">Seleccionar ente público</option>
-                            @foreach($proveedores as $prov)
-                                <option value="{{ $prov['id'] }}">
-                                    {{ $prov['nombre'] }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <div class="text-dark fw-bold">
+                            <select class="choices form-select" name="proveedor" id="filtroProveedor">
+                                <option value="" disabled selected hidden>Seleccionar ente público</option>
+                                @foreach($proveedores as $prov)
+                                    <option value="{{ $prov['id'] }}">
+                                        {{ $prov['nombre'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -214,12 +217,6 @@
                 });
                 return;
             }
-
-            // Aquí puedes ejecutar el filtrado. 
-            // Si la tabla se carga vía servidor (Laravel), lo ideal es redirigir:
-            // window.location.href = `?anio=${anio}&mes=${mes}&proveedor=${proveedor}`;
-            
-            // Si solo quieres una alerta de éxito por ahora:
             Swal.fire({
                 icon: 'success',
                 title: 'Generando informe',

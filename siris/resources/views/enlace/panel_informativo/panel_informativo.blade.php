@@ -6,7 +6,6 @@
 @vite([
 'resources/src/assets/scss/iconly.scss',
 'resources/dist/assets/extensions/jquery/jquery.min.js',
-'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.css',
 'resources/dist/assets/extensions/apexcharts/apexcharts.css'
 ])
 @endsection
@@ -53,7 +52,7 @@
                 <div class="card shadow-sm h-100 border-start border-primary border-4">
                     <div class="card-body text-center d-flex flex-column justify-content-center">
                         <p class="card-text fw-bold text-dark mb-2 small">Informes no reportados</p>
-                        <h1 class="display-3 fw-bold text-primary mb-0">0</h1>
+                        <h1 class="display-6 fw-bold text-primary mb-0">0</h1>
                     </div>
                 </div>
             </div>
@@ -125,7 +124,5 @@
 @vite([
 'resources/dist/assets/extensions/jquery/jquery.min.js',
 'resources/dist/assets/extensions/apexcharts/apexcharts.min.js',
-'resources/dist/assets/extensions/sweetalert2/sweetalert2.min.js',
-'resources/dist/assets/static/js/pages/sweetalert2.js',
 ])
 @endsection
