@@ -135,7 +135,7 @@
                         </button>
 
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="bi bi-x-circle"></i> Cancelar
+                            <i class="bi bi-x-circle-fill"></i> Cancelar
                         </button>
                     </div>
 
@@ -188,7 +188,7 @@
                         </button>
 
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <i class="bi bi-x-circle"></i> Cancelar
+                            <i class="bi bi-x-circle-fill"></i> Cancelar
                         </button>
                     </div>
 
